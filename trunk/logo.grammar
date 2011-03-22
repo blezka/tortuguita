@@ -95,30 +95,34 @@ Ignored Tokens
  comment , blank ;
 Productions
  				
-
  p_word = word identifier p_ident_list;
  p_list = list identifier p_ident_list;
  p_first = first p_thing;
- p_butfirst = {butfirst} | {bf} identifier;
- p_last = last p_thing identifier;
-// p_setitem = setitem p_index p_list p_value;
-/* p_push = push p_list thing;
+ p_butfirst = {butfirst} butfirst p_thing | {bf} bf p_thing;
+ p_last = last p_thing;
+ p_setitem = setitem integer p_list p_value;
+ p_push = push identifier p_thing;
  p_pop = pop p_list;
- p_print = (print | pr):identifier;
- p_sum = sum integer value | value plus value;
- p_difference = difference value value | value min value;
- p_minus = minus value | min value;
- p_product = product value value value* | value mult value;
- p_modulo = modulo value value;
- p_int = int value;
+ p_print = {print}|{pr} p_thing_list;
+ p_sum = {sum}sum p_value p_value_list | {plus} p_value p_sum_list;
+ p_difference = {dif}difference p_value p_value_list | {min}p_value p_dif_list;
+ p_minus = {minus}minus p_value | {min}min p_value;
+ p_product = {prod}product p_value  p_value_list | {mult}p_value p_mult_list;
+ p_modulo = modulo p_modv integer;
+ p_int = int p_value;
 
-//Producciones auxiliares de la gramatica
-*/
+//Producciones auxiliares de la gramatica parte 1
+
  p_ident_list = {ident_list} identifier p_ident_list | {ident} identifier;
  p_thing = {word}p_word | {list}p_list;
-// p_value = integer | double;
-// p_index = integer;
-
+ p_thing_list = {thing} p_thing | {lst} p_thing_list;
+ p_value = {int}integer | {dob}double;
+ p_value_list = {value_list} p_value p_value_list | {value} p_value;
+ p_sum_list = {sum_val} plus p_value | {sum_list} plus p_value p_sum_list;
+ p_dif_list = {dif_val} min p_value | {dif_list} min p_value p_dif_list;
+ p_mult_list = {mult_val} mult p_value | {mult_list} mult p_value p_mult_list;
+ p_modv = integer;
+ 
 
 /*
 //// Ale
