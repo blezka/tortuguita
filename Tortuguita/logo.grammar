@@ -96,50 +96,52 @@ Ignored Tokens
  comment , blank ;
 Productions
  				
- p_word = word identifier p_ident_list;
- p_list = list identifier p_ident_list;
- p_first = first p_thing;
- p_butfirst = {butfirst} butfirst p_thing | {bf} bf p_thing;
- p_last = last p_thing;
- p_setitem = setitem integer p_list p_value;
- p_push = push identifier p_thing;
- p_pop = pop p_list;
- p_print = {print}|{pr} p_thing_list;
- p_sum = {sum}sum p_value p_value_list | {plus} p_value p_sum_list;
- p_difference = {dif}difference p_value p_value_list | {min}p_value p_dif_list;
- p_minus = {minus}minus p_value | {min}min p_value;
- p_product = {prod}product p_value  p_value_list | {mult}p_value p_mult_list;
- p_modulo = modulo p_modv integer;
- p_int = int p_value;
+ p_word        = word identifier p_ident_list;
+ p_list        = list identifier p_ident_list;
+ p_first       = first p_thing;
+ p_butfirst    = {butfirst} butfirst p_thing | {bf} bf p_thing;
+ p_last        = last p_thing;
+ p_setitem     = setitem integer p_list p_value;
+ p_push        = push identifier p_thing;
+ p_pop         = pop p_list;
+ p_print       = {print}|{pr} p_thing_list;
+ p_sum         = {sum}sum p_value p_value_list | {plus} p_value p_sum_list;
+ p_difference  = {dif}difference p_value p_value_list | {min}p_value p_dif_list;
+ p_minus       = {minus}minus p_value | {min}min p_value;
+ p_product     = {prod}product p_value  p_value_list | {mult}p_value p_mult_list;
+ p_modulo      = modulo p_modv integer;
+ p_int         = int p_value;
 
 //Producciones auxiliares de la gramatica parte 1
 
- p_ident_list = {ident_list} identifier p_ident_list | {ident} identifier;
- p_thing = {word}p_word | {list}p_list;
- p_thing_list = {thing} p_thing | {lst} p_thing_list;
- p_value = {int}integer | {dob}double;
- p_value_list = {value_list} p_value p_value_list | {value} p_value;
- p_sum_list = {sum_val} plus p_value | {sum_list} plus p_value p_sum_list;
- p_dif_list = {dif_val} min p_value | {dif_list} min p_value p_dif_list;
- p_mult_list = {mult_val} mult p_value | {mult_list} mult p_value p_mult_list;
+ p_ident_list  = {ident_list} identifier p_ident_list | {ident} identifier;
+ p_thing       = {word}p_word | {list}p_list;
+ p_thing_list  = {thing} p_thing | {lst} p_thing_list;
+ p_value       = {int}integer | {dob}double;
+ p_value_list  = {value_list} p_value p_value_list | {value} p_value;
+ p_sum_list    = {sum_val} plus p_value | {sum_list} plus p_value p_sum_list;
+ p_dif_list    = {dif_val} min p_value | {dif_list} min p_value p_dif_list;
+ p_mult_list   = {mult_val} mult p_value | {mult_list} mult p_value p_mult_list;
  p_modv = integer;
- p_num
+ ///producciones ale
+ p_round       =  round p_value;
+ p_sqrt        = sqrt p_value;
+ p_power       = power
+ p_exp         = exp p_value;
 
- 
-<<<<<<< .mine
-
-//producciones parte 2
- p_setheading  =  {setheading} | {seth} p_value;
+//producciones jonathan
+ p_setheading  =  {setheading} setheading | {seth} seth p_value;
  p_home        =  home;
  p_arc         =  arc integer p_value;
- p_clearscreen =  {clearscreen}|{cs} p_home;
- p_pendown     =  {pendown}|{pd};
- p_penup       =  {penup}|{pu};
- p_setpencolor = {setpencolor}|{setpc} (number | 1 number2);
+ p_clearscreen =  {clearscreen}clearscreen|{cs}cs p_home;
+ p_pendown     =  {pendown}pendown|{pd} pd;
+ p_penup       =  {penup}penup|{pu}pu;
+ p_setpencolor = {setpencolor} setpencolor|{setpc} setpc (number | 1 number2);
  number2= ['0'..'5']; 
  /*
+ 
+
 ///Jonathan 
- p_setpencolor =  (setpencolor| setpc) : identifier;
  p_setpensize  =  [setpensize] : identifier;
  p_to          =  [procname] : identifier plus [input1]:identifier ([input2]:identifier | [input3]p_word*);
  p_make        =  [vamame] : identifier plus [value] : identifier;
