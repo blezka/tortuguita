@@ -3,6 +3,7 @@ Package
 Helpers
  letter = ['a'..'z'] | ['A'..'Z'];
  number = ['0'..'9'];
+ 
  anychar = [0x0..0xffff];
  cr = 13;
  lf = 10;
@@ -122,13 +123,48 @@ Productions
  p_dif_list = {dif_val} min p_value | {dif_list} min p_value p_dif_list;
  p_mult_list = {mult_val} mult p_value | {mult_list} mult p_value p_mult_list;
  p_modv = integer;
+ p_num
+
  
+<<<<<<< .mine
+
+//producciones parte 2
+ p_setheading  =  {setheading} | {seth} p_value;
+ p_home        =  home;
+ p_arc         =  arc integer p_value;
+ p_clearscreen =  {clearscreen}|{cs} p_home;
+ p_pendown     =  {pendown}|{pd};
+ p_penup       =  {penup}|{pu};
+ p_setpencolor = {setpencolor}|{setpc} (number | 1 number2);
+ number2= ['0'..'5']; 
+ /*
+///Jonathan 
+ p_setpencolor =  (setpencolor| setpc) : identifier;
+ p_setpensize  =  [setpensize] : identifier;
+ p_to          =  [procname] : identifier plus [input1]:identifier ([input2]:identifier | [input3]p_word*);
+ p_make        =  [vamame] : identifier plus [value] : identifier;
+ p_run         =  [instructionlist] : identifier;
+ p_repeat      =  [num] : identifier plus [instructionlist] : identifier;
+ p_if          =  [tfinstructionlist1] : identifier plus  [tfinstructionlist1] : identifier;
+ p_ifelse      =  [tfinstructionlist1] : identifier plus  [tfinstructionlist1] : identifier;
+ p_stop        =  [stop]  : identifier;
+ p_goto        =  [word] : identifier;
+
+//// Ale
+///add = [left]:identifier plus [right]:identifier;
+ p_round         = 
+ p_sqrt         = 
+ p_power         =        [num][num2]
+ p_exp         = 
+ p_and         = 
+=======
  p_round         = round p_value;
  p_sqrt         = sqrt p_value;
  p_power         = power
  p_exp         = exp p_value;
 // Logica
 p_and         = 
+>>>>>>> .r8
  p_or         = 
  p_not        =        [not] : identifier: 
  p_forward=         (forward | fd) : identifier; 
@@ -138,24 +174,6 @@ p_and         =
  p_setpos        =        [setpos] : identifier: 
  p_setxy          =        [setxy] : identifier: 
  p_setx          =        [setx] : identifier: 
- p_sety          =        [sety] : identifier:
-///Jonathan 
-///add = [left]:identifier plus [right]:identifier;
- p_setheading  =  (setheading | seth) : identifier; 
- p_home        =  [home]: identifier;
- p_arc         =  [arc]: identifier;
- p_clearscreen =  (clearscreen | cs) : identifier;
- p_pendown     =  (pendown | pd) : identifier; 
- p_penup       =  (penup | pu) : identifier;
- p_setpencolor =  (setpencolor| setpc) : identifier;
- p_setpensize  =  [setpensize] : identifier;
- p_to          =  [procname] : identifier plus [input1]:identifier ([input2]:identifier | [input3]p_word*);
- p_make        =  [vamame] : identifier plus [value] : identifier;
- p_run         =  [instructionlist] : identifier;
- p_repeat      =  [num] : identifier plus [instructionlist] : identifier;
- p_if          = [tfinstructionlist1] : identifier plus  [tfinstructionlist1] : identifier;
- p_ifelse      = [tfinstructionlist1] : identifier plus  [tfinstructionlist1] : identifier;
- p_stop        = [stop]  : identifier;
- p_goto        = [word] : identifier; 
+ p_sety          =        [sety] : identifier: 
  
  input = identifier;*/
