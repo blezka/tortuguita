@@ -3,7 +3,6 @@ Package
 Helpers
  letter = ['a'..'z'] | ['A'..'Z'];
  number = ['0'..'9'];
- 
  anychar = [0x0..0xffff];
  cr = 13;
  lf = 10;
@@ -87,6 +86,8 @@ Tokens
  integer = [number - 0] number*;
  double = number* '.' number+;
  //hex = '0x' (number | ['a'..'f'] | ['A'..'F'])+;
+ number1= number | '1' ['0'..'5'];  
+
  
  endline = eol?;
  
@@ -126,7 +127,7 @@ Productions
  ///producciones ale
  p_round       =  round p_value;
  p_sqrt        = sqrt p_value;
- p_power       = power
+ p_power       = power;
  p_exp         = exp p_value;
 
 //producciones jonathan
@@ -136,8 +137,10 @@ Productions
  p_clearscreen =  {clearscreen}clearscreen|{cs}cs p_home;
  p_pendown     =  {pendown}pendown|{pd} pd;
  p_penup       =  {penup}penup|{pu}pu;
- p_setpencolor = {setpencolor} setpencolor|{setpc} setpc (number | 1 number2);
- number2= ['0'..'5']; 
+ p_setpencolor =  {setpencolor} setpencolor| {setpc} setpc number1;
+
+
+
  /*
  
 
