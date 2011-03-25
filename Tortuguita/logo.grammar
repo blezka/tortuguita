@@ -124,6 +124,8 @@ Productions
  p_dif_list    = {dif_val} min p_value | {dif_list} min p_value p_dif_list;
  p_mult_list   = {mult_val} mult p_value | {mult_list} mult p_value p_mult_list;
  p_modv = integer;
+ //p_instruction = instruction p_word | p_word p_word
+ //p_instructionlist = instructionlist p_instruction | p_ 
  ///producciones ale
  p_round       =  round p_value;
  p_sqrt        = sqrt p_value;
@@ -138,14 +140,18 @@ Productions
  p_pendown     =  {pendown}pendown|{pd} pd;
  p_penup       =  {penup}penup|{pu}pu;
  p_setpencolor =  {setpencolor} setpencolor| {setpc} setpc number1;
-
-
-
+ p_setpensize  =  setpensize integer;
+ //p_to          =  to 
+ //p_make        =
+ //p_run         =  run p_instructionlist;
+ //p_repeat      = repeat integer instructionlist;
+ //p_if
+ p_stop        = stop;
+ p_goto        = goto p_word;
  /*
  
 
 ///Jonathan 
- p_setpensize  =  [setpensize] : identifier;
  p_to          =  [procname] : identifier plus [input1]:identifier ([input2]:identifier | [input3]p_word*);
  p_make        =  [vamame] : identifier plus [value] : identifier;
  p_run         =  [instructionlist] : identifier;
