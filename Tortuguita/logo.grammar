@@ -123,15 +123,12 @@ Productions
  p_mult_list = {mult_val} mult p_value | {mult_list} mult p_value p_mult_list;
  p_modv = integer;
  
-
-/*
-//// Ale
-///add = [left]:identifier plus [right]:identifier;
- p_round         = 
- p_sqrt         = 
- p_power         =        [num][num2]
- p_exp         = 
- p_and         = 
+ p_round         = round p_value;
+ p_sqrt         = sqrt p_value;
+ p_power         = power
+ p_exp         = exp p_value;
+// Logica
+p_and         = 
  p_or         = 
  p_not        =        [not] : identifier: 
  p_forward=         (forward | fd) : identifier; 
@@ -139,7 +136,7 @@ Productions
  p_left         =         (left | lt) : identifier;                 
  p_right         =        (right | rt) : identifier; 
  p_setpos        =        [setpos] : identifier: 
- p_setxy         =
+ p_setxy          =        [setxy] : identifier: 
  p_setx          =        [setx] : identifier: 
  p_sety          =        [sety] : identifier:
 ///Jonathan 
