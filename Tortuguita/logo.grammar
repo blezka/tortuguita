@@ -11,6 +11,7 @@ Helpers
  eol = (cr | lf | cr lf);
  
 Tokens
+ procname = 'PROCNAME';
  word = 'WORD';
  list = 'LIST';
  first = 'FIRST';
@@ -123,10 +124,12 @@ Productions
  p_sum_list    = {sum_val} plus p_value | {sum_list} plus p_value p_sum_list;
  p_dif_list    = {dif_val} min p_value | {dif_list} min p_value p_dif_list;
  p_mult_list   = {mult_val} mult p_value | {mult_list} mult p_value p_mult_list;
- p_modv = integer;
+ p_modv        = integer;
+ p_procname    = procname p_word;
+ //p_input       = {word}p_word | {list}p_list |
  //p_instruction = instruction p_word | p_word p_word
  //p_instructionlist = instructionlist p_instruction | p_ 
- ///producciones ale
+ //producciones ale
  p_round       =  round p_value;
  p_sqrt        = sqrt p_value;
  p_power       = power;
@@ -141,8 +144,8 @@ Productions
  p_penup       =  {penup}penup|{pu}pu;
  p_setpencolor =  {setpencolor} setpencolor| {setpc} setpc number1;
  p_setpensize  =  setpensize integer;
- //p_to          =  to 
- //p_make        =
+ //p_to          =  to procname 
+ p_make        =  make p_word integer;
  //p_run         =  run p_instructionlist;
  //p_repeat      = repeat integer instructionlist;
  //p_if
