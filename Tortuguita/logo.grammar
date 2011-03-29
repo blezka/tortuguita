@@ -113,8 +113,40 @@ Productions
  p_product     = {prod}product p_value  p_value_list | {mult}p_value p_mult_list;
  p_modulo      = modulo p_modv integer;
  p_int         = int p_value;
-
-//Producciones auxiliares de la gramatica parte 1
+ p_round       = round p_value;
+ p_sqrt        = sqrt p_value;
+ p_power       = power p_base p_value;      
+ p_exp         = exp p_value;
+ //p_and         =  
+ //p_or          = 
+ //p_not         =   
+ p_forward     = {forward} | {fd} p_value; 
+ p_back        = {back} | {bk} p_value; 
+ p_left        = {left} | {lt} p_value;                 
+ p_right       = {right} | {rt} p_value; 
+ p_setpos      = setpos p_list; 
+ p_setxy       = setxy p_base p_value; 
+ p_setx        = setx p_value; 
+ p_sety        = sety p_value; 
+ p_setheading  =  {setheading} setheading | {seth} seth p_value;
+ p_home        =  home;
+ p_arc         =  arc integer p_value;
+ p_clearscreen =  {clearscreen}clearscreen|{cs}cs p_home;
+ p_pendown     =  {pendown}pendown|{pd} pd;
+ p_penup       =  {penup}penup|{pu}pu;
+ p_setpencolor =  {setpencolor} setpencolor| {setpc} setpc number1;
+ p_setpensize  =  setpensize integer;
+/* p_to          =  [procname] : identifier plus [input1]:identifier ([input2]:identifier | [input3]p_word*);
+ p_make        =  [vamame] : identifier plus [value] : identifier;
+ p_run         =  [instructionlist] : identifier;
+ p_repeat      =  [num] : identifier plus [instructionlist] : identifier;
+ p_if          =  [tfinstructionlist1] : identifier plus  [tfinstructionlist1] : identifier;
+ p_ifelse      =  [tfinstructionlist1] : identifier plus  [tfinstructionlist1] : identifier;
+ p_stop        =  [stop]  : identifier;
+ p_goto        =  [word] : identifier;
+*/
+  
+//Producciones auxiliares de la gramatica 
 
  p_ident_list  = {ident_list} identifier p_ident_list | {ident} identifier;
  p_thing       = {word}p_word | {list}p_list;
@@ -125,57 +157,10 @@ Productions
  p_dif_list    = {dif_val} min p_value | {dif_list} min p_value p_dif_list;
  p_mult_list   = {mult_val} mult p_value | {mult_list} mult p_value p_mult_list;
  p_modv        = integer;
+ p_base		   = p_value;
  p_procname    = procname p_word;
  //p_input       = {word}p_word | {list}p_list |
  //p_instruction = instruction p_word | p_word p_word
  //p_instructionlist = instructionlist p_instruction | p_ 
 
 
-//producciones jonathan
- p_setheading  =  {setheading} setheading | {seth} seth p_value;
- p_home        =  home;
- p_arc         =  arc integer p_value;
- p_clearscreen =  {clearscreen}clearscreen|{cs}cs p_home;
- p_pendown     =  {pendown}pendown|{pd} pd;
- p_penup       =  {penup}penup|{pu}pu;
- p_setpencolor =  {setpencolor} setpencolor| {setpc} setpc number1;
- p_setpensize  =  setpensize integer;
- //p_to          =  to procname 
- p_make        =  make p_word integer;
- //p_run         =  run p_instructionlist;
- //p_repeat      = repeat integer instructionlist;
- //p_if
- p_stop        = stop;
- p_goto        = goto p_word;
- /*
- 
-
-///Jonathan 
- p_to          =  [procname] : identifier plus [input1]:identifier ([input2]:identifier | [input3]p_word*);
- p_make        =  [vamame] : identifier plus [value] : identifier;
- p_run         =  [instructionlist] : identifier;
- p_repeat      =  [num] : identifier plus [instructionlist] : identifier;
- p_if          =  [tfinstructionlist1] : identifier plus  [tfinstructionlist1] : identifier;
- p_ifelse      =  [tfinstructionlist1] : identifier plus  [tfinstructionlist1] : identifier;
- p_stop        =  [stop]  : identifier;
- p_goto        =  [word] : identifier;
-
-//// Ale
-///add = [left]:identifier plus [right]:identifier;
-  p_power        =       
-  p_round        = round p_value;
-  p_sqrt         = sqrt p_value;
-  p_exp          = exp p_value;
-  p_and          = 
-  p_or           = 
-  p_not          =        [not] : identifier: 
-  p_forward      =         (forward | fd) : identifier; 
-  p_back         =        (back | bk) : identifier; 
-  p_left         =         (left | lt) : identifier;                 
-  p_right        =        (right | rt) : identifier; 
-  p_setpos       =        [setpos] : identifier: 
-  p_setxy        =        [setxy] : identifier: 
-  p_setx         =        [setx] : identifier: 
-  p_sety         =        [sety] : identifier: 
- 
- input = identifier;*/
