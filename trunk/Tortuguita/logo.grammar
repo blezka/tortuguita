@@ -129,11 +129,7 @@ Productions
  //p_input       = {word}p_word | {list}p_list |
  //p_instruction = instruction p_word | p_word p_word
  //p_instructionlist = instructionlist p_instruction | p_ 
- //producciones ale
- p_round       =  round p_value;
- p_sqrt        = sqrt p_value;
- p_power       = power;
- p_exp         = exp p_value;
+
 
 //producciones jonathan
  p_setheading  =  {setheading} setheading | {seth} seth p_value;
@@ -166,28 +162,20 @@ Productions
 
 //// Ale
 ///add = [left]:identifier plus [right]:identifier;
- p_round         = 
- p_sqrt         = 
- p_power         =        [num][num2]
- p_exp         = 
- p_and         = 
-=======
- p_round         = round p_value;
- p_sqrt         = sqrt p_value;
- p_power         = power
- p_exp         = exp p_value;
-// Logica
-p_and         = 
->>>>>>> .r8
- p_or         = 
- p_not        =        [not] : identifier: 
- p_forward=         (forward | fd) : identifier; 
- p_back         =        (back | bk) : identifier; 
- p_left         =         (left | lt) : identifier;                 
- p_right         =        (right | rt) : identifier; 
- p_setpos        =        [setpos] : identifier: 
- p_setxy          =        [setxy] : identifier: 
- p_setx          =        [setx] : identifier: 
- p_sety          =        [sety] : identifier: 
+  p_power        =       
+  p_round        = round p_value;
+  p_sqrt         = sqrt p_value;
+  p_exp          = exp p_value;
+  p_and          = 
+  p_or           = 
+  p_not          =        [not] : identifier: 
+  p_forward      =         (forward | fd) : identifier; 
+  p_back         =        (back | bk) : identifier; 
+  p_left         =         (left | lt) : identifier;                 
+  p_right        =        (right | rt) : identifier; 
+  p_setpos       =        [setpos] : identifier: 
+  p_setxy        =        [setxy] : identifier: 
+  p_setx         =        [setx] : identifier: 
+  p_sety         =        [sety] : identifier: 
  
  input = identifier;*/
