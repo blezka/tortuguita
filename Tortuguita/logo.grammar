@@ -115,23 +115,6 @@ Productions
  p_int         = int p_value;
 
 
-//Producciones auxiliares de la gramatica parte 1
-
- p_ident_list  = {ident_list} identifier p_ident_list | {ident} identifier;
- p_thing       = {word}p_word | {list}p_list;
- p_thing_list  = {thing} p_thing | {lst} p_thing_list;
- p_value       = {int}integer | {dob}double;
- p_value_list  = {value_list} p_value p_value_list | {value} p_value;
- p_sum_list    = {sum_val} plus p_value | {sum_list} plus p_value p_sum_list;
- p_dif_list    = {dif_val} min p_value | {dif_list} min p_value p_dif_list;
- p_mult_list   = {mult_val} mult p_value | {mult_list} mult p_value p_mult_list;
- p_modv        = integer;
- p_procname    = procname p_word;
- //p_input       = 
- //p_input       = {word}p_word | {list}p_list |
- //p_instruction = instruction p_word | p_word p_word
- //p_instructionlist = instructionlist p_instruction | p_ 
-
 
 //producciones jonathan
 =======
@@ -166,18 +149,8 @@ Productions
  //p_run         =  run p_instructionlist;
  //p_repeat      = repeat integer instructionlist;
  //p_if
-
  
 
- /* p_to          =  [procname] : identifier plus [input1]:identifier ([input2]:identifier | [input3]p_word*);
- p_make        =  [vamame] : identifier plus [value] : identifier;
- p_run         =  [instructionlist] : identifier;
- p_repeat      =  [num] : identifier plus [instructionlist] : identifier;
- p_if          =  [tfinstructionlist1] : identifier plus  [tfinstructionlist1] : identifier;
- p_ifelse      =  [tfinstructionlist1] : identifier plus  [tfinstructionlist1] : identifier;
- p_stop        =  [stop]  : identifier;
- p_goto        =  [word] : identifier;
-*/
   
 //Producciones auxiliares de la gramatica 
 
