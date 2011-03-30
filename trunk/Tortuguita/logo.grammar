@@ -72,6 +72,8 @@ Tokens
  stop = 'STOP';
  goto = 'GOTO';
  end = 'END';
+ true = 'TRUE';
+ false = 'FALSE';
 //////////////////////////////////////////////
  l_par = '(';
  r_par = ')';
@@ -110,7 +112,7 @@ Productions
  				{workspace} p_workspace |
  				{control} p_control_structures;
  			
- p_primitives   = {vars}p_thing |
+ p_primitives   = {vars}p_word | {list} p_list | 
   				{selectors} p_selectors |
   				{mutator} p_mutator;
  p_selectors    = {first} p_first |
@@ -179,9 +181,9 @@ Productions
  p_sqrt        = sqrt p_value;
  p_power       = power [base]:p_value [exp]:p_value; 
  p_exp         = exp p_value;
- //p_and         = and;  
- //p_or          = or;
- //p_not         = not;
+ p_and         = and [v1]:p_boolean [v2]:p_boolean;  
+ p_or          = or  [v1]:p_boolean [v2]:p_boolean;  
+ p_not         = not [v1]:p_boolean;  
  p_forward     = {forward} | {fd} p_value; 
  p_back        = {back} | {bk} p_value; 
  p_left        = {left} | {lt} p_value;                 
@@ -201,8 +203,8 @@ Productions
  p_to          =  to identifier p_ident_list p_instructionlist end; 
  p_make        =  make p_word integer;
  p_repeat      = repeat integer  l_brk p_instructionlist r_brk;
- //p_if		   = if;
- //p_ifelse	   = ifelse;
+ p_if		   = if p_boolean p_instructionlist;
+ //p_ifelse	   = ifelse p_boolean [inst1]:p_instructionlist [inst2]:p_instructionlist;
  p_stop        = stop;
  p_goto        = goto p_word;
  
@@ -218,5 +220,5 @@ Productions
  p_sum_list    = {sum_val} plus p_value | {sum_list} plus p_value p_sum_list;
  p_dif_list    = {dif_val} min p_value | {dif_list} min p_value p_dif_list;
  p_mult_list   = {mult_val} mult p_value | {mult_list} mult p_value p_mult_list;
-
+ p_boolean     = {true} true | {false} false;
 
