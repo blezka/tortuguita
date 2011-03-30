@@ -104,7 +104,7 @@ Ignored Tokens
  
 Productions
  prog 			= {list}p_instructionlist | {run}  run p_instructionlist;
- p_instructionlist = {blabla} p_instruction semi p_instructionlist| {bla}p_instruction; 
+ p_instructionlist = {lista} p_instruction semi p_instructionlist| {inst}p_instruction semi; 
  p_instruction  = {primitives} p_primitives |
  				{comunication} p_communication |
  				{arithmetic} p_arithmetic |
@@ -190,7 +190,7 @@ Productions
  //PROBLEMA AQUI, cambio la primera linea pero ya ven como siguen las demas
  p_forward     = {forward} forward p_value | {fd} fd p_value; 
  p_back        = {back} back p_value | {bk} bk p_value; 
- p_left        = {left} left p_value | {lt} lt p_value;                 
+ p_left        = {left} left p_value | {lt} lf p_value;                 
  p_right       = {right} right | {rt} rt p_value; 
  p_setpos      = setpos p_list; 
  p_setxy       = setxy [base]:p_value [exp]:p_value; 
@@ -208,7 +208,7 @@ Productions
  p_make        =  make p_word integer;
  p_repeat      = repeat integer  l_brk p_instructionlist r_brk;
  p_if		   = if p_boolean p_instructionlist;
- p_ifelse	   = ifelse p_boolean [inst1]:p_instructionlist [inst2]:p_instructionlist;;
+ p_ifelse	   = ifelse;// p_boolean [inst1]:p_instructionlist [inst2]:p_instructionlist;;
  p_stop        = stop;
  p_goto        = goto p_word;
  
