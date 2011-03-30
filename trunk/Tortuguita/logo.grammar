@@ -186,8 +186,6 @@ Productions
  p_and         = and [v1]:p_boolean [v2]:p_boolean;  
  p_or          = or [v1]:p_boolean [v2]:p_boolean; 
  p_not         = not [v1]:p_boolean; 
- 
- //PROBLEMA AQUI, cambio la primera linea pero ya ven como siguen las demas
  p_forward     = {forward} forward p_value | {fd} fd p_value; 
  p_back        = {back} back p_value | {bk} bk p_value; 
  p_left        = {left} left p_value | {lt} lf p_value;                 
@@ -208,7 +206,7 @@ Productions
  p_make        =  make p_word integer;
  p_repeat      = repeat integer  l_brk p_instructionlist r_brk;
  p_if		   = if p_boolean p_instructionlist;
- p_ifelse	   = ifelse;// p_boolean [inst1]:p_instructionlist [inst2]:p_instructionlist;;
+ p_ifelse	   = ifelse p_boolean [inst1]:p_instructionlist comma [inst2]:p_instructionlist;
  p_stop        = stop;
  p_goto        = goto p_word;
  
