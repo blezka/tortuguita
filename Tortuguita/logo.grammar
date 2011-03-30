@@ -1,5 +1,5 @@
 Package 
-	comp.logo;
+	src.comp.logo;
 Helpers
  letter = ['a'..'z'] | ['A'..'Z'];
  number = ['0'..'9'];
@@ -71,6 +71,7 @@ Tokens
  ifelse = 'IFELSE';
  stop = 'STOP';
  goto = 'GOTO';
+ end = 'END';
 //////////////////////////////////////////////
  l_par = '(';
  r_par = ')';
@@ -82,6 +83,7 @@ Tokens
  min = '-';
  div = '/';
  mult = '*';
+ semi = ';';
  
  identifier = (letter | underscore (letter | number))(letter | number | underscore)*;
  integer = [number - 0] number*;
@@ -96,44 +98,98 @@ Tokens
  blank = (' ' | tab | eol);
 Ignored Tokens
  comment , blank ;
+ 
 Productions
- 				
+ prog 			= {list}p_instructionlist | {run}  run p_instructionlist;
+ p_instructionlist = {blabla} p_instruction p_instructionlist| {bla}p_instruction; 
+ p_instruction  = {primitives} p_primitives |
+ 				{comunication} p_communication |
+ 				{arithmetic} p_arithmetic |
+ 				{logic} p_logic |
+ 				{graphics} p_graphics |
+ 				{workspace} p_workspace |
+ 				{control} p_control_structures;
+ 			
+ p_primitives   = {vars}p_thing |
+  				{selectors} p_selectors |
+  				{mutator} p_mutator;
+ p_selectors    = {first} p_first |
+  				{butfirst} p_butfirst |
+  				{last} p_last;
+ p_mutator		= {set} p_setitem ;
+ // 				{push} p_push |
+ // 				{pop} p_pop ;
+ p_communication = p_print;
+ p_arithmetic = {sum} p_sum |
+  				{difference} p_difference |
+  				{minus} p_minus |
+  				{product} p_product |
+  				{modulo} p_modulo |
+  				{int} p_int |
+  				{round} p_round |
+  				{sqrt} p_sqrt |
+  				{power} p_power |
+  				{exp} p_exp;
+ p_logic		= {and} p_and |
+   				{or} p_or |
+   				{not} p_not;   				
+ p_graphics		= {fd} p_forward|
+ 				{bk} p_back | 
+ 				{lt} p_left |
+ 				{rt} p_right|
+ 				{setpos} p_setpos|
+ 				{setxy} p_setxy|
+ 				{setx} p_setx|
+ 				{sety} p_sety|
+ 				{seth} p_setheading|
+ 				{home} p_home|
+ 				{arc} p_arc |
+ 				{clr} p_clearscreen |
+ 				{penctrl} p_pencontrol;
+ p_pencontrol 	= {pd} p_pendown |
+ 				{pu} p_penup |
+ 				{setpc} p_setpencolor|
+ 				{setpensize} p_setpensize;
+ p_workspace	= {to} p_to |
+				{make} p_make;
+ p_control_structures = {repeat} p_repeat |
+ 				{if} p_if |
+ 				{ifelse} p_ifelse |
+ 				{stop} p_stop|
+ 				{goto} p_goto; 
+         
+ 
+  			
  p_word        = word identifier p_ident_list;
  p_list        = list identifier p_ident_list;
  p_first       = first p_thing;
  p_butfirst    = {butfirst} butfirst p_thing | {bf} bf p_thing;
  p_last        = last p_thing;
  p_setitem     = setitem integer p_list p_value;
- p_push        = push identifier p_thing;
- p_pop         = pop p_list;
- p_print       = {print}|{pr} p_thing_list;
+ //p_push        = push identifier p_thing;
+ //p_pop         = pop p_list;
+ p_print       = {print}print l_par p_ident_list r_par|{pr} pr l_par p_ident_list r_par;
  p_sum         = {sum}sum p_value p_value_list | {plus} p_value p_sum_list;
  p_difference  = {dif}difference p_value p_value_list | {min}p_value p_dif_list;
  p_minus       = {minus}minus p_value | {min}min p_value;
  p_product     = {prod}product p_value  p_value_list | {mult}p_value p_mult_list;
- p_modulo      = modulo p_modv integer;
+ p_modulo      = modulo [div]:integer [divd]:integer;
  p_int         = int p_value;
-
-
-
-//producciones jonathan
-=======
  p_round       = round p_value;
  p_sqrt        = sqrt p_value;
- p_power       = power p_base p_value;      
+ p_power       = power [base]:p_value [exp]:p_value; 
  p_exp         = exp p_value;
- //p_and         =  
- //p_or          = 
- //p_not         =   
+ //p_and         = and;  
+ //p_or          = or;
+ //p_not         = not;
  p_forward     = {forward} | {fd} p_value; 
  p_back        = {back} | {bk} p_value; 
  p_left        = {left} | {lt} p_value;                 
  p_right       = {right} | {rt} p_value; 
  p_setpos      = setpos p_list; 
- p_setxy       = setxy p_base p_value; 
+ p_setxy       = setxy [base]:p_value [exp]:p_value; 
  p_setx        = setx p_value; 
- p_sety        = sety p_value; 
-
+ p_sety        = sety p_value;
  p_setheading  =  {setheading} setheading | {seth} seth p_value;
  p_home        =  home;
  p_arc         =  arc integer p_value;
@@ -142,31 +198,25 @@ Productions
  p_penup       =  {penup}penup|{pu}pu;
  p_setpencolor =  {setpencolor} setpencolor| {setpc} setpc number1;
  p_setpensize  =  setpensize integer;
+ p_to          =  to identifier p_ident_list p_instructionlist end; 
  p_make        =  make p_word integer;
+ p_repeat      = repeat integer  l_brk p_instructionlist r_brk;
+ //p_if		   = if;
+ //p_ifelse	   = ifelse;
  p_stop        = stop;
  p_goto        = goto p_word;
- //p_to          =  to procname 
- //p_run         =  run p_instructionlist;
- //p_repeat      = repeat integer instructionlist;
- //p_if
  
-
-  
+ 
+ 
 //Producciones auxiliares de la gramatica 
 
  p_ident_list  = {ident_list} identifier p_ident_list | {ident} identifier;
- p_thing       = {word}p_word | {list}p_list;
- p_thing_list  = {thing} p_thing | {lst} p_thing_list;
+ p_thing       = identifier;
+ //p_thing_list  = {thing}  | {lst} p_thing p_thing_list;
  p_value       = {int}integer | {dob}double;
  p_value_list  = {value_list} p_value p_value_list | {value} p_value;
  p_sum_list    = {sum_val} plus p_value | {sum_list} plus p_value p_sum_list;
  p_dif_list    = {dif_val} min p_value | {dif_list} min p_value p_dif_list;
  p_mult_list   = {mult_val} mult p_value | {mult_list} mult p_value p_mult_list;
- p_modv        = integer;
- p_base		   = p_value;
- p_procname    = procname p_word;
- //p_input       = {word}p_word | {list}p_list |
- //p_instruction = instruction p_word | p_word p_word
- //p_instructionlist = instructionlist p_instruction | p_ 
 
 
