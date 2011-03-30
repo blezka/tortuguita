@@ -86,6 +86,7 @@ Tokens
  div = '/';
  mult = '*';
  semi = ';';
+ comma = ',';
  
  identifier = (letter | underscore (letter | number))(letter | number | underscore)*;
  integer = [number - 0] number*;
@@ -103,7 +104,7 @@ Ignored Tokens
  
 Productions
  prog 			= {list}p_instructionlist | {run}  run p_instructionlist;
- p_instructionlist = {blabla} p_instruction p_instructionlist| {bla}p_instruction; 
+ p_instructionlist = {blabla} p_instruction semi p_instructionlist| {bla}p_instruction; 
  p_instruction  = {primitives} p_primitives |
  				{comunication} p_communication |
  				{arithmetic} p_arithmetic |
@@ -170,7 +171,8 @@ Productions
  p_setitem     = setitem integer p_list p_value;
  //p_push        = push identifier p_thing;
  //p_pop         = pop p_list;
- p_print       = {print}print l_par p_ident_list r_par|{pr} pr l_par p_ident_list r_par;
+ p_print       = print p_print_list;
+ p_print_list  = l_par p_ident_list r_par;
  p_sum         = {sum}sum p_value p_value_list | {plus} p_value p_sum_list;
  p_difference  = {dif}difference p_value p_value_list | {min}p_value p_dif_list;
  p_minus       = {minus}minus p_value | {min}min p_value;
@@ -182,12 +184,14 @@ Productions
  p_power       = power [base]:p_value [exp]:p_value; 
  p_exp         = exp p_value;
  p_and         = and [v1]:p_boolean [v2]:p_boolean;  
- p_or          = or  [v1]:p_boolean [v2]:p_boolean;  
- p_not         = not [v1]:p_boolean;  
- p_forward     = {forward} | {fd} p_value; 
- p_back        = {back} | {bk} p_value; 
- p_left        = {left} | {lt} p_value;                 
- p_right       = {right} | {rt} p_value; 
+ p_or          = or [v1]:p_boolean [v2]:p_boolean; 
+ p_not         = not [v1]:p_boolean; 
+ 
+ //PROBLEMA AQUI, cambio la primera linea pero ya ven como siguen las demas
+ p_forward     = {forward} forward p_value | {fd} fd p_value; 
+ p_back        = {back} back p_value | {bk} bk p_value; 
+ p_left        = {left} left p_value | {lt} lt p_value;                 
+ p_right       = {right} right | {rt} rt p_value; 
  p_setpos      = setpos p_list; 
  p_setxy       = setxy [base]:p_value [exp]:p_value; 
  p_setx        = setx p_value; 
@@ -204,7 +208,7 @@ Productions
  p_make        =  make p_word integer;
  p_repeat      = repeat integer  l_brk p_instructionlist r_brk;
  p_if		   = if p_boolean p_instructionlist;
- //p_ifelse	   = ifelse p_boolean [inst1]:p_instructionlist [inst2]:p_instructionlist;
+ p_ifelse	   = ifelse p_boolean [inst1]:p_instructionlist [inst2]:p_instructionlist;;
  p_stop        = stop;
  p_goto        = goto p_word;
  
@@ -212,7 +216,7 @@ Productions
  
 //Producciones auxiliares de la gramatica 
 
- p_ident_list  = {ident_list} identifier p_ident_list | {ident} identifier;
+ p_ident_list  = {ident_list} identifier comma p_ident_list | {ident} identifier;
  p_thing       = identifier;
  //p_thing_list  = {thing}  | {lst} p_thing p_thing_list;
  p_value       = {int}integer | {dob}double;
@@ -221,4 +225,3 @@ Productions
  p_dif_list    = {dif_val} min p_value | {dif_list} min p_value p_dif_list;
  p_mult_list   = {mult_val} mult p_value | {mult_list} mult p_value p_mult_list;
  p_boolean     = {true} true | {false} false;
-
