@@ -3,6 +3,7 @@ Package
 Helpers
  letter = ['a'..'z'] | ['A'..'Z'];
  number = ['0'..'9'];
+ numbernz = ['1'..'9'];
  anychar = [0x0..0xffff];
  cr = 13;
  lf = 10;
@@ -89,11 +90,9 @@ Tokens
  comma = ',';
  
  identifier = (letter | underscore (letter | number))(letter | number | underscore)*;
- integer = [number - 0] number*;
+ integer = numbernz number* | number;
  double = number* '.' number+;
  //hex = '0x' (number | ['a'..'f'] | ['A'..'F'])+;
- number1= number | '1' ['0'..'5'];  
-
  
  endline = eol?;
  
@@ -103,7 +102,7 @@ Ignored Tokens
  comment , blank ;
  
 Productions
- prog 			= {list}p_instructionlist | {run}  run p_instructionlist;
+ prog 			= {list}p_instructionlist | {run}  run l_key p_instructionlist r_key semi;
  p_instructionlist = {lista} p_instruction semi p_instructionlist| {inst}p_instruction semi; 
  p_instruction  = {primitives} p_primitives |
  				{comunication} p_communication |
@@ -168,11 +167,10 @@ Productions
  p_first       = first identifier;
  p_butfirst    = {butfirst} butfirst identifier | {bf} bf identifier;
  p_last        = last identifier;
- p_setitem     = setitem integer p_list p_value;
+ p_setitem     = setitem integer identifier p_value;
  //p_push        = push [item]:identifier [list]:identifier;
  //p_pop         = pop p_list;
- p_print       = print p_print_list;
- p_print_list  = l_par p_ident_list r_par;
+ p_print       = print l_par p_ident_list r_par;
  p_sum         = {sum}sum p_value p_value_list | {plus} p_value p_sum_list;
  p_difference  = {dif}difference p_value p_value_list | {min}p_value p_dif_list;
  p_minus       = {minus}minus p_value | {min}min p_value;
@@ -189,37 +187,37 @@ Productions
  p_forward     = {forward} forward p_value | {fd} fd p_value; 
  p_back        = {back} back p_value | {bk} bk p_value; 
  p_left        = {left} left p_value | {lt} lf p_value;                 
- p_right       = {right} right | {rt} rt p_value; 
- p_setpos      = setpos p_list; 
+ p_right       = {right} right p_value | {rt} rt p_value; 
+ p_setpos      = setpos identifier; 
  p_setxy       = setxy [base]:p_value [exp]:p_value; 
  p_setx        = setx p_value; 
  p_sety        = sety p_value;
- p_setheading  =  {setheading} setheading | {seth} seth p_value;
+ p_setheading  =  {setheading} setheading p_value | {seth} seth p_value;
  p_home        =  home;
  p_arc         =  arc integer p_value;
- p_clearscreen =  {clearscreen}clearscreen|{cs}cs p_home;
+ p_clearscreen =  {clearscreen}clearscreen|{cs}cs;
  p_pendown     =  {pendown}pendown|{pd} pd;
  p_penup       =  {penup}penup|{pu}pu;
- p_setpencolor =  {setpencolor} setpencolor| {setpc} setpc number1;
- p_setpensize  =  setpensize integer;
- p_to          =  to identifier p_ident_list p_instructionlist end; 
- p_make        =  make p_word integer;
+ p_setpencolor =  {setpencolor} setpencolor p_color| {setpc} setpc p_color;
+ p_setpensize  =  {size} setpensize integer | {sizexy} setpensize identifier;
+ p_to          =  to identifier p_instructionlist end; 
+ p_make        =  make identifier p_value;
  p_repeat      = repeat integer  l_brk p_instructionlist r_brk;
- p_if		   = if p_boolean p_instructionlist;
+ p_if		   = {if}if p_boolean p_instructionlist | {ifelse}if p_boolean [true]:p_instructionlist comma [false]:p_instructionlist;
  p_ifelse	   = ifelse p_boolean [inst1]:p_instructionlist comma [inst2]:p_instructionlist;
  p_stop        = stop;
- p_goto        = goto p_word;
+ p_goto        = goto identifier;
  
  
  
 //Producciones auxiliares de la gramatica 
 
- p_ident_list  =	 {ident_list} identifier comma p_ident_list | {ident} identifier;
-// p_thing       = identifier;
- //p_thing_list  = {thing}  | {lst} p_thing p_thing_list;
+ p_ident_list  =	 {ident_list} identifier p_ident_list | {ident} identifier;
  p_value       = {int}integer | {dob}double;
  p_value_list  = {value_list} p_value p_value_list | {value} p_value;
  p_sum_list    = {sum_val} plus p_value | {sum_list} plus p_value p_sum_list;
  p_dif_list    = {dif_val} min p_value | {dif_list} min p_value p_dif_list;
  p_mult_list   = {mult_val} mult p_value | {mult_list} mult p_value p_mult_list;
- p_boolean     = {true} true | {false} false;
+ p_boolean     = {true} true | {false} false | {var}identifier;
+ p_color	   = {predef}integer | {lst}identifier ;
+ 
