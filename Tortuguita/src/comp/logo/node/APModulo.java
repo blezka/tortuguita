@@ -8,8 +8,8 @@ import comp.logo.analysis.*;
 public final class APModulo extends PPModulo
 {
     private TModulo _modulo_;
-    private PPModv _pModv_;
-    private TInteger _integer_;
+    private TInteger _div_;
+    private TInteger _divd_;
 
     public APModulo()
     {
@@ -18,15 +18,15 @@ public final class APModulo extends PPModulo
 
     public APModulo(
         @SuppressWarnings("hiding") TModulo _modulo_,
-        @SuppressWarnings("hiding") PPModv _pModv_,
-        @SuppressWarnings("hiding") TInteger _integer_)
+        @SuppressWarnings("hiding") TInteger _div_,
+        @SuppressWarnings("hiding") TInteger _divd_)
     {
         // Constructor
         setModulo(_modulo_);
 
-        setPModv(_pModv_);
+        setDiv(_div_);
 
-        setInteger(_integer_);
+        setDivd(_divd_);
 
     }
 
@@ -35,8 +35,8 @@ public final class APModulo extends PPModulo
     {
         return new APModulo(
             cloneNode(this._modulo_),
-            cloneNode(this._pModv_),
-            cloneNode(this._integer_));
+            cloneNode(this._div_),
+            cloneNode(this._divd_));
     }
 
     public void apply(Switch sw)
@@ -69,16 +69,16 @@ public final class APModulo extends PPModulo
         this._modulo_ = node;
     }
 
-    public PPModv getPModv()
+    public TInteger getDiv()
     {
-        return this._pModv_;
+        return this._div_;
     }
 
-    public void setPModv(PPModv node)
+    public void setDiv(TInteger node)
     {
-        if(this._pModv_ != null)
+        if(this._div_ != null)
         {
-            this._pModv_.parent(null);
+            this._div_.parent(null);
         }
 
         if(node != null)
@@ -91,19 +91,19 @@ public final class APModulo extends PPModulo
             node.parent(this);
         }
 
-        this._pModv_ = node;
+        this._div_ = node;
     }
 
-    public TInteger getInteger()
+    public TInteger getDivd()
     {
-        return this._integer_;
+        return this._divd_;
     }
 
-    public void setInteger(TInteger node)
+    public void setDivd(TInteger node)
     {
-        if(this._integer_ != null)
+        if(this._divd_ != null)
         {
-            this._integer_.parent(null);
+            this._divd_.parent(null);
         }
 
         if(node != null)
@@ -116,7 +116,7 @@ public final class APModulo extends PPModulo
             node.parent(this);
         }
 
-        this._integer_ = node;
+        this._divd_ = node;
     }
 
     @Override
@@ -124,8 +124,8 @@ public final class APModulo extends PPModulo
     {
         return ""
             + toString(this._modulo_)
-            + toString(this._pModv_)
-            + toString(this._integer_);
+            + toString(this._div_)
+            + toString(this._divd_);
     }
 
     @Override
@@ -138,15 +138,15 @@ public final class APModulo extends PPModulo
             return;
         }
 
-        if(this._pModv_ == child)
+        if(this._div_ == child)
         {
-            this._pModv_ = null;
+            this._div_ = null;
             return;
         }
 
-        if(this._integer_ == child)
+        if(this._divd_ == child)
         {
-            this._integer_ = null;
+            this._divd_ = null;
             return;
         }
 
@@ -163,15 +163,15 @@ public final class APModulo extends PPModulo
             return;
         }
 
-        if(this._pModv_ == oldChild)
+        if(this._div_ == oldChild)
         {
-            setPModv((PPModv) newChild);
+            setDiv((TInteger) newChild);
             return;
         }
 
-        if(this._integer_ == oldChild)
+        if(this._divd_ == oldChild)
         {
-            setInteger((TInteger) newChild);
+            setDivd((TInteger) newChild);
             return;
         }
 

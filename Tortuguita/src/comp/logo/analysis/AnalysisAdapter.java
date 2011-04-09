@@ -69,6 +69,291 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
+    public void caseAListProg(AListProg node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseARunProg(ARunProg node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAListaPInstructionlist(AListaPInstructionlist node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAInstPInstructionlist(AInstPInstructionlist node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAPrimitivesPInstruction(APrimitivesPInstruction node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAComunicationPInstruction(AComunicationPInstruction node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAArithmeticPInstruction(AArithmeticPInstruction node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseALogicPInstruction(ALogicPInstruction node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAGraphicsPInstruction(AGraphicsPInstruction node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAWorkspacePInstruction(AWorkspacePInstruction node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAControlPInstruction(AControlPInstruction node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAVarsPPrimitives(AVarsPPrimitives node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAListPPrimitives(AListPPrimitives node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseASelectorsPPrimitives(ASelectorsPPrimitives node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAMutatorPPrimitives(AMutatorPPrimitives node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAFirstPSelectors(AFirstPSelectors node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAButfirstPSelectors(AButfirstPSelectors node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseALastPSelectors(ALastPSelectors node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseASetPMutator(ASetPMutator node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAPCommunication(APCommunication node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseASumPArithmetic(ASumPArithmetic node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseADifferencePArithmetic(ADifferencePArithmetic node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAMinusPArithmetic(AMinusPArithmetic node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAProductPArithmetic(AProductPArithmetic node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAModuloPArithmetic(AModuloPArithmetic node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAIntPArithmetic(AIntPArithmetic node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseARoundPArithmetic(ARoundPArithmetic node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseASqrtPArithmetic(ASqrtPArithmetic node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAPowerPArithmetic(APowerPArithmetic node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAExpPArithmetic(AExpPArithmetic node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAAndPLogic(AAndPLogic node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAOrPLogic(AOrPLogic node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseANotPLogic(ANotPLogic node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAFdPGraphics(AFdPGraphics node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseABkPGraphics(ABkPGraphics node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseALtPGraphics(ALtPGraphics node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseARtPGraphics(ARtPGraphics node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseASetposPGraphics(ASetposPGraphics node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseASetxyPGraphics(ASetxyPGraphics node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseASetxPGraphics(ASetxPGraphics node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseASetyPGraphics(ASetyPGraphics node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseASethPGraphics(ASethPGraphics node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAHomePGraphics(AHomePGraphics node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAArcPGraphics(AArcPGraphics node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAClrPGraphics(AClrPGraphics node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAPenctrlPGraphics(APenctrlPGraphics node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAPdPPencontrol(APdPPencontrol node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAPuPPencontrol(APuPPencontrol node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseASetpcPPencontrol(ASetpcPPencontrol node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseASetpensizePPencontrol(ASetpensizePPencontrol node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAToPWorkspace(AToPWorkspace node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAMakePWorkspace(AMakePWorkspace node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseARepeatPControlStructures(ARepeatPControlStructures node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAIfPControlStructures(AIfPControlStructures node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAIfelsePControlStructures(AIfelsePControlStructures node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAStopPControlStructures(AStopPControlStructures node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAGotoPControlStructures(AGotoPControlStructures node)
+    {
+        defaultCase(node);
+    }
+
     public void caseAPWord(APWord node)
     {
         defaultCase(node);
@@ -104,22 +389,7 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseAPPush(APPush node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAPPop(APPop node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAPrintPPrint(APrintPPrint node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAPrPPrint(APrPPrint node)
+    public void caseAPPrint(APPrint node)
     {
         defaultCase(node);
     }
@@ -174,91 +444,6 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseAIdentListPIdentList(AIdentListPIdentList node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAIdentPIdentList(AIdentPIdentList node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAWordPThing(AWordPThing node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAListPThing(AListPThing node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAThingPThingList(AThingPThingList node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseALstPThingList(ALstPThingList node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAIntPValue(AIntPValue node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseADobPValue(ADobPValue node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAValueListPValueList(AValueListPValueList node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAValuePValueList(AValuePValueList node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseASumValPSumList(ASumValPSumList node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseASumListPSumList(ASumListPSumList node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseADifValPDifList(ADifValPDifList node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseADifListPDifList(ADifListPDifList node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAMultValPMultList(AMultValPMultList node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAMultListPMultList(AMultListPMultList node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAPModv(APModv node)
-    {
-        defaultCase(node);
-    }
-
     public void caseAPRound(APRound node)
     {
         defaultCase(node);
@@ -275,6 +460,81 @@ public class AnalysisAdapter implements Analysis
     }
 
     public void caseAPExp(APExp node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAPAnd(APAnd node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAPOr(APOr node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAPNot(APNot node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAForwardPForward(AForwardPForward node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAFdPForward(AFdPForward node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseABackPBack(ABackPBack node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseABkPBack(ABkPBack node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseALeftPLeft(ALeftPLeft node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseALtPLeft(ALtPLeft node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseARightPRight(ARightPRight node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseARtPRight(ARtPRight node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAPSetpos(APSetpos node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAPSetxy(APSetxy node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAPSetx(APSetx node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAPSety(APSety node)
     {
         defaultCase(node);
     }
@@ -335,6 +595,146 @@ public class AnalysisAdapter implements Analysis
     }
 
     public void caseASetpcPSetpencolor(ASetpcPSetpencolor node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseASizePSetpensize(ASizePSetpensize node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseASizexyPSetpensize(ASizexyPSetpensize node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAPTo(APTo node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAPMake(APMake node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAPRepeat(APRepeat node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAIfPIf(AIfPIf node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAIfelsePIf(AIfelsePIf node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAPIfelse(APIfelse node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAPStop(APStop node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAPGoto(APGoto node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAIdentListPIdentList(AIdentListPIdentList node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAIdentPIdentList(AIdentPIdentList node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAIntPValue(AIntPValue node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseADobPValue(ADobPValue node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAValueListPValueList(AValueListPValueList node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAValuePValueList(AValuePValueList node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseASumValPSumList(ASumValPSumList node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseASumListPSumList(ASumListPSumList node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseADifValPDifList(ADifValPDifList node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseADifListPDifList(ADifListPDifList node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAMultValPMultList(AMultValPMultList node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAMultListPMultList(AMultListPMultList node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseATruePBoolean(ATruePBoolean node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAFalsePBoolean(AFalsePBoolean node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAVarPBoolean(AVarPBoolean node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAPredefPColor(APredefPColor node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseALstPColor(ALstPColor node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTProcname(TProcname node)
     {
         defaultCase(node);
     }
@@ -624,6 +1024,21 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
+    public void caseTEnd(TEnd node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTTrue(TTrue node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTFalse(TFalse node)
+    {
+        defaultCase(node);
+    }
+
     public void caseTLPar(TLPar node)
     {
         defaultCase(node);
@@ -674,6 +1089,16 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
+    public void caseTSemi(TSemi node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTComma(TComma node)
+    {
+        defaultCase(node);
+    }
+
     public void caseTIdentifier(TIdentifier node)
     {
         defaultCase(node);
@@ -685,11 +1110,6 @@ public class AnalysisAdapter implements Analysis
     }
 
     public void caseTDouble(TDouble node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseTNumber1(TNumber1 node)
     {
         defaultCase(node);
     }

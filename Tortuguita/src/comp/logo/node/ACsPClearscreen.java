@@ -8,7 +8,6 @@ import comp.logo.analysis.*;
 public final class ACsPClearscreen extends PPClearscreen
 {
     private TCs _cs_;
-    private PPHome _pHome_;
 
     public ACsPClearscreen()
     {
@@ -16,13 +15,10 @@ public final class ACsPClearscreen extends PPClearscreen
     }
 
     public ACsPClearscreen(
-        @SuppressWarnings("hiding") TCs _cs_,
-        @SuppressWarnings("hiding") PPHome _pHome_)
+        @SuppressWarnings("hiding") TCs _cs_)
     {
         // Constructor
         setCs(_cs_);
-
-        setPHome(_pHome_);
 
     }
 
@@ -30,8 +26,7 @@ public final class ACsPClearscreen extends PPClearscreen
     public Object clone()
     {
         return new ACsPClearscreen(
-            cloneNode(this._cs_),
-            cloneNode(this._pHome_));
+            cloneNode(this._cs_));
     }
 
     public void apply(Switch sw)
@@ -64,37 +59,11 @@ public final class ACsPClearscreen extends PPClearscreen
         this._cs_ = node;
     }
 
-    public PPHome getPHome()
-    {
-        return this._pHome_;
-    }
-
-    public void setPHome(PPHome node)
-    {
-        if(this._pHome_ != null)
-        {
-            this._pHome_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._pHome_ = node;
-    }
-
     @Override
     public String toString()
     {
         return ""
-            + toString(this._cs_)
-            + toString(this._pHome_);
+            + toString(this._cs_);
     }
 
     @Override
@@ -104,12 +73,6 @@ public final class ACsPClearscreen extends PPClearscreen
         if(this._cs_ == child)
         {
             this._cs_ = null;
-            return;
-        }
-
-        if(this._pHome_ == child)
-        {
-            this._pHome_ = null;
             return;
         }
 
@@ -123,12 +86,6 @@ public final class ACsPClearscreen extends PPClearscreen
         if(this._cs_ == oldChild)
         {
             setCs((TCs) newChild);
-            return;
-        }
-
-        if(this._pHome_ == oldChild)
-        {
-            setPHome((PPHome) newChild);
             return;
         }
 

@@ -32,8 +32,1233 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     {
         inStart(node);
         node.getEOF().apply(this);
-        node.getPPWord().apply(this);
+        node.getPProg().apply(this);
         outStart(node);
+    }
+
+    public void inAListProg(AListProg node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAListProg(AListProg node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAListProg(AListProg node)
+    {
+        inAListProg(node);
+        if(node.getPInstructionlist() != null)
+        {
+            node.getPInstructionlist().apply(this);
+        }
+        outAListProg(node);
+    }
+
+    public void inARunProg(ARunProg node)
+    {
+        defaultIn(node);
+    }
+
+    public void outARunProg(ARunProg node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseARunProg(ARunProg node)
+    {
+        inARunProg(node);
+        if(node.getSemi() != null)
+        {
+            node.getSemi().apply(this);
+        }
+        if(node.getRKey() != null)
+        {
+            node.getRKey().apply(this);
+        }
+        if(node.getPInstructionlist() != null)
+        {
+            node.getPInstructionlist().apply(this);
+        }
+        if(node.getLKey() != null)
+        {
+            node.getLKey().apply(this);
+        }
+        if(node.getRun() != null)
+        {
+            node.getRun().apply(this);
+        }
+        outARunProg(node);
+    }
+
+    public void inAListaPInstructionlist(AListaPInstructionlist node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAListaPInstructionlist(AListaPInstructionlist node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAListaPInstructionlist(AListaPInstructionlist node)
+    {
+        inAListaPInstructionlist(node);
+        if(node.getPInstructionlist() != null)
+        {
+            node.getPInstructionlist().apply(this);
+        }
+        if(node.getSemi() != null)
+        {
+            node.getSemi().apply(this);
+        }
+        if(node.getPInstruction() != null)
+        {
+            node.getPInstruction().apply(this);
+        }
+        outAListaPInstructionlist(node);
+    }
+
+    public void inAInstPInstructionlist(AInstPInstructionlist node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAInstPInstructionlist(AInstPInstructionlist node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAInstPInstructionlist(AInstPInstructionlist node)
+    {
+        inAInstPInstructionlist(node);
+        if(node.getSemi() != null)
+        {
+            node.getSemi().apply(this);
+        }
+        if(node.getPInstruction() != null)
+        {
+            node.getPInstruction().apply(this);
+        }
+        outAInstPInstructionlist(node);
+    }
+
+    public void inAPrimitivesPInstruction(APrimitivesPInstruction node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPrimitivesPInstruction(APrimitivesPInstruction node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPrimitivesPInstruction(APrimitivesPInstruction node)
+    {
+        inAPrimitivesPInstruction(node);
+        if(node.getPPrimitives() != null)
+        {
+            node.getPPrimitives().apply(this);
+        }
+        outAPrimitivesPInstruction(node);
+    }
+
+    public void inAComunicationPInstruction(AComunicationPInstruction node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAComunicationPInstruction(AComunicationPInstruction node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAComunicationPInstruction(AComunicationPInstruction node)
+    {
+        inAComunicationPInstruction(node);
+        if(node.getPCommunication() != null)
+        {
+            node.getPCommunication().apply(this);
+        }
+        outAComunicationPInstruction(node);
+    }
+
+    public void inAArithmeticPInstruction(AArithmeticPInstruction node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAArithmeticPInstruction(AArithmeticPInstruction node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAArithmeticPInstruction(AArithmeticPInstruction node)
+    {
+        inAArithmeticPInstruction(node);
+        if(node.getPArithmetic() != null)
+        {
+            node.getPArithmetic().apply(this);
+        }
+        outAArithmeticPInstruction(node);
+    }
+
+    public void inALogicPInstruction(ALogicPInstruction node)
+    {
+        defaultIn(node);
+    }
+
+    public void outALogicPInstruction(ALogicPInstruction node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseALogicPInstruction(ALogicPInstruction node)
+    {
+        inALogicPInstruction(node);
+        if(node.getPLogic() != null)
+        {
+            node.getPLogic().apply(this);
+        }
+        outALogicPInstruction(node);
+    }
+
+    public void inAGraphicsPInstruction(AGraphicsPInstruction node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAGraphicsPInstruction(AGraphicsPInstruction node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAGraphicsPInstruction(AGraphicsPInstruction node)
+    {
+        inAGraphicsPInstruction(node);
+        if(node.getPGraphics() != null)
+        {
+            node.getPGraphics().apply(this);
+        }
+        outAGraphicsPInstruction(node);
+    }
+
+    public void inAWorkspacePInstruction(AWorkspacePInstruction node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAWorkspacePInstruction(AWorkspacePInstruction node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAWorkspacePInstruction(AWorkspacePInstruction node)
+    {
+        inAWorkspacePInstruction(node);
+        if(node.getPWorkspace() != null)
+        {
+            node.getPWorkspace().apply(this);
+        }
+        outAWorkspacePInstruction(node);
+    }
+
+    public void inAControlPInstruction(AControlPInstruction node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAControlPInstruction(AControlPInstruction node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAControlPInstruction(AControlPInstruction node)
+    {
+        inAControlPInstruction(node);
+        if(node.getPControlStructures() != null)
+        {
+            node.getPControlStructures().apply(this);
+        }
+        outAControlPInstruction(node);
+    }
+
+    public void inAVarsPPrimitives(AVarsPPrimitives node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAVarsPPrimitives(AVarsPPrimitives node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAVarsPPrimitives(AVarsPPrimitives node)
+    {
+        inAVarsPPrimitives(node);
+        if(node.getPWord() != null)
+        {
+            node.getPWord().apply(this);
+        }
+        outAVarsPPrimitives(node);
+    }
+
+    public void inAListPPrimitives(AListPPrimitives node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAListPPrimitives(AListPPrimitives node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAListPPrimitives(AListPPrimitives node)
+    {
+        inAListPPrimitives(node);
+        if(node.getPList() != null)
+        {
+            node.getPList().apply(this);
+        }
+        outAListPPrimitives(node);
+    }
+
+    public void inASelectorsPPrimitives(ASelectorsPPrimitives node)
+    {
+        defaultIn(node);
+    }
+
+    public void outASelectorsPPrimitives(ASelectorsPPrimitives node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseASelectorsPPrimitives(ASelectorsPPrimitives node)
+    {
+        inASelectorsPPrimitives(node);
+        if(node.getPSelectors() != null)
+        {
+            node.getPSelectors().apply(this);
+        }
+        outASelectorsPPrimitives(node);
+    }
+
+    public void inAMutatorPPrimitives(AMutatorPPrimitives node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAMutatorPPrimitives(AMutatorPPrimitives node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAMutatorPPrimitives(AMutatorPPrimitives node)
+    {
+        inAMutatorPPrimitives(node);
+        if(node.getPMutator() != null)
+        {
+            node.getPMutator().apply(this);
+        }
+        outAMutatorPPrimitives(node);
+    }
+
+    public void inAFirstPSelectors(AFirstPSelectors node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAFirstPSelectors(AFirstPSelectors node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAFirstPSelectors(AFirstPSelectors node)
+    {
+        inAFirstPSelectors(node);
+        if(node.getPFirst() != null)
+        {
+            node.getPFirst().apply(this);
+        }
+        outAFirstPSelectors(node);
+    }
+
+    public void inAButfirstPSelectors(AButfirstPSelectors node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAButfirstPSelectors(AButfirstPSelectors node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAButfirstPSelectors(AButfirstPSelectors node)
+    {
+        inAButfirstPSelectors(node);
+        if(node.getPButfirst() != null)
+        {
+            node.getPButfirst().apply(this);
+        }
+        outAButfirstPSelectors(node);
+    }
+
+    public void inALastPSelectors(ALastPSelectors node)
+    {
+        defaultIn(node);
+    }
+
+    public void outALastPSelectors(ALastPSelectors node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseALastPSelectors(ALastPSelectors node)
+    {
+        inALastPSelectors(node);
+        if(node.getPLast() != null)
+        {
+            node.getPLast().apply(this);
+        }
+        outALastPSelectors(node);
+    }
+
+    public void inASetPMutator(ASetPMutator node)
+    {
+        defaultIn(node);
+    }
+
+    public void outASetPMutator(ASetPMutator node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseASetPMutator(ASetPMutator node)
+    {
+        inASetPMutator(node);
+        if(node.getPSetitem() != null)
+        {
+            node.getPSetitem().apply(this);
+        }
+        outASetPMutator(node);
+    }
+
+    public void inAPCommunication(APCommunication node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPCommunication(APCommunication node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPCommunication(APCommunication node)
+    {
+        inAPCommunication(node);
+        if(node.getPPrint() != null)
+        {
+            node.getPPrint().apply(this);
+        }
+        outAPCommunication(node);
+    }
+
+    public void inASumPArithmetic(ASumPArithmetic node)
+    {
+        defaultIn(node);
+    }
+
+    public void outASumPArithmetic(ASumPArithmetic node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseASumPArithmetic(ASumPArithmetic node)
+    {
+        inASumPArithmetic(node);
+        if(node.getPSum() != null)
+        {
+            node.getPSum().apply(this);
+        }
+        outASumPArithmetic(node);
+    }
+
+    public void inADifferencePArithmetic(ADifferencePArithmetic node)
+    {
+        defaultIn(node);
+    }
+
+    public void outADifferencePArithmetic(ADifferencePArithmetic node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseADifferencePArithmetic(ADifferencePArithmetic node)
+    {
+        inADifferencePArithmetic(node);
+        if(node.getPDifference() != null)
+        {
+            node.getPDifference().apply(this);
+        }
+        outADifferencePArithmetic(node);
+    }
+
+    public void inAMinusPArithmetic(AMinusPArithmetic node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAMinusPArithmetic(AMinusPArithmetic node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAMinusPArithmetic(AMinusPArithmetic node)
+    {
+        inAMinusPArithmetic(node);
+        if(node.getPMinus() != null)
+        {
+            node.getPMinus().apply(this);
+        }
+        outAMinusPArithmetic(node);
+    }
+
+    public void inAProductPArithmetic(AProductPArithmetic node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAProductPArithmetic(AProductPArithmetic node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAProductPArithmetic(AProductPArithmetic node)
+    {
+        inAProductPArithmetic(node);
+        if(node.getPProduct() != null)
+        {
+            node.getPProduct().apply(this);
+        }
+        outAProductPArithmetic(node);
+    }
+
+    public void inAModuloPArithmetic(AModuloPArithmetic node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAModuloPArithmetic(AModuloPArithmetic node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAModuloPArithmetic(AModuloPArithmetic node)
+    {
+        inAModuloPArithmetic(node);
+        if(node.getPModulo() != null)
+        {
+            node.getPModulo().apply(this);
+        }
+        outAModuloPArithmetic(node);
+    }
+
+    public void inAIntPArithmetic(AIntPArithmetic node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAIntPArithmetic(AIntPArithmetic node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAIntPArithmetic(AIntPArithmetic node)
+    {
+        inAIntPArithmetic(node);
+        if(node.getPInt() != null)
+        {
+            node.getPInt().apply(this);
+        }
+        outAIntPArithmetic(node);
+    }
+
+    public void inARoundPArithmetic(ARoundPArithmetic node)
+    {
+        defaultIn(node);
+    }
+
+    public void outARoundPArithmetic(ARoundPArithmetic node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseARoundPArithmetic(ARoundPArithmetic node)
+    {
+        inARoundPArithmetic(node);
+        if(node.getPRound() != null)
+        {
+            node.getPRound().apply(this);
+        }
+        outARoundPArithmetic(node);
+    }
+
+    public void inASqrtPArithmetic(ASqrtPArithmetic node)
+    {
+        defaultIn(node);
+    }
+
+    public void outASqrtPArithmetic(ASqrtPArithmetic node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseASqrtPArithmetic(ASqrtPArithmetic node)
+    {
+        inASqrtPArithmetic(node);
+        if(node.getPSqrt() != null)
+        {
+            node.getPSqrt().apply(this);
+        }
+        outASqrtPArithmetic(node);
+    }
+
+    public void inAPowerPArithmetic(APowerPArithmetic node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPowerPArithmetic(APowerPArithmetic node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPowerPArithmetic(APowerPArithmetic node)
+    {
+        inAPowerPArithmetic(node);
+        if(node.getPPower() != null)
+        {
+            node.getPPower().apply(this);
+        }
+        outAPowerPArithmetic(node);
+    }
+
+    public void inAExpPArithmetic(AExpPArithmetic node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAExpPArithmetic(AExpPArithmetic node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAExpPArithmetic(AExpPArithmetic node)
+    {
+        inAExpPArithmetic(node);
+        if(node.getPExp() != null)
+        {
+            node.getPExp().apply(this);
+        }
+        outAExpPArithmetic(node);
+    }
+
+    public void inAAndPLogic(AAndPLogic node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAAndPLogic(AAndPLogic node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAAndPLogic(AAndPLogic node)
+    {
+        inAAndPLogic(node);
+        if(node.getPAnd() != null)
+        {
+            node.getPAnd().apply(this);
+        }
+        outAAndPLogic(node);
+    }
+
+    public void inAOrPLogic(AOrPLogic node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAOrPLogic(AOrPLogic node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAOrPLogic(AOrPLogic node)
+    {
+        inAOrPLogic(node);
+        if(node.getPOr() != null)
+        {
+            node.getPOr().apply(this);
+        }
+        outAOrPLogic(node);
+    }
+
+    public void inANotPLogic(ANotPLogic node)
+    {
+        defaultIn(node);
+    }
+
+    public void outANotPLogic(ANotPLogic node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseANotPLogic(ANotPLogic node)
+    {
+        inANotPLogic(node);
+        if(node.getPNot() != null)
+        {
+            node.getPNot().apply(this);
+        }
+        outANotPLogic(node);
+    }
+
+    public void inAFdPGraphics(AFdPGraphics node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAFdPGraphics(AFdPGraphics node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAFdPGraphics(AFdPGraphics node)
+    {
+        inAFdPGraphics(node);
+        if(node.getPForward() != null)
+        {
+            node.getPForward().apply(this);
+        }
+        outAFdPGraphics(node);
+    }
+
+    public void inABkPGraphics(ABkPGraphics node)
+    {
+        defaultIn(node);
+    }
+
+    public void outABkPGraphics(ABkPGraphics node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseABkPGraphics(ABkPGraphics node)
+    {
+        inABkPGraphics(node);
+        if(node.getPBack() != null)
+        {
+            node.getPBack().apply(this);
+        }
+        outABkPGraphics(node);
+    }
+
+    public void inALtPGraphics(ALtPGraphics node)
+    {
+        defaultIn(node);
+    }
+
+    public void outALtPGraphics(ALtPGraphics node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseALtPGraphics(ALtPGraphics node)
+    {
+        inALtPGraphics(node);
+        if(node.getPLeft() != null)
+        {
+            node.getPLeft().apply(this);
+        }
+        outALtPGraphics(node);
+    }
+
+    public void inARtPGraphics(ARtPGraphics node)
+    {
+        defaultIn(node);
+    }
+
+    public void outARtPGraphics(ARtPGraphics node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseARtPGraphics(ARtPGraphics node)
+    {
+        inARtPGraphics(node);
+        if(node.getPRight() != null)
+        {
+            node.getPRight().apply(this);
+        }
+        outARtPGraphics(node);
+    }
+
+    public void inASetposPGraphics(ASetposPGraphics node)
+    {
+        defaultIn(node);
+    }
+
+    public void outASetposPGraphics(ASetposPGraphics node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseASetposPGraphics(ASetposPGraphics node)
+    {
+        inASetposPGraphics(node);
+        if(node.getPSetpos() != null)
+        {
+            node.getPSetpos().apply(this);
+        }
+        outASetposPGraphics(node);
+    }
+
+    public void inASetxyPGraphics(ASetxyPGraphics node)
+    {
+        defaultIn(node);
+    }
+
+    public void outASetxyPGraphics(ASetxyPGraphics node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseASetxyPGraphics(ASetxyPGraphics node)
+    {
+        inASetxyPGraphics(node);
+        if(node.getPSetxy() != null)
+        {
+            node.getPSetxy().apply(this);
+        }
+        outASetxyPGraphics(node);
+    }
+
+    public void inASetxPGraphics(ASetxPGraphics node)
+    {
+        defaultIn(node);
+    }
+
+    public void outASetxPGraphics(ASetxPGraphics node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseASetxPGraphics(ASetxPGraphics node)
+    {
+        inASetxPGraphics(node);
+        if(node.getPSetx() != null)
+        {
+            node.getPSetx().apply(this);
+        }
+        outASetxPGraphics(node);
+    }
+
+    public void inASetyPGraphics(ASetyPGraphics node)
+    {
+        defaultIn(node);
+    }
+
+    public void outASetyPGraphics(ASetyPGraphics node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseASetyPGraphics(ASetyPGraphics node)
+    {
+        inASetyPGraphics(node);
+        if(node.getPSety() != null)
+        {
+            node.getPSety().apply(this);
+        }
+        outASetyPGraphics(node);
+    }
+
+    public void inASethPGraphics(ASethPGraphics node)
+    {
+        defaultIn(node);
+    }
+
+    public void outASethPGraphics(ASethPGraphics node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseASethPGraphics(ASethPGraphics node)
+    {
+        inASethPGraphics(node);
+        if(node.getPSetheading() != null)
+        {
+            node.getPSetheading().apply(this);
+        }
+        outASethPGraphics(node);
+    }
+
+    public void inAHomePGraphics(AHomePGraphics node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAHomePGraphics(AHomePGraphics node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAHomePGraphics(AHomePGraphics node)
+    {
+        inAHomePGraphics(node);
+        if(node.getPHome() != null)
+        {
+            node.getPHome().apply(this);
+        }
+        outAHomePGraphics(node);
+    }
+
+    public void inAArcPGraphics(AArcPGraphics node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAArcPGraphics(AArcPGraphics node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAArcPGraphics(AArcPGraphics node)
+    {
+        inAArcPGraphics(node);
+        if(node.getPArc() != null)
+        {
+            node.getPArc().apply(this);
+        }
+        outAArcPGraphics(node);
+    }
+
+    public void inAClrPGraphics(AClrPGraphics node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAClrPGraphics(AClrPGraphics node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAClrPGraphics(AClrPGraphics node)
+    {
+        inAClrPGraphics(node);
+        if(node.getPClearscreen() != null)
+        {
+            node.getPClearscreen().apply(this);
+        }
+        outAClrPGraphics(node);
+    }
+
+    public void inAPenctrlPGraphics(APenctrlPGraphics node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPenctrlPGraphics(APenctrlPGraphics node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPenctrlPGraphics(APenctrlPGraphics node)
+    {
+        inAPenctrlPGraphics(node);
+        if(node.getPPencontrol() != null)
+        {
+            node.getPPencontrol().apply(this);
+        }
+        outAPenctrlPGraphics(node);
+    }
+
+    public void inAPdPPencontrol(APdPPencontrol node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPdPPencontrol(APdPPencontrol node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPdPPencontrol(APdPPencontrol node)
+    {
+        inAPdPPencontrol(node);
+        if(node.getPPendown() != null)
+        {
+            node.getPPendown().apply(this);
+        }
+        outAPdPPencontrol(node);
+    }
+
+    public void inAPuPPencontrol(APuPPencontrol node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPuPPencontrol(APuPPencontrol node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPuPPencontrol(APuPPencontrol node)
+    {
+        inAPuPPencontrol(node);
+        if(node.getPPenup() != null)
+        {
+            node.getPPenup().apply(this);
+        }
+        outAPuPPencontrol(node);
+    }
+
+    public void inASetpcPPencontrol(ASetpcPPencontrol node)
+    {
+        defaultIn(node);
+    }
+
+    public void outASetpcPPencontrol(ASetpcPPencontrol node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseASetpcPPencontrol(ASetpcPPencontrol node)
+    {
+        inASetpcPPencontrol(node);
+        if(node.getPSetpencolor() != null)
+        {
+            node.getPSetpencolor().apply(this);
+        }
+        outASetpcPPencontrol(node);
+    }
+
+    public void inASetpensizePPencontrol(ASetpensizePPencontrol node)
+    {
+        defaultIn(node);
+    }
+
+    public void outASetpensizePPencontrol(ASetpensizePPencontrol node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseASetpensizePPencontrol(ASetpensizePPencontrol node)
+    {
+        inASetpensizePPencontrol(node);
+        if(node.getPSetpensize() != null)
+        {
+            node.getPSetpensize().apply(this);
+        }
+        outASetpensizePPencontrol(node);
+    }
+
+    public void inAToPWorkspace(AToPWorkspace node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAToPWorkspace(AToPWorkspace node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAToPWorkspace(AToPWorkspace node)
+    {
+        inAToPWorkspace(node);
+        if(node.getPTo() != null)
+        {
+            node.getPTo().apply(this);
+        }
+        outAToPWorkspace(node);
+    }
+
+    public void inAMakePWorkspace(AMakePWorkspace node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAMakePWorkspace(AMakePWorkspace node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAMakePWorkspace(AMakePWorkspace node)
+    {
+        inAMakePWorkspace(node);
+        if(node.getPMake() != null)
+        {
+            node.getPMake().apply(this);
+        }
+        outAMakePWorkspace(node);
+    }
+
+    public void inARepeatPControlStructures(ARepeatPControlStructures node)
+    {
+        defaultIn(node);
+    }
+
+    public void outARepeatPControlStructures(ARepeatPControlStructures node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseARepeatPControlStructures(ARepeatPControlStructures node)
+    {
+        inARepeatPControlStructures(node);
+        if(node.getPRepeat() != null)
+        {
+            node.getPRepeat().apply(this);
+        }
+        outARepeatPControlStructures(node);
+    }
+
+    public void inAIfPControlStructures(AIfPControlStructures node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAIfPControlStructures(AIfPControlStructures node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAIfPControlStructures(AIfPControlStructures node)
+    {
+        inAIfPControlStructures(node);
+        if(node.getPIf() != null)
+        {
+            node.getPIf().apply(this);
+        }
+        outAIfPControlStructures(node);
+    }
+
+    public void inAIfelsePControlStructures(AIfelsePControlStructures node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAIfelsePControlStructures(AIfelsePControlStructures node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAIfelsePControlStructures(AIfelsePControlStructures node)
+    {
+        inAIfelsePControlStructures(node);
+        if(node.getPIfelse() != null)
+        {
+            node.getPIfelse().apply(this);
+        }
+        outAIfelsePControlStructures(node);
+    }
+
+    public void inAStopPControlStructures(AStopPControlStructures node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAStopPControlStructures(AStopPControlStructures node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAStopPControlStructures(AStopPControlStructures node)
+    {
+        inAStopPControlStructures(node);
+        if(node.getPStop() != null)
+        {
+            node.getPStop().apply(this);
+        }
+        outAStopPControlStructures(node);
+    }
+
+    public void inAGotoPControlStructures(AGotoPControlStructures node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAGotoPControlStructures(AGotoPControlStructures node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAGotoPControlStructures(AGotoPControlStructures node)
+    {
+        inAGotoPControlStructures(node);
+        if(node.getPGoto() != null)
+        {
+            node.getPGoto().apply(this);
+        }
+        outAGotoPControlStructures(node);
     }
 
     public void inAPWord(APWord node)
@@ -108,9 +1333,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseAPFirst(APFirst node)
     {
         inAPFirst(node);
-        if(node.getPThing() != null)
+        if(node.getIdentifier() != null)
         {
-            node.getPThing().apply(this);
+            node.getIdentifier().apply(this);
         }
         if(node.getFirst() != null)
         {
@@ -133,9 +1358,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseAButfirstPButfirst(AButfirstPButfirst node)
     {
         inAButfirstPButfirst(node);
-        if(node.getPThing() != null)
+        if(node.getIdentifier() != null)
         {
-            node.getPThing().apply(this);
+            node.getIdentifier().apply(this);
         }
         if(node.getButfirst() != null)
         {
@@ -158,9 +1383,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseABfPButfirst(ABfPButfirst node)
     {
         inABfPButfirst(node);
-        if(node.getPThing() != null)
+        if(node.getIdentifier() != null)
         {
-            node.getPThing().apply(this);
+            node.getIdentifier().apply(this);
         }
         if(node.getBf() != null)
         {
@@ -183,9 +1408,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseAPLast(APLast node)
     {
         inAPLast(node);
-        if(node.getPThing() != null)
+        if(node.getIdentifier() != null)
         {
-            node.getPThing().apply(this);
+            node.getIdentifier().apply(this);
         }
         if(node.getLast() != null)
         {
@@ -212,9 +1437,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         {
             node.getPValue().apply(this);
         }
-        if(node.getPList() != null)
+        if(node.getIdentifier() != null)
         {
-            node.getPList().apply(this);
+            node.getIdentifier().apply(this);
         }
         if(node.getInteger() != null)
         {
@@ -227,96 +1452,37 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outAPSetitem(node);
     }
 
-    public void inAPPush(APPush node)
+    public void inAPPrint(APPrint node)
     {
         defaultIn(node);
     }
 
-    public void outAPPush(APPush node)
+    public void outAPPrint(APPrint node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAPPush(APPush node)
+    public void caseAPPrint(APPrint node)
     {
-        inAPPush(node);
-        if(node.getPThing() != null)
+        inAPPrint(node);
+        if(node.getRPar() != null)
         {
-            node.getPThing().apply(this);
+            node.getRPar().apply(this);
         }
-        if(node.getIdentifier() != null)
+        if(node.getPIdentList() != null)
         {
-            node.getIdentifier().apply(this);
+            node.getPIdentList().apply(this);
         }
-        if(node.getPush() != null)
+        if(node.getLPar() != null)
         {
-            node.getPush().apply(this);
+            node.getLPar().apply(this);
         }
-        outAPPush(node);
-    }
-
-    public void inAPPop(APPop node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAPPop(APPop node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAPPop(APPop node)
-    {
-        inAPPop(node);
-        if(node.getPList() != null)
+        if(node.getPrint() != null)
         {
-            node.getPList().apply(this);
+            node.getPrint().apply(this);
         }
-        if(node.getPop() != null)
-        {
-            node.getPop().apply(this);
-        }
-        outAPPop(node);
-    }
-
-    public void inAPrintPPrint(APrintPPrint node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAPrintPPrint(APrintPPrint node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAPrintPPrint(APrintPPrint node)
-    {
-        inAPrintPPrint(node);
-        outAPrintPPrint(node);
-    }
-
-    public void inAPrPPrint(APrPPrint node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAPrPPrint(APrPPrint node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAPrPPrint(APrPPrint node)
-    {
-        inAPrPPrint(node);
-        if(node.getPThingList() != null)
-        {
-            node.getPThingList().apply(this);
-        }
-        outAPrPPrint(node);
+        outAPPrint(node);
     }
 
     public void inASumPSum(ASumPSum node)
@@ -545,13 +1711,13 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseAPModulo(APModulo node)
     {
         inAPModulo(node);
-        if(node.getInteger() != null)
+        if(node.getDivd() != null)
         {
-            node.getInteger().apply(this);
+            node.getDivd().apply(this);
         }
-        if(node.getPModv() != null)
+        if(node.getDiv() != null)
         {
-            node.getPModv().apply(this);
+            node.getDiv().apply(this);
         }
         if(node.getModulo() != null)
         {
@@ -583,6 +1749,1071 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
             node.getInt().apply(this);
         }
         outAPInt(node);
+    }
+
+    public void inAPRound(APRound node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPRound(APRound node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPRound(APRound node)
+    {
+        inAPRound(node);
+        if(node.getPValue() != null)
+        {
+            node.getPValue().apply(this);
+        }
+        if(node.getRound() != null)
+        {
+            node.getRound().apply(this);
+        }
+        outAPRound(node);
+    }
+
+    public void inAPSqrt(APSqrt node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPSqrt(APSqrt node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPSqrt(APSqrt node)
+    {
+        inAPSqrt(node);
+        if(node.getPValue() != null)
+        {
+            node.getPValue().apply(this);
+        }
+        if(node.getSqrt() != null)
+        {
+            node.getSqrt().apply(this);
+        }
+        outAPSqrt(node);
+    }
+
+    public void inAPPower(APPower node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPPower(APPower node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPPower(APPower node)
+    {
+        inAPPower(node);
+        if(node.getExp() != null)
+        {
+            node.getExp().apply(this);
+        }
+        if(node.getBase() != null)
+        {
+            node.getBase().apply(this);
+        }
+        if(node.getPower() != null)
+        {
+            node.getPower().apply(this);
+        }
+        outAPPower(node);
+    }
+
+    public void inAPExp(APExp node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPExp(APExp node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPExp(APExp node)
+    {
+        inAPExp(node);
+        if(node.getPValue() != null)
+        {
+            node.getPValue().apply(this);
+        }
+        if(node.getExp() != null)
+        {
+            node.getExp().apply(this);
+        }
+        outAPExp(node);
+    }
+
+    public void inAPAnd(APAnd node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPAnd(APAnd node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPAnd(APAnd node)
+    {
+        inAPAnd(node);
+        if(node.getV2() != null)
+        {
+            node.getV2().apply(this);
+        }
+        if(node.getV1() != null)
+        {
+            node.getV1().apply(this);
+        }
+        if(node.getAnd() != null)
+        {
+            node.getAnd().apply(this);
+        }
+        outAPAnd(node);
+    }
+
+    public void inAPOr(APOr node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPOr(APOr node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPOr(APOr node)
+    {
+        inAPOr(node);
+        if(node.getV2() != null)
+        {
+            node.getV2().apply(this);
+        }
+        if(node.getV1() != null)
+        {
+            node.getV1().apply(this);
+        }
+        if(node.getOr() != null)
+        {
+            node.getOr().apply(this);
+        }
+        outAPOr(node);
+    }
+
+    public void inAPNot(APNot node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPNot(APNot node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPNot(APNot node)
+    {
+        inAPNot(node);
+        if(node.getV1() != null)
+        {
+            node.getV1().apply(this);
+        }
+        if(node.getNot() != null)
+        {
+            node.getNot().apply(this);
+        }
+        outAPNot(node);
+    }
+
+    public void inAForwardPForward(AForwardPForward node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAForwardPForward(AForwardPForward node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAForwardPForward(AForwardPForward node)
+    {
+        inAForwardPForward(node);
+        if(node.getPValue() != null)
+        {
+            node.getPValue().apply(this);
+        }
+        if(node.getForward() != null)
+        {
+            node.getForward().apply(this);
+        }
+        outAForwardPForward(node);
+    }
+
+    public void inAFdPForward(AFdPForward node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAFdPForward(AFdPForward node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAFdPForward(AFdPForward node)
+    {
+        inAFdPForward(node);
+        if(node.getPValue() != null)
+        {
+            node.getPValue().apply(this);
+        }
+        if(node.getFd() != null)
+        {
+            node.getFd().apply(this);
+        }
+        outAFdPForward(node);
+    }
+
+    public void inABackPBack(ABackPBack node)
+    {
+        defaultIn(node);
+    }
+
+    public void outABackPBack(ABackPBack node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseABackPBack(ABackPBack node)
+    {
+        inABackPBack(node);
+        if(node.getPValue() != null)
+        {
+            node.getPValue().apply(this);
+        }
+        if(node.getBack() != null)
+        {
+            node.getBack().apply(this);
+        }
+        outABackPBack(node);
+    }
+
+    public void inABkPBack(ABkPBack node)
+    {
+        defaultIn(node);
+    }
+
+    public void outABkPBack(ABkPBack node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseABkPBack(ABkPBack node)
+    {
+        inABkPBack(node);
+        if(node.getPValue() != null)
+        {
+            node.getPValue().apply(this);
+        }
+        if(node.getBk() != null)
+        {
+            node.getBk().apply(this);
+        }
+        outABkPBack(node);
+    }
+
+    public void inALeftPLeft(ALeftPLeft node)
+    {
+        defaultIn(node);
+    }
+
+    public void outALeftPLeft(ALeftPLeft node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseALeftPLeft(ALeftPLeft node)
+    {
+        inALeftPLeft(node);
+        if(node.getPValue() != null)
+        {
+            node.getPValue().apply(this);
+        }
+        if(node.getLeft() != null)
+        {
+            node.getLeft().apply(this);
+        }
+        outALeftPLeft(node);
+    }
+
+    public void inALtPLeft(ALtPLeft node)
+    {
+        defaultIn(node);
+    }
+
+    public void outALtPLeft(ALtPLeft node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseALtPLeft(ALtPLeft node)
+    {
+        inALtPLeft(node);
+        if(node.getPValue() != null)
+        {
+            node.getPValue().apply(this);
+        }
+        if(node.getLf() != null)
+        {
+            node.getLf().apply(this);
+        }
+        outALtPLeft(node);
+    }
+
+    public void inARightPRight(ARightPRight node)
+    {
+        defaultIn(node);
+    }
+
+    public void outARightPRight(ARightPRight node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseARightPRight(ARightPRight node)
+    {
+        inARightPRight(node);
+        if(node.getPValue() != null)
+        {
+            node.getPValue().apply(this);
+        }
+        if(node.getRight() != null)
+        {
+            node.getRight().apply(this);
+        }
+        outARightPRight(node);
+    }
+
+    public void inARtPRight(ARtPRight node)
+    {
+        defaultIn(node);
+    }
+
+    public void outARtPRight(ARtPRight node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseARtPRight(ARtPRight node)
+    {
+        inARtPRight(node);
+        if(node.getPValue() != null)
+        {
+            node.getPValue().apply(this);
+        }
+        if(node.getRt() != null)
+        {
+            node.getRt().apply(this);
+        }
+        outARtPRight(node);
+    }
+
+    public void inAPSetpos(APSetpos node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPSetpos(APSetpos node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPSetpos(APSetpos node)
+    {
+        inAPSetpos(node);
+        if(node.getIdentifier() != null)
+        {
+            node.getIdentifier().apply(this);
+        }
+        if(node.getSetpos() != null)
+        {
+            node.getSetpos().apply(this);
+        }
+        outAPSetpos(node);
+    }
+
+    public void inAPSetxy(APSetxy node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPSetxy(APSetxy node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPSetxy(APSetxy node)
+    {
+        inAPSetxy(node);
+        if(node.getExp() != null)
+        {
+            node.getExp().apply(this);
+        }
+        if(node.getBase() != null)
+        {
+            node.getBase().apply(this);
+        }
+        if(node.getSetxy() != null)
+        {
+            node.getSetxy().apply(this);
+        }
+        outAPSetxy(node);
+    }
+
+    public void inAPSetx(APSetx node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPSetx(APSetx node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPSetx(APSetx node)
+    {
+        inAPSetx(node);
+        if(node.getPValue() != null)
+        {
+            node.getPValue().apply(this);
+        }
+        if(node.getSetx() != null)
+        {
+            node.getSetx().apply(this);
+        }
+        outAPSetx(node);
+    }
+
+    public void inAPSety(APSety node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPSety(APSety node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPSety(APSety node)
+    {
+        inAPSety(node);
+        if(node.getPValue() != null)
+        {
+            node.getPValue().apply(this);
+        }
+        if(node.getSety() != null)
+        {
+            node.getSety().apply(this);
+        }
+        outAPSety(node);
+    }
+
+    public void inASetheadingPSetheading(ASetheadingPSetheading node)
+    {
+        defaultIn(node);
+    }
+
+    public void outASetheadingPSetheading(ASetheadingPSetheading node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseASetheadingPSetheading(ASetheadingPSetheading node)
+    {
+        inASetheadingPSetheading(node);
+        if(node.getPValue() != null)
+        {
+            node.getPValue().apply(this);
+        }
+        if(node.getSetheading() != null)
+        {
+            node.getSetheading().apply(this);
+        }
+        outASetheadingPSetheading(node);
+    }
+
+    public void inASethPSetheading(ASethPSetheading node)
+    {
+        defaultIn(node);
+    }
+
+    public void outASethPSetheading(ASethPSetheading node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseASethPSetheading(ASethPSetheading node)
+    {
+        inASethPSetheading(node);
+        if(node.getPValue() != null)
+        {
+            node.getPValue().apply(this);
+        }
+        if(node.getSeth() != null)
+        {
+            node.getSeth().apply(this);
+        }
+        outASethPSetheading(node);
+    }
+
+    public void inAPHome(APHome node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPHome(APHome node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPHome(APHome node)
+    {
+        inAPHome(node);
+        if(node.getHome() != null)
+        {
+            node.getHome().apply(this);
+        }
+        outAPHome(node);
+    }
+
+    public void inAPArc(APArc node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPArc(APArc node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPArc(APArc node)
+    {
+        inAPArc(node);
+        if(node.getPValue() != null)
+        {
+            node.getPValue().apply(this);
+        }
+        if(node.getInteger() != null)
+        {
+            node.getInteger().apply(this);
+        }
+        if(node.getArc() != null)
+        {
+            node.getArc().apply(this);
+        }
+        outAPArc(node);
+    }
+
+    public void inAClearscreenPClearscreen(AClearscreenPClearscreen node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAClearscreenPClearscreen(AClearscreenPClearscreen node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAClearscreenPClearscreen(AClearscreenPClearscreen node)
+    {
+        inAClearscreenPClearscreen(node);
+        if(node.getClearscreen() != null)
+        {
+            node.getClearscreen().apply(this);
+        }
+        outAClearscreenPClearscreen(node);
+    }
+
+    public void inACsPClearscreen(ACsPClearscreen node)
+    {
+        defaultIn(node);
+    }
+
+    public void outACsPClearscreen(ACsPClearscreen node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseACsPClearscreen(ACsPClearscreen node)
+    {
+        inACsPClearscreen(node);
+        if(node.getCs() != null)
+        {
+            node.getCs().apply(this);
+        }
+        outACsPClearscreen(node);
+    }
+
+    public void inAPendownPPendown(APendownPPendown node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPendownPPendown(APendownPPendown node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPendownPPendown(APendownPPendown node)
+    {
+        inAPendownPPendown(node);
+        if(node.getPendown() != null)
+        {
+            node.getPendown().apply(this);
+        }
+        outAPendownPPendown(node);
+    }
+
+    public void inAPdPPendown(APdPPendown node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPdPPendown(APdPPendown node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPdPPendown(APdPPendown node)
+    {
+        inAPdPPendown(node);
+        if(node.getPd() != null)
+        {
+            node.getPd().apply(this);
+        }
+        outAPdPPendown(node);
+    }
+
+    public void inAPenupPPenup(APenupPPenup node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPenupPPenup(APenupPPenup node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPenupPPenup(APenupPPenup node)
+    {
+        inAPenupPPenup(node);
+        if(node.getPenup() != null)
+        {
+            node.getPenup().apply(this);
+        }
+        outAPenupPPenup(node);
+    }
+
+    public void inAPuPPenup(APuPPenup node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPuPPenup(APuPPenup node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPuPPenup(APuPPenup node)
+    {
+        inAPuPPenup(node);
+        if(node.getPu() != null)
+        {
+            node.getPu().apply(this);
+        }
+        outAPuPPenup(node);
+    }
+
+    public void inASetpencolorPSetpencolor(ASetpencolorPSetpencolor node)
+    {
+        defaultIn(node);
+    }
+
+    public void outASetpencolorPSetpencolor(ASetpencolorPSetpencolor node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseASetpencolorPSetpencolor(ASetpencolorPSetpencolor node)
+    {
+        inASetpencolorPSetpencolor(node);
+        if(node.getPColor() != null)
+        {
+            node.getPColor().apply(this);
+        }
+        if(node.getSetpencolor() != null)
+        {
+            node.getSetpencolor().apply(this);
+        }
+        outASetpencolorPSetpencolor(node);
+    }
+
+    public void inASetpcPSetpencolor(ASetpcPSetpencolor node)
+    {
+        defaultIn(node);
+    }
+
+    public void outASetpcPSetpencolor(ASetpcPSetpencolor node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseASetpcPSetpencolor(ASetpcPSetpencolor node)
+    {
+        inASetpcPSetpencolor(node);
+        if(node.getPColor() != null)
+        {
+            node.getPColor().apply(this);
+        }
+        if(node.getSetpc() != null)
+        {
+            node.getSetpc().apply(this);
+        }
+        outASetpcPSetpencolor(node);
+    }
+
+    public void inASizePSetpensize(ASizePSetpensize node)
+    {
+        defaultIn(node);
+    }
+
+    public void outASizePSetpensize(ASizePSetpensize node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseASizePSetpensize(ASizePSetpensize node)
+    {
+        inASizePSetpensize(node);
+        if(node.getInteger() != null)
+        {
+            node.getInteger().apply(this);
+        }
+        if(node.getSetpensize() != null)
+        {
+            node.getSetpensize().apply(this);
+        }
+        outASizePSetpensize(node);
+    }
+
+    public void inASizexyPSetpensize(ASizexyPSetpensize node)
+    {
+        defaultIn(node);
+    }
+
+    public void outASizexyPSetpensize(ASizexyPSetpensize node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseASizexyPSetpensize(ASizexyPSetpensize node)
+    {
+        inASizexyPSetpensize(node);
+        if(node.getIdentifier() != null)
+        {
+            node.getIdentifier().apply(this);
+        }
+        if(node.getSetpensize() != null)
+        {
+            node.getSetpensize().apply(this);
+        }
+        outASizexyPSetpensize(node);
+    }
+
+    public void inAPTo(APTo node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPTo(APTo node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPTo(APTo node)
+    {
+        inAPTo(node);
+        if(node.getEnd() != null)
+        {
+            node.getEnd().apply(this);
+        }
+        if(node.getPInstructionlist() != null)
+        {
+            node.getPInstructionlist().apply(this);
+        }
+        if(node.getIdentifier() != null)
+        {
+            node.getIdentifier().apply(this);
+        }
+        if(node.getTo() != null)
+        {
+            node.getTo().apply(this);
+        }
+        outAPTo(node);
+    }
+
+    public void inAPMake(APMake node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPMake(APMake node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPMake(APMake node)
+    {
+        inAPMake(node);
+        if(node.getPValue() != null)
+        {
+            node.getPValue().apply(this);
+        }
+        if(node.getIdentifier() != null)
+        {
+            node.getIdentifier().apply(this);
+        }
+        if(node.getMake() != null)
+        {
+            node.getMake().apply(this);
+        }
+        outAPMake(node);
+    }
+
+    public void inAPRepeat(APRepeat node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPRepeat(APRepeat node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPRepeat(APRepeat node)
+    {
+        inAPRepeat(node);
+        if(node.getRBrk() != null)
+        {
+            node.getRBrk().apply(this);
+        }
+        if(node.getPInstructionlist() != null)
+        {
+            node.getPInstructionlist().apply(this);
+        }
+        if(node.getLBrk() != null)
+        {
+            node.getLBrk().apply(this);
+        }
+        if(node.getInteger() != null)
+        {
+            node.getInteger().apply(this);
+        }
+        if(node.getRepeat() != null)
+        {
+            node.getRepeat().apply(this);
+        }
+        outAPRepeat(node);
+    }
+
+    public void inAIfPIf(AIfPIf node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAIfPIf(AIfPIf node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAIfPIf(AIfPIf node)
+    {
+        inAIfPIf(node);
+        if(node.getPInstructionlist() != null)
+        {
+            node.getPInstructionlist().apply(this);
+        }
+        if(node.getPBoolean() != null)
+        {
+            node.getPBoolean().apply(this);
+        }
+        if(node.getIf() != null)
+        {
+            node.getIf().apply(this);
+        }
+        outAIfPIf(node);
+    }
+
+    public void inAIfelsePIf(AIfelsePIf node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAIfelsePIf(AIfelsePIf node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAIfelsePIf(AIfelsePIf node)
+    {
+        inAIfelsePIf(node);
+        if(node.getFalse() != null)
+        {
+            node.getFalse().apply(this);
+        }
+        if(node.getComma() != null)
+        {
+            node.getComma().apply(this);
+        }
+        if(node.getTrue() != null)
+        {
+            node.getTrue().apply(this);
+        }
+        if(node.getPBoolean() != null)
+        {
+            node.getPBoolean().apply(this);
+        }
+        if(node.getIf() != null)
+        {
+            node.getIf().apply(this);
+        }
+        outAIfelsePIf(node);
+    }
+
+    public void inAPIfelse(APIfelse node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPIfelse(APIfelse node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPIfelse(APIfelse node)
+    {
+        inAPIfelse(node);
+        if(node.getInst2() != null)
+        {
+            node.getInst2().apply(this);
+        }
+        if(node.getComma() != null)
+        {
+            node.getComma().apply(this);
+        }
+        if(node.getInst1() != null)
+        {
+            node.getInst1().apply(this);
+        }
+        if(node.getPBoolean() != null)
+        {
+            node.getPBoolean().apply(this);
+        }
+        if(node.getIfelse() != null)
+        {
+            node.getIfelse().apply(this);
+        }
+        outAPIfelse(node);
+    }
+
+    public void inAPStop(APStop node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPStop(APStop node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPStop(APStop node)
+    {
+        inAPStop(node);
+        if(node.getStop() != null)
+        {
+            node.getStop().apply(this);
+        }
+        outAPStop(node);
+    }
+
+    public void inAPGoto(APGoto node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPGoto(APGoto node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPGoto(APGoto node)
+    {
+        inAPGoto(node);
+        if(node.getIdentifier() != null)
+        {
+            node.getIdentifier().apply(this);
+        }
+        if(node.getGoto() != null)
+        {
+            node.getGoto().apply(this);
+        }
+        outAPGoto(node);
     }
 
     public void inAIdentListPIdentList(AIdentListPIdentList node)
@@ -629,90 +2860,6 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
             node.getIdentifier().apply(this);
         }
         outAIdentPIdentList(node);
-    }
-
-    public void inAWordPThing(AWordPThing node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAWordPThing(AWordPThing node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAWordPThing(AWordPThing node)
-    {
-        inAWordPThing(node);
-        if(node.getPWord() != null)
-        {
-            node.getPWord().apply(this);
-        }
-        outAWordPThing(node);
-    }
-
-    public void inAListPThing(AListPThing node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAListPThing(AListPThing node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAListPThing(AListPThing node)
-    {
-        inAListPThing(node);
-        if(node.getPList() != null)
-        {
-            node.getPList().apply(this);
-        }
-        outAListPThing(node);
-    }
-
-    public void inAThingPThingList(AThingPThingList node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAThingPThingList(AThingPThingList node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAThingPThingList(AThingPThingList node)
-    {
-        inAThingPThingList(node);
-        if(node.getPThing() != null)
-        {
-            node.getPThing().apply(this);
-        }
-        outAThingPThingList(node);
-    }
-
-    public void inALstPThingList(ALstPThingList node)
-    {
-        defaultIn(node);
-    }
-
-    public void outALstPThingList(ALstPThingList node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseALstPThingList(ALstPThingList node)
-    {
-        inALstPThingList(node);
-        if(node.getPThingList() != null)
-        {
-            node.getPThingList().apply(this);
-        }
-        outALstPThingList(node);
     }
 
     public void inAIntPValue(AIntPValue node)
@@ -965,392 +3112,108 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outAMultListPMultList(node);
     }
 
-    public void inAPModv(APModv node)
+    public void inATruePBoolean(ATruePBoolean node)
     {
         defaultIn(node);
     }
 
-    public void outAPModv(APModv node)
+    public void outATruePBoolean(ATruePBoolean node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAPModv(APModv node)
+    public void caseATruePBoolean(ATruePBoolean node)
     {
-        inAPModv(node);
+        inATruePBoolean(node);
+        if(node.getTrue() != null)
+        {
+            node.getTrue().apply(this);
+        }
+        outATruePBoolean(node);
+    }
+
+    public void inAFalsePBoolean(AFalsePBoolean node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAFalsePBoolean(AFalsePBoolean node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAFalsePBoolean(AFalsePBoolean node)
+    {
+        inAFalsePBoolean(node);
+        if(node.getFalse() != null)
+        {
+            node.getFalse().apply(this);
+        }
+        outAFalsePBoolean(node);
+    }
+
+    public void inAVarPBoolean(AVarPBoolean node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAVarPBoolean(AVarPBoolean node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAVarPBoolean(AVarPBoolean node)
+    {
+        inAVarPBoolean(node);
+        if(node.getIdentifier() != null)
+        {
+            node.getIdentifier().apply(this);
+        }
+        outAVarPBoolean(node);
+    }
+
+    public void inAPredefPColor(APredefPColor node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPredefPColor(APredefPColor node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPredefPColor(APredefPColor node)
+    {
+        inAPredefPColor(node);
         if(node.getInteger() != null)
         {
             node.getInteger().apply(this);
         }
-        outAPModv(node);
+        outAPredefPColor(node);
     }
 
-    public void inAPRound(APRound node)
+    public void inALstPColor(ALstPColor node)
     {
         defaultIn(node);
     }
 
-    public void outAPRound(APRound node)
+    public void outALstPColor(ALstPColor node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAPRound(APRound node)
+    public void caseALstPColor(ALstPColor node)
     {
-        inAPRound(node);
-        if(node.getPValue() != null)
+        inALstPColor(node);
+        if(node.getIdentifier() != null)
         {
-            node.getPValue().apply(this);
+            node.getIdentifier().apply(this);
         }
-        if(node.getRound() != null)
-        {
-            node.getRound().apply(this);
-        }
-        outAPRound(node);
-    }
-
-    public void inAPSqrt(APSqrt node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAPSqrt(APSqrt node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAPSqrt(APSqrt node)
-    {
-        inAPSqrt(node);
-        if(node.getPValue() != null)
-        {
-            node.getPValue().apply(this);
-        }
-        if(node.getSqrt() != null)
-        {
-            node.getSqrt().apply(this);
-        }
-        outAPSqrt(node);
-    }
-
-    public void inAPPower(APPower node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAPPower(APPower node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAPPower(APPower node)
-    {
-        inAPPower(node);
-        if(node.getPower() != null)
-        {
-            node.getPower().apply(this);
-        }
-        outAPPower(node);
-    }
-
-    public void inAPExp(APExp node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAPExp(APExp node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAPExp(APExp node)
-    {
-        inAPExp(node);
-        if(node.getPValue() != null)
-        {
-            node.getPValue().apply(this);
-        }
-        if(node.getExp() != null)
-        {
-            node.getExp().apply(this);
-        }
-        outAPExp(node);
-    }
-
-    public void inASetheadingPSetheading(ASetheadingPSetheading node)
-    {
-        defaultIn(node);
-    }
-
-    public void outASetheadingPSetheading(ASetheadingPSetheading node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseASetheadingPSetheading(ASetheadingPSetheading node)
-    {
-        inASetheadingPSetheading(node);
-        if(node.getSetheading() != null)
-        {
-            node.getSetheading().apply(this);
-        }
-        outASetheadingPSetheading(node);
-    }
-
-    public void inASethPSetheading(ASethPSetheading node)
-    {
-        defaultIn(node);
-    }
-
-    public void outASethPSetheading(ASethPSetheading node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseASethPSetheading(ASethPSetheading node)
-    {
-        inASethPSetheading(node);
-        if(node.getPValue() != null)
-        {
-            node.getPValue().apply(this);
-        }
-        if(node.getSeth() != null)
-        {
-            node.getSeth().apply(this);
-        }
-        outASethPSetheading(node);
-    }
-
-    public void inAPHome(APHome node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAPHome(APHome node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAPHome(APHome node)
-    {
-        inAPHome(node);
-        if(node.getHome() != null)
-        {
-            node.getHome().apply(this);
-        }
-        outAPHome(node);
-    }
-
-    public void inAPArc(APArc node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAPArc(APArc node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAPArc(APArc node)
-    {
-        inAPArc(node);
-        if(node.getPValue() != null)
-        {
-            node.getPValue().apply(this);
-        }
-        if(node.getInteger() != null)
-        {
-            node.getInteger().apply(this);
-        }
-        if(node.getArc() != null)
-        {
-            node.getArc().apply(this);
-        }
-        outAPArc(node);
-    }
-
-    public void inAClearscreenPClearscreen(AClearscreenPClearscreen node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAClearscreenPClearscreen(AClearscreenPClearscreen node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAClearscreenPClearscreen(AClearscreenPClearscreen node)
-    {
-        inAClearscreenPClearscreen(node);
-        if(node.getClearscreen() != null)
-        {
-            node.getClearscreen().apply(this);
-        }
-        outAClearscreenPClearscreen(node);
-    }
-
-    public void inACsPClearscreen(ACsPClearscreen node)
-    {
-        defaultIn(node);
-    }
-
-    public void outACsPClearscreen(ACsPClearscreen node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseACsPClearscreen(ACsPClearscreen node)
-    {
-        inACsPClearscreen(node);
-        if(node.getPHome() != null)
-        {
-            node.getPHome().apply(this);
-        }
-        if(node.getCs() != null)
-        {
-            node.getCs().apply(this);
-        }
-        outACsPClearscreen(node);
-    }
-
-    public void inAPendownPPendown(APendownPPendown node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAPendownPPendown(APendownPPendown node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAPendownPPendown(APendownPPendown node)
-    {
-        inAPendownPPendown(node);
-        if(node.getPendown() != null)
-        {
-            node.getPendown().apply(this);
-        }
-        outAPendownPPendown(node);
-    }
-
-    public void inAPdPPendown(APdPPendown node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAPdPPendown(APdPPendown node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAPdPPendown(APdPPendown node)
-    {
-        inAPdPPendown(node);
-        if(node.getPd() != null)
-        {
-            node.getPd().apply(this);
-        }
-        outAPdPPendown(node);
-    }
-
-    public void inAPenupPPenup(APenupPPenup node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAPenupPPenup(APenupPPenup node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAPenupPPenup(APenupPPenup node)
-    {
-        inAPenupPPenup(node);
-        if(node.getPenup() != null)
-        {
-            node.getPenup().apply(this);
-        }
-        outAPenupPPenup(node);
-    }
-
-    public void inAPuPPenup(APuPPenup node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAPuPPenup(APuPPenup node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAPuPPenup(APuPPenup node)
-    {
-        inAPuPPenup(node);
-        if(node.getPu() != null)
-        {
-            node.getPu().apply(this);
-        }
-        outAPuPPenup(node);
-    }
-
-    public void inASetpencolorPSetpencolor(ASetpencolorPSetpencolor node)
-    {
-        defaultIn(node);
-    }
-
-    public void outASetpencolorPSetpencolor(ASetpencolorPSetpencolor node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseASetpencolorPSetpencolor(ASetpencolorPSetpencolor node)
-    {
-        inASetpencolorPSetpencolor(node);
-        if(node.getSetpencolor() != null)
-        {
-            node.getSetpencolor().apply(this);
-        }
-        outASetpencolorPSetpencolor(node);
-    }
-
-    public void inASetpcPSetpencolor(ASetpcPSetpencolor node)
-    {
-        defaultIn(node);
-    }
-
-    public void outASetpcPSetpencolor(ASetpcPSetpencolor node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseASetpcPSetpencolor(ASetpcPSetpencolor node)
-    {
-        inASetpcPSetpencolor(node);
-        if(node.getNumber1() != null)
-        {
-            node.getNumber1().apply(this);
-        }
-        if(node.getSetpc() != null)
-        {
-            node.getSetpc().apply(this);
-        }
-        outASetpcPSetpencolor(node);
+        outALstPColor(node);
     }
 }
