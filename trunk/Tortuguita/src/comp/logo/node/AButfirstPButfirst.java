@@ -8,7 +8,7 @@ import comp.logo.analysis.*;
 public final class AButfirstPButfirst extends PPButfirst
 {
     private TButfirst _butfirst_;
-    private PPThing _pThing_;
+    private TIdentifier _identifier_;
 
     public AButfirstPButfirst()
     {
@@ -17,12 +17,12 @@ public final class AButfirstPButfirst extends PPButfirst
 
     public AButfirstPButfirst(
         @SuppressWarnings("hiding") TButfirst _butfirst_,
-        @SuppressWarnings("hiding") PPThing _pThing_)
+        @SuppressWarnings("hiding") TIdentifier _identifier_)
     {
         // Constructor
         setButfirst(_butfirst_);
 
-        setPThing(_pThing_);
+        setIdentifier(_identifier_);
 
     }
 
@@ -31,7 +31,7 @@ public final class AButfirstPButfirst extends PPButfirst
     {
         return new AButfirstPButfirst(
             cloneNode(this._butfirst_),
-            cloneNode(this._pThing_));
+            cloneNode(this._identifier_));
     }
 
     public void apply(Switch sw)
@@ -64,16 +64,16 @@ public final class AButfirstPButfirst extends PPButfirst
         this._butfirst_ = node;
     }
 
-    public PPThing getPThing()
+    public TIdentifier getIdentifier()
     {
-        return this._pThing_;
+        return this._identifier_;
     }
 
-    public void setPThing(PPThing node)
+    public void setIdentifier(TIdentifier node)
     {
-        if(this._pThing_ != null)
+        if(this._identifier_ != null)
         {
-            this._pThing_.parent(null);
+            this._identifier_.parent(null);
         }
 
         if(node != null)
@@ -86,7 +86,7 @@ public final class AButfirstPButfirst extends PPButfirst
             node.parent(this);
         }
 
-        this._pThing_ = node;
+        this._identifier_ = node;
     }
 
     @Override
@@ -94,7 +94,7 @@ public final class AButfirstPButfirst extends PPButfirst
     {
         return ""
             + toString(this._butfirst_)
-            + toString(this._pThing_);
+            + toString(this._identifier_);
     }
 
     @Override
@@ -107,9 +107,9 @@ public final class AButfirstPButfirst extends PPButfirst
             return;
         }
 
-        if(this._pThing_ == child)
+        if(this._identifier_ == child)
         {
-            this._pThing_ = null;
+            this._identifier_ = null;
             return;
         }
 
@@ -126,9 +126,9 @@ public final class AButfirstPButfirst extends PPButfirst
             return;
         }
 
-        if(this._pThing_ == oldChild)
+        if(this._identifier_ == oldChild)
         {
-            setPThing((PPThing) newChild);
+            setIdentifier((TIdentifier) newChild);
             return;
         }
 
