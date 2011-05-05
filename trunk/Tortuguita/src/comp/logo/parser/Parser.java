@@ -181,19 +181,19 @@ public class Parser
 			push(goTo(0), list, false);
 		    }
 		    break;
-                    case 1: /* reduce ARunProg */
+                    case 1: /* reduce AListaPInstructionlist */
 		    {
 			ArrayList list = new1();
-			push(goTo(0), list, false);
+			push(goTo(1), list, false);
 		    }
 		    break;
-                    case 2: /* reduce AListaPInstructionlist */
+                    case 2: /* reduce AInstPInstructionlist */
 		    {
 			ArrayList list = new2();
 			push(goTo(1), list, false);
 		    }
 		    break;
-                    case 3: /* reduce AInstPInstructionlist */
+                    case 3: /* reduce ARunPInstructionlist */
 		    {
 			ArrayList list = new3();
 			push(goTo(1), list, false);
@@ -1013,39 +1013,7 @@ public class Parser
 
 
     @SuppressWarnings("unchecked")
-    ArrayList new1() /* reduce ARunProg */
-    {
-        @SuppressWarnings("hiding") ArrayList nodeList = new ArrayList();
-
-        @SuppressWarnings("unused") ArrayList nodeArrayList5 = pop();
-        @SuppressWarnings("unused") ArrayList nodeArrayList4 = pop();
-        @SuppressWarnings("unused") ArrayList nodeArrayList3 = pop();
-        @SuppressWarnings("unused") ArrayList nodeArrayList2 = pop();
-        @SuppressWarnings("unused") ArrayList nodeArrayList1 = pop();
-        PProg pprogNode1;
-        {
-            // Block
-        TRun trunNode2;
-        TLKey tlkeyNode3;
-        PPInstructionlist ppinstructionlistNode4;
-        TRKey trkeyNode5;
-        TSemi tsemiNode6;
-        trunNode2 = (TRun)nodeArrayList1.get(0);
-        tlkeyNode3 = (TLKey)nodeArrayList2.get(0);
-        ppinstructionlistNode4 = (PPInstructionlist)nodeArrayList3.get(0);
-        trkeyNode5 = (TRKey)nodeArrayList4.get(0);
-        tsemiNode6 = (TSemi)nodeArrayList5.get(0);
-
-        pprogNode1 = new ARunProg(trunNode2, tlkeyNode3, ppinstructionlistNode4, trkeyNode5, tsemiNode6);
-        }
-	nodeList.add(pprogNode1);
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings("unchecked")
-    ArrayList new2() /* reduce AListaPInstructionlist */
+    ArrayList new1() /* reduce AListaPInstructionlist */
     {
         @SuppressWarnings("hiding") ArrayList nodeList = new ArrayList();
 
@@ -1071,7 +1039,7 @@ public class Parser
 
 
     @SuppressWarnings("unchecked")
-    ArrayList new3() /* reduce AInstPInstructionlist */
+    ArrayList new2() /* reduce AInstPInstructionlist */
     {
         @SuppressWarnings("hiding") ArrayList nodeList = new ArrayList();
 
@@ -1086,6 +1054,38 @@ public class Parser
         tsemiNode3 = (TSemi)nodeArrayList2.get(0);
 
         ppinstructionlistNode1 = new AInstPInstructionlist(ppinstructionNode2, tsemiNode3);
+        }
+	nodeList.add(ppinstructionlistNode1);
+        return nodeList;
+    }
+
+
+
+    @SuppressWarnings("unchecked")
+    ArrayList new3() /* reduce ARunPInstructionlist */
+    {
+        @SuppressWarnings("hiding") ArrayList nodeList = new ArrayList();
+
+        @SuppressWarnings("unused") ArrayList nodeArrayList5 = pop();
+        @SuppressWarnings("unused") ArrayList nodeArrayList4 = pop();
+        @SuppressWarnings("unused") ArrayList nodeArrayList3 = pop();
+        @SuppressWarnings("unused") ArrayList nodeArrayList2 = pop();
+        @SuppressWarnings("unused") ArrayList nodeArrayList1 = pop();
+        PPInstructionlist ppinstructionlistNode1;
+        {
+            // Block
+        TRun trunNode2;
+        TLKey tlkeyNode3;
+        PPInstructionlist ppinstructionlistNode4;
+        TRKey trkeyNode5;
+        TSemi tsemiNode6;
+        trunNode2 = (TRun)nodeArrayList1.get(0);
+        tlkeyNode3 = (TLKey)nodeArrayList2.get(0);
+        ppinstructionlistNode4 = (PPInstructionlist)nodeArrayList3.get(0);
+        trkeyNode5 = (TRKey)nodeArrayList4.get(0);
+        tsemiNode6 = (TSemi)nodeArrayList5.get(0);
+
+        ppinstructionlistNode1 = new ARunPInstructionlist(trunNode2, tlkeyNode3, ppinstructionlistNode4, trkeyNode5, tsemiNode6);
         }
 	nodeList.add(ppinstructionlistNode1);
         return nodeList;
@@ -4105,15 +4105,15 @@ public class Parser
 			{{-1, REDUCE, 105}, },
 			{{-1, REDUCE, 107}, },
 			{{-1, REDUCE, 106}, },
-			{{-1, ERROR, 160}, {1, SHIFT, 1}, {2, SHIFT, 2}, {3, SHIFT, 3}, {4, SHIFT, 4}, {5, SHIFT, 5}, {6, SHIFT, 6}, {7, SHIFT, 7}, {10, SHIFT, 8}, {12, SHIFT, 9}, {13, SHIFT, 10}, {14, SHIFT, 11}, {15, SHIFT, 12}, {16, SHIFT, 13}, {17, SHIFT, 14}, {18, SHIFT, 15}, {19, SHIFT, 16}, {20, SHIFT, 17}, {21, SHIFT, 18}, {22, SHIFT, 19}, {23, SHIFT, 20}, {24, SHIFT, 21}, {25, SHIFT, 22}, {26, SHIFT, 23}, {27, SHIFT, 24}, {28, SHIFT, 25}, {29, SHIFT, 26}, {30, SHIFT, 27}, {31, SHIFT, 28}, {32, SHIFT, 29}, {33, SHIFT, 30}, {34, SHIFT, 31}, {35, SHIFT, 32}, {36, SHIFT, 33}, {37, SHIFT, 34}, {38, SHIFT, 35}, {39, SHIFT, 36}, {40, SHIFT, 37}, {41, SHIFT, 38}, {42, SHIFT, 39}, {43, SHIFT, 40}, {44, SHIFT, 41}, {45, SHIFT, 42}, {46, SHIFT, 43}, {47, SHIFT, 44}, {48, SHIFT, 45}, {49, SHIFT, 46}, {50, SHIFT, 47}, {51, SHIFT, 48}, {53, SHIFT, 50}, {54, SHIFT, 51}, {55, SHIFT, 52}, {56, SHIFT, 53}, {57, SHIFT, 54}, {68, SHIFT, 55}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
+			{{-1, ERROR, 160}, {1, SHIFT, 1}, {2, SHIFT, 2}, {3, SHIFT, 3}, {4, SHIFT, 4}, {5, SHIFT, 5}, {6, SHIFT, 6}, {7, SHIFT, 7}, {10, SHIFT, 8}, {12, SHIFT, 9}, {13, SHIFT, 10}, {14, SHIFT, 11}, {15, SHIFT, 12}, {16, SHIFT, 13}, {17, SHIFT, 14}, {18, SHIFT, 15}, {19, SHIFT, 16}, {20, SHIFT, 17}, {21, SHIFT, 18}, {22, SHIFT, 19}, {23, SHIFT, 20}, {24, SHIFT, 21}, {25, SHIFT, 22}, {26, SHIFT, 23}, {27, SHIFT, 24}, {28, SHIFT, 25}, {29, SHIFT, 26}, {30, SHIFT, 27}, {31, SHIFT, 28}, {32, SHIFT, 29}, {33, SHIFT, 30}, {34, SHIFT, 31}, {35, SHIFT, 32}, {36, SHIFT, 33}, {37, SHIFT, 34}, {38, SHIFT, 35}, {39, SHIFT, 36}, {40, SHIFT, 37}, {41, SHIFT, 38}, {42, SHIFT, 39}, {43, SHIFT, 40}, {44, SHIFT, 41}, {45, SHIFT, 42}, {46, SHIFT, 43}, {47, SHIFT, 44}, {48, SHIFT, 45}, {49, SHIFT, 46}, {50, SHIFT, 47}, {51, SHIFT, 48}, {52, SHIFT, 49}, {53, SHIFT, 50}, {54, SHIFT, 51}, {55, SHIFT, 52}, {56, SHIFT, 53}, {57, SHIFT, 54}, {68, SHIFT, 55}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
 			{{-1, ERROR, 161}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
-			{{-1, ERROR, 162}, {1, SHIFT, 1}, {2, SHIFT, 2}, {3, SHIFT, 3}, {4, SHIFT, 4}, {5, SHIFT, 5}, {6, SHIFT, 6}, {7, SHIFT, 7}, {10, SHIFT, 8}, {12, SHIFT, 9}, {13, SHIFT, 10}, {14, SHIFT, 11}, {15, SHIFT, 12}, {16, SHIFT, 13}, {17, SHIFT, 14}, {18, SHIFT, 15}, {19, SHIFT, 16}, {20, SHIFT, 17}, {21, SHIFT, 18}, {22, SHIFT, 19}, {23, SHIFT, 20}, {24, SHIFT, 21}, {25, SHIFT, 22}, {26, SHIFT, 23}, {27, SHIFT, 24}, {28, SHIFT, 25}, {29, SHIFT, 26}, {30, SHIFT, 27}, {31, SHIFT, 28}, {32, SHIFT, 29}, {33, SHIFT, 30}, {34, SHIFT, 31}, {35, SHIFT, 32}, {36, SHIFT, 33}, {37, SHIFT, 34}, {38, SHIFT, 35}, {39, SHIFT, 36}, {40, SHIFT, 37}, {41, SHIFT, 38}, {42, SHIFT, 39}, {43, SHIFT, 40}, {44, SHIFT, 41}, {45, SHIFT, 42}, {46, SHIFT, 43}, {47, SHIFT, 44}, {48, SHIFT, 45}, {49, SHIFT, 46}, {50, SHIFT, 47}, {51, SHIFT, 48}, {53, SHIFT, 50}, {54, SHIFT, 51}, {55, SHIFT, 52}, {56, SHIFT, 53}, {57, SHIFT, 54}, {68, SHIFT, 55}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
+			{{-1, ERROR, 162}, {1, SHIFT, 1}, {2, SHIFT, 2}, {3, SHIFT, 3}, {4, SHIFT, 4}, {5, SHIFT, 5}, {6, SHIFT, 6}, {7, SHIFT, 7}, {10, SHIFT, 8}, {12, SHIFT, 9}, {13, SHIFT, 10}, {14, SHIFT, 11}, {15, SHIFT, 12}, {16, SHIFT, 13}, {17, SHIFT, 14}, {18, SHIFT, 15}, {19, SHIFT, 16}, {20, SHIFT, 17}, {21, SHIFT, 18}, {22, SHIFT, 19}, {23, SHIFT, 20}, {24, SHIFT, 21}, {25, SHIFT, 22}, {26, SHIFT, 23}, {27, SHIFT, 24}, {28, SHIFT, 25}, {29, SHIFT, 26}, {30, SHIFT, 27}, {31, SHIFT, 28}, {32, SHIFT, 29}, {33, SHIFT, 30}, {34, SHIFT, 31}, {35, SHIFT, 32}, {36, SHIFT, 33}, {37, SHIFT, 34}, {38, SHIFT, 35}, {39, SHIFT, 36}, {40, SHIFT, 37}, {41, SHIFT, 38}, {42, SHIFT, 39}, {43, SHIFT, 40}, {44, SHIFT, 41}, {45, SHIFT, 42}, {46, SHIFT, 43}, {47, SHIFT, 44}, {48, SHIFT, 45}, {49, SHIFT, 46}, {50, SHIFT, 47}, {51, SHIFT, 48}, {52, SHIFT, 49}, {53, SHIFT, 50}, {54, SHIFT, 51}, {55, SHIFT, 52}, {56, SHIFT, 53}, {57, SHIFT, 54}, {68, SHIFT, 55}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
 			{{-1, ERROR, 163}, {63, SHIFT, 193}, },
-			{{-1, ERROR, 164}, {1, SHIFT, 1}, {2, SHIFT, 2}, {3, SHIFT, 3}, {4, SHIFT, 4}, {5, SHIFT, 5}, {6, SHIFT, 6}, {7, SHIFT, 7}, {10, SHIFT, 8}, {12, SHIFT, 9}, {13, SHIFT, 10}, {14, SHIFT, 11}, {15, SHIFT, 12}, {16, SHIFT, 13}, {17, SHIFT, 14}, {18, SHIFT, 15}, {19, SHIFT, 16}, {20, SHIFT, 17}, {21, SHIFT, 18}, {22, SHIFT, 19}, {23, SHIFT, 20}, {24, SHIFT, 21}, {25, SHIFT, 22}, {26, SHIFT, 23}, {27, SHIFT, 24}, {28, SHIFT, 25}, {29, SHIFT, 26}, {30, SHIFT, 27}, {31, SHIFT, 28}, {32, SHIFT, 29}, {33, SHIFT, 30}, {34, SHIFT, 31}, {35, SHIFT, 32}, {36, SHIFT, 33}, {37, SHIFT, 34}, {38, SHIFT, 35}, {39, SHIFT, 36}, {40, SHIFT, 37}, {41, SHIFT, 38}, {42, SHIFT, 39}, {43, SHIFT, 40}, {44, SHIFT, 41}, {45, SHIFT, 42}, {46, SHIFT, 43}, {47, SHIFT, 44}, {48, SHIFT, 45}, {49, SHIFT, 46}, {50, SHIFT, 47}, {51, SHIFT, 48}, {53, SHIFT, 50}, {54, SHIFT, 51}, {55, SHIFT, 52}, {56, SHIFT, 53}, {57, SHIFT, 54}, {68, SHIFT, 55}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
-			{{-1, ERROR, 165}, {1, SHIFT, 1}, {2, SHIFT, 2}, {3, SHIFT, 3}, {4, SHIFT, 4}, {5, SHIFT, 5}, {6, SHIFT, 6}, {7, SHIFT, 7}, {10, SHIFT, 8}, {12, SHIFT, 9}, {13, SHIFT, 10}, {14, SHIFT, 11}, {15, SHIFT, 12}, {16, SHIFT, 13}, {17, SHIFT, 14}, {18, SHIFT, 15}, {19, SHIFT, 16}, {20, SHIFT, 17}, {21, SHIFT, 18}, {22, SHIFT, 19}, {23, SHIFT, 20}, {24, SHIFT, 21}, {25, SHIFT, 22}, {26, SHIFT, 23}, {27, SHIFT, 24}, {28, SHIFT, 25}, {29, SHIFT, 26}, {30, SHIFT, 27}, {31, SHIFT, 28}, {32, SHIFT, 29}, {33, SHIFT, 30}, {34, SHIFT, 31}, {35, SHIFT, 32}, {36, SHIFT, 33}, {37, SHIFT, 34}, {38, SHIFT, 35}, {39, SHIFT, 36}, {40, SHIFT, 37}, {41, SHIFT, 38}, {42, SHIFT, 39}, {43, SHIFT, 40}, {44, SHIFT, 41}, {45, SHIFT, 42}, {46, SHIFT, 43}, {47, SHIFT, 44}, {48, SHIFT, 45}, {49, SHIFT, 46}, {50, SHIFT, 47}, {51, SHIFT, 48}, {53, SHIFT, 50}, {54, SHIFT, 51}, {55, SHIFT, 52}, {56, SHIFT, 53}, {57, SHIFT, 54}, {68, SHIFT, 55}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
+			{{-1, ERROR, 164}, {1, SHIFT, 1}, {2, SHIFT, 2}, {3, SHIFT, 3}, {4, SHIFT, 4}, {5, SHIFT, 5}, {6, SHIFT, 6}, {7, SHIFT, 7}, {10, SHIFT, 8}, {12, SHIFT, 9}, {13, SHIFT, 10}, {14, SHIFT, 11}, {15, SHIFT, 12}, {16, SHIFT, 13}, {17, SHIFT, 14}, {18, SHIFT, 15}, {19, SHIFT, 16}, {20, SHIFT, 17}, {21, SHIFT, 18}, {22, SHIFT, 19}, {23, SHIFT, 20}, {24, SHIFT, 21}, {25, SHIFT, 22}, {26, SHIFT, 23}, {27, SHIFT, 24}, {28, SHIFT, 25}, {29, SHIFT, 26}, {30, SHIFT, 27}, {31, SHIFT, 28}, {32, SHIFT, 29}, {33, SHIFT, 30}, {34, SHIFT, 31}, {35, SHIFT, 32}, {36, SHIFT, 33}, {37, SHIFT, 34}, {38, SHIFT, 35}, {39, SHIFT, 36}, {40, SHIFT, 37}, {41, SHIFT, 38}, {42, SHIFT, 39}, {43, SHIFT, 40}, {44, SHIFT, 41}, {45, SHIFT, 42}, {46, SHIFT, 43}, {47, SHIFT, 44}, {48, SHIFT, 45}, {49, SHIFT, 46}, {50, SHIFT, 47}, {51, SHIFT, 48}, {52, SHIFT, 49}, {53, SHIFT, 50}, {54, SHIFT, 51}, {55, SHIFT, 52}, {56, SHIFT, 53}, {57, SHIFT, 54}, {68, SHIFT, 55}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
+			{{-1, ERROR, 165}, {1, SHIFT, 1}, {2, SHIFT, 2}, {3, SHIFT, 3}, {4, SHIFT, 4}, {5, SHIFT, 5}, {6, SHIFT, 6}, {7, SHIFT, 7}, {10, SHIFT, 8}, {12, SHIFT, 9}, {13, SHIFT, 10}, {14, SHIFT, 11}, {15, SHIFT, 12}, {16, SHIFT, 13}, {17, SHIFT, 14}, {18, SHIFT, 15}, {19, SHIFT, 16}, {20, SHIFT, 17}, {21, SHIFT, 18}, {22, SHIFT, 19}, {23, SHIFT, 20}, {24, SHIFT, 21}, {25, SHIFT, 22}, {26, SHIFT, 23}, {27, SHIFT, 24}, {28, SHIFT, 25}, {29, SHIFT, 26}, {30, SHIFT, 27}, {31, SHIFT, 28}, {32, SHIFT, 29}, {33, SHIFT, 30}, {34, SHIFT, 31}, {35, SHIFT, 32}, {36, SHIFT, 33}, {37, SHIFT, 34}, {38, SHIFT, 35}, {39, SHIFT, 36}, {40, SHIFT, 37}, {41, SHIFT, 38}, {42, SHIFT, 39}, {43, SHIFT, 40}, {44, SHIFT, 41}, {45, SHIFT, 42}, {46, SHIFT, 43}, {47, SHIFT, 44}, {48, SHIFT, 45}, {49, SHIFT, 46}, {50, SHIFT, 47}, {51, SHIFT, 48}, {52, SHIFT, 49}, {53, SHIFT, 50}, {54, SHIFT, 51}, {55, SHIFT, 52}, {56, SHIFT, 53}, {57, SHIFT, 54}, {68, SHIFT, 55}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
 			{{-1, REDUCE, 115}, },
 			{{-1, REDUCE, 70}, },
-			{{-1, REDUCE, 3}, {1, SHIFT, 1}, {2, SHIFT, 2}, {3, SHIFT, 3}, {4, SHIFT, 4}, {5, SHIFT, 5}, {6, SHIFT, 6}, {7, SHIFT, 7}, {10, SHIFT, 8}, {12, SHIFT, 9}, {13, SHIFT, 10}, {14, SHIFT, 11}, {15, SHIFT, 12}, {16, SHIFT, 13}, {17, SHIFT, 14}, {18, SHIFT, 15}, {19, SHIFT, 16}, {20, SHIFT, 17}, {21, SHIFT, 18}, {22, SHIFT, 19}, {23, SHIFT, 20}, {24, SHIFT, 21}, {25, SHIFT, 22}, {26, SHIFT, 23}, {27, SHIFT, 24}, {28, SHIFT, 25}, {29, SHIFT, 26}, {30, SHIFT, 27}, {31, SHIFT, 28}, {32, SHIFT, 29}, {33, SHIFT, 30}, {34, SHIFT, 31}, {35, SHIFT, 32}, {36, SHIFT, 33}, {37, SHIFT, 34}, {38, SHIFT, 35}, {39, SHIFT, 36}, {40, SHIFT, 37}, {41, SHIFT, 38}, {42, SHIFT, 39}, {43, SHIFT, 40}, {44, SHIFT, 41}, {45, SHIFT, 42}, {46, SHIFT, 43}, {47, SHIFT, 44}, {48, SHIFT, 45}, {49, SHIFT, 46}, {50, SHIFT, 47}, {51, SHIFT, 48}, {53, SHIFT, 50}, {54, SHIFT, 51}, {55, SHIFT, 52}, {56, SHIFT, 53}, {57, SHIFT, 54}, {68, SHIFT, 55}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
+			{{-1, REDUCE, 2}, {1, SHIFT, 1}, {2, SHIFT, 2}, {3, SHIFT, 3}, {4, SHIFT, 4}, {5, SHIFT, 5}, {6, SHIFT, 6}, {7, SHIFT, 7}, {10, SHIFT, 8}, {12, SHIFT, 9}, {13, SHIFT, 10}, {14, SHIFT, 11}, {15, SHIFT, 12}, {16, SHIFT, 13}, {17, SHIFT, 14}, {18, SHIFT, 15}, {19, SHIFT, 16}, {20, SHIFT, 17}, {21, SHIFT, 18}, {22, SHIFT, 19}, {23, SHIFT, 20}, {24, SHIFT, 21}, {25, SHIFT, 22}, {26, SHIFT, 23}, {27, SHIFT, 24}, {28, SHIFT, 25}, {29, SHIFT, 26}, {30, SHIFT, 27}, {31, SHIFT, 28}, {32, SHIFT, 29}, {33, SHIFT, 30}, {34, SHIFT, 31}, {35, SHIFT, 32}, {36, SHIFT, 33}, {37, SHIFT, 34}, {38, SHIFT, 35}, {39, SHIFT, 36}, {40, SHIFT, 37}, {41, SHIFT, 38}, {42, SHIFT, 39}, {43, SHIFT, 40}, {44, SHIFT, 41}, {45, SHIFT, 42}, {46, SHIFT, 43}, {47, SHIFT, 44}, {48, SHIFT, 45}, {49, SHIFT, 46}, {50, SHIFT, 47}, {51, SHIFT, 48}, {52, SHIFT, 49}, {53, SHIFT, 50}, {54, SHIFT, 51}, {55, SHIFT, 52}, {56, SHIFT, 53}, {57, SHIFT, 54}, {68, SHIFT, 55}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
 			{{-1, ERROR, 169}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
 			{{-1, ERROR, 170}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
 			{{-1, ERROR, 171}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
@@ -4138,10 +4138,10 @@ public class Parser
 			{{-1, ERROR, 190}, {58, SHIFT, 204}, },
 			{{-1, REDUCE, 109}, },
 			{{-1, ERROR, 192}, {66, SHIFT, 205}, },
-			{{-1, ERROR, 193}, {1, SHIFT, 1}, {2, SHIFT, 2}, {3, SHIFT, 3}, {4, SHIFT, 4}, {5, SHIFT, 5}, {6, SHIFT, 6}, {7, SHIFT, 7}, {10, SHIFT, 8}, {12, SHIFT, 9}, {13, SHIFT, 10}, {14, SHIFT, 11}, {15, SHIFT, 12}, {16, SHIFT, 13}, {17, SHIFT, 14}, {18, SHIFT, 15}, {19, SHIFT, 16}, {20, SHIFT, 17}, {21, SHIFT, 18}, {22, SHIFT, 19}, {23, SHIFT, 20}, {24, SHIFT, 21}, {25, SHIFT, 22}, {26, SHIFT, 23}, {27, SHIFT, 24}, {28, SHIFT, 25}, {29, SHIFT, 26}, {30, SHIFT, 27}, {31, SHIFT, 28}, {32, SHIFT, 29}, {33, SHIFT, 30}, {34, SHIFT, 31}, {35, SHIFT, 32}, {36, SHIFT, 33}, {37, SHIFT, 34}, {38, SHIFT, 35}, {39, SHIFT, 36}, {40, SHIFT, 37}, {41, SHIFT, 38}, {42, SHIFT, 39}, {43, SHIFT, 40}, {44, SHIFT, 41}, {45, SHIFT, 42}, {46, SHIFT, 43}, {47, SHIFT, 44}, {48, SHIFT, 45}, {49, SHIFT, 46}, {50, SHIFT, 47}, {51, SHIFT, 48}, {53, SHIFT, 50}, {54, SHIFT, 51}, {55, SHIFT, 52}, {56, SHIFT, 53}, {57, SHIFT, 54}, {68, SHIFT, 55}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
+			{{-1, ERROR, 193}, {1, SHIFT, 1}, {2, SHIFT, 2}, {3, SHIFT, 3}, {4, SHIFT, 4}, {5, SHIFT, 5}, {6, SHIFT, 6}, {7, SHIFT, 7}, {10, SHIFT, 8}, {12, SHIFT, 9}, {13, SHIFT, 10}, {14, SHIFT, 11}, {15, SHIFT, 12}, {16, SHIFT, 13}, {17, SHIFT, 14}, {18, SHIFT, 15}, {19, SHIFT, 16}, {20, SHIFT, 17}, {21, SHIFT, 18}, {22, SHIFT, 19}, {23, SHIFT, 20}, {24, SHIFT, 21}, {25, SHIFT, 22}, {26, SHIFT, 23}, {27, SHIFT, 24}, {28, SHIFT, 25}, {29, SHIFT, 26}, {30, SHIFT, 27}, {31, SHIFT, 28}, {32, SHIFT, 29}, {33, SHIFT, 30}, {34, SHIFT, 31}, {35, SHIFT, 32}, {36, SHIFT, 33}, {37, SHIFT, 34}, {38, SHIFT, 35}, {39, SHIFT, 36}, {40, SHIFT, 37}, {41, SHIFT, 38}, {42, SHIFT, 39}, {43, SHIFT, 40}, {44, SHIFT, 41}, {45, SHIFT, 42}, {46, SHIFT, 43}, {47, SHIFT, 44}, {48, SHIFT, 45}, {49, SHIFT, 46}, {50, SHIFT, 47}, {51, SHIFT, 48}, {52, SHIFT, 49}, {53, SHIFT, 50}, {54, SHIFT, 51}, {55, SHIFT, 52}, {56, SHIFT, 53}, {57, SHIFT, 54}, {68, SHIFT, 55}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
 			{{-1, REDUCE, 111}, {72, SHIFT, 207}, },
 			{{-1, ERROR, 195}, {72, SHIFT, 208}, },
-			{{-1, REDUCE, 2}, },
+			{{-1, REDUCE, 1}, },
 			{{-1, REDUCE, 122}, {67, SHIFT, 169}, },
 			{{-1, REDUCE, 124}, {68, SHIFT, 170}, },
 			{{-1, REDUCE, 126}, {70, SHIFT, 171}, },
@@ -4152,12 +4152,12 @@ public class Parser
 			{{-1, REDUCE, 108}, },
 			{{-1, ERROR, 205}, {71, SHIFT, 212}, },
 			{{-1, ERROR, 206}, {64, SHIFT, 213}, },
-			{{-1, ERROR, 207}, {1, SHIFT, 1}, {2, SHIFT, 2}, {3, SHIFT, 3}, {4, SHIFT, 4}, {5, SHIFT, 5}, {6, SHIFT, 6}, {7, SHIFT, 7}, {10, SHIFT, 8}, {12, SHIFT, 9}, {13, SHIFT, 10}, {14, SHIFT, 11}, {15, SHIFT, 12}, {16, SHIFT, 13}, {17, SHIFT, 14}, {18, SHIFT, 15}, {19, SHIFT, 16}, {20, SHIFT, 17}, {21, SHIFT, 18}, {22, SHIFT, 19}, {23, SHIFT, 20}, {24, SHIFT, 21}, {25, SHIFT, 22}, {26, SHIFT, 23}, {27, SHIFT, 24}, {28, SHIFT, 25}, {29, SHIFT, 26}, {30, SHIFT, 27}, {31, SHIFT, 28}, {32, SHIFT, 29}, {33, SHIFT, 30}, {34, SHIFT, 31}, {35, SHIFT, 32}, {36, SHIFT, 33}, {37, SHIFT, 34}, {38, SHIFT, 35}, {39, SHIFT, 36}, {40, SHIFT, 37}, {41, SHIFT, 38}, {42, SHIFT, 39}, {43, SHIFT, 40}, {44, SHIFT, 41}, {45, SHIFT, 42}, {46, SHIFT, 43}, {47, SHIFT, 44}, {48, SHIFT, 45}, {49, SHIFT, 46}, {50, SHIFT, 47}, {51, SHIFT, 48}, {53, SHIFT, 50}, {54, SHIFT, 51}, {55, SHIFT, 52}, {56, SHIFT, 53}, {57, SHIFT, 54}, {68, SHIFT, 55}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
-			{{-1, ERROR, 208}, {1, SHIFT, 1}, {2, SHIFT, 2}, {3, SHIFT, 3}, {4, SHIFT, 4}, {5, SHIFT, 5}, {6, SHIFT, 6}, {7, SHIFT, 7}, {10, SHIFT, 8}, {12, SHIFT, 9}, {13, SHIFT, 10}, {14, SHIFT, 11}, {15, SHIFT, 12}, {16, SHIFT, 13}, {17, SHIFT, 14}, {18, SHIFT, 15}, {19, SHIFT, 16}, {20, SHIFT, 17}, {21, SHIFT, 18}, {22, SHIFT, 19}, {23, SHIFT, 20}, {24, SHIFT, 21}, {25, SHIFT, 22}, {26, SHIFT, 23}, {27, SHIFT, 24}, {28, SHIFT, 25}, {29, SHIFT, 26}, {30, SHIFT, 27}, {31, SHIFT, 28}, {32, SHIFT, 29}, {33, SHIFT, 30}, {34, SHIFT, 31}, {35, SHIFT, 32}, {36, SHIFT, 33}, {37, SHIFT, 34}, {38, SHIFT, 35}, {39, SHIFT, 36}, {40, SHIFT, 37}, {41, SHIFT, 38}, {42, SHIFT, 39}, {43, SHIFT, 40}, {44, SHIFT, 41}, {45, SHIFT, 42}, {46, SHIFT, 43}, {47, SHIFT, 44}, {48, SHIFT, 45}, {49, SHIFT, 46}, {50, SHIFT, 47}, {51, SHIFT, 48}, {53, SHIFT, 50}, {54, SHIFT, 51}, {55, SHIFT, 52}, {56, SHIFT, 53}, {57, SHIFT, 54}, {68, SHIFT, 55}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
+			{{-1, ERROR, 207}, {1, SHIFT, 1}, {2, SHIFT, 2}, {3, SHIFT, 3}, {4, SHIFT, 4}, {5, SHIFT, 5}, {6, SHIFT, 6}, {7, SHIFT, 7}, {10, SHIFT, 8}, {12, SHIFT, 9}, {13, SHIFT, 10}, {14, SHIFT, 11}, {15, SHIFT, 12}, {16, SHIFT, 13}, {17, SHIFT, 14}, {18, SHIFT, 15}, {19, SHIFT, 16}, {20, SHIFT, 17}, {21, SHIFT, 18}, {22, SHIFT, 19}, {23, SHIFT, 20}, {24, SHIFT, 21}, {25, SHIFT, 22}, {26, SHIFT, 23}, {27, SHIFT, 24}, {28, SHIFT, 25}, {29, SHIFT, 26}, {30, SHIFT, 27}, {31, SHIFT, 28}, {32, SHIFT, 29}, {33, SHIFT, 30}, {34, SHIFT, 31}, {35, SHIFT, 32}, {36, SHIFT, 33}, {37, SHIFT, 34}, {38, SHIFT, 35}, {39, SHIFT, 36}, {40, SHIFT, 37}, {41, SHIFT, 38}, {42, SHIFT, 39}, {43, SHIFT, 40}, {44, SHIFT, 41}, {45, SHIFT, 42}, {46, SHIFT, 43}, {47, SHIFT, 44}, {48, SHIFT, 45}, {49, SHIFT, 46}, {50, SHIFT, 47}, {51, SHIFT, 48}, {52, SHIFT, 49}, {53, SHIFT, 50}, {54, SHIFT, 51}, {55, SHIFT, 52}, {56, SHIFT, 53}, {57, SHIFT, 54}, {68, SHIFT, 55}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
+			{{-1, ERROR, 208}, {1, SHIFT, 1}, {2, SHIFT, 2}, {3, SHIFT, 3}, {4, SHIFT, 4}, {5, SHIFT, 5}, {6, SHIFT, 6}, {7, SHIFT, 7}, {10, SHIFT, 8}, {12, SHIFT, 9}, {13, SHIFT, 10}, {14, SHIFT, 11}, {15, SHIFT, 12}, {16, SHIFT, 13}, {17, SHIFT, 14}, {18, SHIFT, 15}, {19, SHIFT, 16}, {20, SHIFT, 17}, {21, SHIFT, 18}, {22, SHIFT, 19}, {23, SHIFT, 20}, {24, SHIFT, 21}, {25, SHIFT, 22}, {26, SHIFT, 23}, {27, SHIFT, 24}, {28, SHIFT, 25}, {29, SHIFT, 26}, {30, SHIFT, 27}, {31, SHIFT, 28}, {32, SHIFT, 29}, {33, SHIFT, 30}, {34, SHIFT, 31}, {35, SHIFT, 32}, {36, SHIFT, 33}, {37, SHIFT, 34}, {38, SHIFT, 35}, {39, SHIFT, 36}, {40, SHIFT, 37}, {41, SHIFT, 38}, {42, SHIFT, 39}, {43, SHIFT, 40}, {44, SHIFT, 41}, {45, SHIFT, 42}, {46, SHIFT, 43}, {47, SHIFT, 44}, {48, SHIFT, 45}, {49, SHIFT, 46}, {50, SHIFT, 47}, {51, SHIFT, 48}, {52, SHIFT, 49}, {53, SHIFT, 50}, {54, SHIFT, 51}, {55, SHIFT, 52}, {56, SHIFT, 53}, {57, SHIFT, 54}, {68, SHIFT, 55}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
 			{{-1, REDUCE, 123}, },
 			{{-1, REDUCE, 125}, },
 			{{-1, REDUCE, 127}, },
-			{{-1, REDUCE, 1}, },
+			{{-1, REDUCE, 3}, },
 			{{-1, REDUCE, 110}, },
 			{{-1, REDUCE, 112}, },
 			{{-1, REDUCE, 113}, },
@@ -4243,10 +4243,9 @@ public class Parser
 			"expecting: '+', '-', '*', ';', integer, double",
 			"expecting: EOF",
 			"expecting: '+', '-', '*'",
-			"expecting: 'WORD', 'LIST', 'FIRST', 'BUTFIRST', 'BF', 'LAST', 'SETITEM', 'PRINT', 'SUM', 'DIFFERENCE', 'MINUS', 'PRODUCT', 'MODULO', 'INT', 'ROUND', 'SQRT', 'POWER', 'EXP', 'AND', 'OR', 'NOT', 'FORWARD', 'FD', 'BACK', 'BK', 'LEFT', 'LF', 'RIGHT', 'RT', 'SETPOS', 'SETXY', 'SETX', 'SETY', 'SETHEADING', 'SETH', 'HOME', 'ARC', 'CLEARSCREEN', 'CS', 'PENDOWN', 'PD', 'PENUP', 'PU', 'SETPENCOLOR', 'SETPC', 'SETPENSIZE', 'TO', 'MAKE', 'REPEAT', 'IF', 'IFELSE', 'STOP', 'GOTO', 'TRUE', 'FALSE', '-', ';', identifier, integer, double",
-			"expecting: 'WORD', 'LIST', 'FIRST', 'BUTFIRST', 'BF', 'LAST', 'SETITEM', 'PRINT', 'SUM', 'DIFFERENCE', 'MINUS', 'PRODUCT', 'MODULO', 'INT', 'ROUND', 'SQRT', 'POWER', 'EXP', 'AND', 'OR', 'NOT', 'FORWARD', 'FD', 'BACK', 'BK', 'LEFT', 'LF', 'RIGHT', 'RT', 'SETPOS', 'SETXY', 'SETX', 'SETY', 'SETHEADING', 'SETH', 'HOME', 'ARC', 'CLEARSCREEN', 'CS', 'PENDOWN', 'PD', 'PENUP', 'PU', 'SETPENCOLOR', 'SETPC', 'SETPENSIZE', 'TO', 'MAKE', 'REPEAT', 'IF', 'IFELSE', 'STOP', 'GOTO', '-', integer, double",
+			"expecting: 'WORD', 'LIST', 'FIRST', 'BUTFIRST', 'BF', 'LAST', 'SETITEM', 'PRINT', 'SUM', 'DIFFERENCE', 'MINUS', 'PRODUCT', 'MODULO', 'INT', 'ROUND', 'SQRT', 'POWER', 'EXP', 'AND', 'OR', 'NOT', 'FORWARD', 'FD', 'BACK', 'BK', 'LEFT', 'LF', 'RIGHT', 'RT', 'SETPOS', 'SETXY', 'SETX', 'SETY', 'SETHEADING', 'SETH', 'HOME', 'ARC', 'CLEARSCREEN', 'CS', 'PENDOWN', 'PD', 'PENUP', 'PU', 'SETPENCOLOR', 'SETPC', 'SETPENSIZE', 'TO', 'MAKE', 'RUN', 'REPEAT', 'IF', 'IFELSE', 'STOP', 'GOTO', 'TRUE', 'FALSE', '-', ';', identifier, integer, double",
 			"expecting: '['",
-			"expecting: 'WORD', 'LIST', 'FIRST', 'BUTFIRST', 'BF', 'LAST', 'SETITEM', 'PRINT', 'SUM', 'DIFFERENCE', 'MINUS', 'PRODUCT', 'MODULO', 'INT', 'ROUND', 'SQRT', 'POWER', 'EXP', 'AND', 'OR', 'NOT', 'FORWARD', 'FD', 'BACK', 'BK', 'LEFT', 'LF', 'RIGHT', 'RT', 'SETPOS', 'SETXY', 'SETX', 'SETY', 'SETHEADING', 'SETH', 'HOME', 'ARC', 'CLEARSCREEN', 'CS', 'PENDOWN', 'PD', 'PENUP', 'PU', 'SETPENCOLOR', 'SETPC', 'SETPENSIZE', 'TO', 'MAKE', 'REPEAT', 'IF', 'IFELSE', 'STOP', 'GOTO', 'END', ']', '}', '-', ';', ',', integer, double, EOF",
+			"expecting: 'WORD', 'LIST', 'FIRST', 'BUTFIRST', 'BF', 'LAST', 'SETITEM', 'PRINT', 'SUM', 'DIFFERENCE', 'MINUS', 'PRODUCT', 'MODULO', 'INT', 'ROUND', 'SQRT', 'POWER', 'EXP', 'AND', 'OR', 'NOT', 'FORWARD', 'FD', 'BACK', 'BK', 'LEFT', 'LF', 'RIGHT', 'RT', 'SETPOS', 'SETXY', 'SETX', 'SETY', 'SETHEADING', 'SETH', 'HOME', 'ARC', 'CLEARSCREEN', 'CS', 'PENDOWN', 'PD', 'PENUP', 'PU', 'SETPENCOLOR', 'SETPC', 'SETPENSIZE', 'TO', 'MAKE', 'RUN', 'REPEAT', 'IF', 'IFELSE', 'STOP', 'GOTO', 'END', ']', '}', '-', ';', ',', integer, double, EOF",
 			"expecting: ')', ';', identifier",
 			"expecting: ')'",
 			"expecting: ';', integer, double",
@@ -4263,7 +4262,7 @@ public class Parser
         };*/
     private static int[] errors;
 /*      {
-			0, 1, 1, 1, 1, 1, 1, 2, 3, 4, 4, 4, 4, 2, 4, 4, 4, 4, 4, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 1, 4, 4, 4, 4, 4, 6, 2, 6, 6, 6, 6, 6, 6, 7, 7, 7, 1, 1, 8, 2, 5, 5, 6, 1, 4, 9, 9, 10, 10, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 11, 1, 1, 6, 6, 6, 6, 1, 1, 4, 4, 6, 4, 2, 6, 6, 6, 4, 6, 12, 12, 12, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 4, 6, 6, 6, 6, 4, 6, 6, 6, 6, 6, 6, 13, 4, 13, 14, 13, 13, 6, 6, 15, 4, 4, 4, 6, 6, 6, 16, 6, 6, 4, 17, 18, 6, 6, 6, 6, 6, 6, 6, 6, 6, 19, 6, 20, 13, 21, 22, 23, 24, 25, 26, 27, 6, 6, 6, 6, 6, 28, 13, 13, 6, 6, 6, 10, 6, 6, 6, 
+			0, 1, 1, 1, 1, 1, 1, 2, 3, 4, 4, 4, 4, 2, 4, 4, 4, 4, 4, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 1, 4, 4, 4, 4, 4, 6, 2, 6, 6, 6, 6, 6, 6, 7, 7, 7, 1, 1, 8, 2, 5, 5, 6, 1, 4, 9, 9, 10, 10, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 11, 1, 1, 6, 6, 6, 6, 1, 1, 4, 4, 6, 4, 2, 6, 6, 6, 4, 6, 12, 12, 12, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 4, 6, 6, 6, 6, 4, 6, 6, 6, 6, 6, 6, 0, 4, 0, 13, 0, 0, 6, 6, 14, 4, 4, 4, 6, 6, 6, 15, 6, 6, 4, 16, 17, 6, 6, 6, 6, 6, 6, 6, 6, 6, 18, 6, 19, 0, 20, 21, 22, 23, 24, 25, 26, 6, 6, 6, 6, 6, 27, 0, 0, 6, 6, 6, 22, 6, 6, 6, 
         };*/
 
     static 

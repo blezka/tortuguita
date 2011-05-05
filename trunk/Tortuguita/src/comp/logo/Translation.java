@@ -11,8 +11,8 @@ class Translation extends DepthFirstAdapter
         inAListProg(node);
         if(node.getPInstructionlist() != null)
         {
-        	PPInstructionlist nodo = (PPInstructionlist)node.getPInstructionlist();
-        	
+        	AInstPInstructionlist nodo = (AInstPInstructionlist)node.getPInstructionlist();
+        	PPInstruction instrucction = nodo.getPInstruction();
         }
         outAListProg(node);
     }

@@ -102,8 +102,10 @@ Ignored Tokens
  comment , blank ;
  
 Productions
- prog 			= {list}p_instructionlist | {run}  run l_key p_instructionlist r_key semi;
- p_instructionlist = {lista} p_instruction semi p_instructionlist| {inst}p_instruction semi; 
+ prog 			= {list}p_instructionlist;
+ p_instructionlist = {lista} p_instruction semi p_instructionlist | 
+ 					{inst}p_instruction semi |
+ 					 {run}  run l_key p_instructionlist r_key semi; 
  p_instruction  = {primitives} p_primitives |
  				{comunication} p_communication |
  				{arithmetic} p_arithmetic |

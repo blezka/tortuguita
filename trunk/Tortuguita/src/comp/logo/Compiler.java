@@ -31,7 +31,7 @@ public class Compiler {
             tree.apply(new Translation());
             //Esto lo vamos a ver para el final =)
         } catch (Exception e) {
-			output += instructions + "\n\rError: ";
+			output += "\n\rError: " + instructions ;
             output += e.getMessage();
         }
 		return output;

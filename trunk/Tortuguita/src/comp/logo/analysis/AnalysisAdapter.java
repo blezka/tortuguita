@@ -74,17 +74,17 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseARunProg(ARunProg node)
-    {
-        defaultCase(node);
-    }
-
     public void caseAListaPInstructionlist(AListaPInstructionlist node)
     {
         defaultCase(node);
     }
 
     public void caseAInstPInstructionlist(AInstPInstructionlist node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseARunPInstructionlist(ARunPInstructionlist node)
     {
         defaultCase(node);
     }

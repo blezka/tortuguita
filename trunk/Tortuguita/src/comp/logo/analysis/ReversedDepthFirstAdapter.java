@@ -57,43 +57,6 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outAListProg(node);
     }
 
-    public void inARunProg(ARunProg node)
-    {
-        defaultIn(node);
-    }
-
-    public void outARunProg(ARunProg node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseARunProg(ARunProg node)
-    {
-        inARunProg(node);
-        if(node.getSemi() != null)
-        {
-            node.getSemi().apply(this);
-        }
-        if(node.getRKey() != null)
-        {
-            node.getRKey().apply(this);
-        }
-        if(node.getPInstructionlist() != null)
-        {
-            node.getPInstructionlist().apply(this);
-        }
-        if(node.getLKey() != null)
-        {
-            node.getLKey().apply(this);
-        }
-        if(node.getRun() != null)
-        {
-            node.getRun().apply(this);
-        }
-        outARunProg(node);
-    }
-
     public void inAListaPInstructionlist(AListaPInstructionlist node)
     {
         defaultIn(node);
@@ -146,6 +109,43 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
             node.getPInstruction().apply(this);
         }
         outAInstPInstructionlist(node);
+    }
+
+    public void inARunPInstructionlist(ARunPInstructionlist node)
+    {
+        defaultIn(node);
+    }
+
+    public void outARunPInstructionlist(ARunPInstructionlist node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseARunPInstructionlist(ARunPInstructionlist node)
+    {
+        inARunPInstructionlist(node);
+        if(node.getSemi() != null)
+        {
+            node.getSemi().apply(this);
+        }
+        if(node.getRKey() != null)
+        {
+            node.getRKey().apply(this);
+        }
+        if(node.getPInstructionlist() != null)
+        {
+            node.getPInstructionlist().apply(this);
+        }
+        if(node.getLKey() != null)
+        {
+            node.getLKey().apply(this);
+        }
+        if(node.getRun() != null)
+        {
+            node.getRun().apply(this);
+        }
+        outARunPInstructionlist(node);
     }
 
     public void inAPrimitivesPInstruction(APrimitivesPInstruction node)
