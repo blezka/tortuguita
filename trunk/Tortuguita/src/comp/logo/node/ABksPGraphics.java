@@ -5,16 +5,16 @@ package comp.logo.node;
 import comp.logo.analysis.*;
 
 @SuppressWarnings("nls")
-public final class ABkPGraphics extends PPGraphics
+public final class ABksPGraphics extends PPGraphics
 {
     private PPBack _pBack_;
 
-    public ABkPGraphics()
+    public ABksPGraphics()
     {
         // Constructor
     }
 
-    public ABkPGraphics(
+    public ABksPGraphics(
         @SuppressWarnings("hiding") PPBack _pBack_)
     {
         // Constructor
@@ -25,13 +25,13 @@ public final class ABkPGraphics extends PPGraphics
     @Override
     public Object clone()
     {
-        return new ABkPGraphics(
+        return new ABksPGraphics(
             cloneNode(this._pBack_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseABkPGraphics(this);
+        ((Analysis) sw).caseABksPGraphics(this);
     }
 
     public PPBack getPBack()

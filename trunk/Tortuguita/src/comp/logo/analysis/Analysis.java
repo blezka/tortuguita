@@ -45,10 +45,10 @@ public interface Analysis extends Switch
     void caseAAndPLogic(AAndPLogic node);
     void caseAOrPLogic(AOrPLogic node);
     void caseANotPLogic(ANotPLogic node);
-    void caseAFdPGraphics(AFdPGraphics node);
-    void caseABkPGraphics(ABkPGraphics node);
-    void caseALtPGraphics(ALtPGraphics node);
-    void caseARtPGraphics(ARtPGraphics node);
+    void caseAFdsPGraphics(AFdsPGraphics node);
+    void caseABksPGraphics(ABksPGraphics node);
+    void caseALtsPGraphics(ALtsPGraphics node);
+    void caseARtsPGraphics(ARtsPGraphics node);
     void caseASetposPGraphics(ASetposPGraphics node);
     void caseASetxyPGraphics(ASetxyPGraphics node);
     void caseASetxPGraphics(ASetxPGraphics node);

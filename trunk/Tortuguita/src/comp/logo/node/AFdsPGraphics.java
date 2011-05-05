@@ -5,16 +5,16 @@ package comp.logo.node;
 import comp.logo.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AFdPGraphics extends PPGraphics
+public final class AFdsPGraphics extends PPGraphics
 {
     private PPForward _pForward_;
 
-    public AFdPGraphics()
+    public AFdsPGraphics()
     {
         // Constructor
     }
 
-    public AFdPGraphics(
+    public AFdsPGraphics(
         @SuppressWarnings("hiding") PPForward _pForward_)
     {
         // Constructor
@@ -25,13 +25,13 @@ public final class AFdPGraphics extends PPGraphics
     @Override
     public Object clone()
     {
-        return new AFdPGraphics(
+        return new AFdsPGraphics(
             cloneNode(this._pForward_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAFdPGraphics(this);
+        ((Analysis) sw).caseAFdsPGraphics(this);
     }
 
     public PPForward getPForward()

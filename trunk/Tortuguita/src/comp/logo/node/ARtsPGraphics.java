@@ -5,45 +5,45 @@ package comp.logo.node;
 import comp.logo.analysis.*;
 
 @SuppressWarnings("nls")
-public final class ALtPGraphics extends PPGraphics
+public final class ARtsPGraphics extends PPGraphics
 {
-    private PPLeft _pLeft_;
+    private PPRight _pRight_;
 
-    public ALtPGraphics()
+    public ARtsPGraphics()
     {
         // Constructor
     }
 
-    public ALtPGraphics(
-        @SuppressWarnings("hiding") PPLeft _pLeft_)
+    public ARtsPGraphics(
+        @SuppressWarnings("hiding") PPRight _pRight_)
     {
         // Constructor
-        setPLeft(_pLeft_);
+        setPRight(_pRight_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new ALtPGraphics(
-            cloneNode(this._pLeft_));
+        return new ARtsPGraphics(
+            cloneNode(this._pRight_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseALtPGraphics(this);
+        ((Analysis) sw).caseARtsPGraphics(this);
     }
 
-    public PPLeft getPLeft()
+    public PPRight getPRight()
     {
-        return this._pLeft_;
+        return this._pRight_;
     }
 
-    public void setPLeft(PPLeft node)
+    public void setPRight(PPRight node)
     {
-        if(this._pLeft_ != null)
+        if(this._pRight_ != null)
         {
-            this._pLeft_.parent(null);
+            this._pRight_.parent(null);
         }
 
         if(node != null)
@@ -56,23 +56,23 @@ public final class ALtPGraphics extends PPGraphics
             node.parent(this);
         }
 
-        this._pLeft_ = node;
+        this._pRight_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._pLeft_);
+            + toString(this._pRight_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._pLeft_ == child)
+        if(this._pRight_ == child)
         {
-            this._pLeft_ = null;
+            this._pRight_ = null;
             return;
         }
 
@@ -83,9 +83,9 @@ public final class ALtPGraphics extends PPGraphics
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._pLeft_ == oldChild)
+        if(this._pRight_ == oldChild)
         {
-            setPLeft((PPLeft) newChild);
+            setPRight((PPRight) newChild);
             return;
         }
 

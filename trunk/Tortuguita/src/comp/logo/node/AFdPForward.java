@@ -8,7 +8,7 @@ import comp.logo.analysis.*;
 public final class AFdPForward extends PPForward
 {
     private TFd _fd_;
-    private PPValue _pValue_;
+    private TInteger _integer_;
 
     public AFdPForward()
     {
@@ -17,12 +17,12 @@ public final class AFdPForward extends PPForward
 
     public AFdPForward(
         @SuppressWarnings("hiding") TFd _fd_,
-        @SuppressWarnings("hiding") PPValue _pValue_)
+        @SuppressWarnings("hiding") TInteger _integer_)
     {
         // Constructor
         setFd(_fd_);
 
-        setPValue(_pValue_);
+        setInteger(_integer_);
 
     }
 
@@ -31,7 +31,7 @@ public final class AFdPForward extends PPForward
     {
         return new AFdPForward(
             cloneNode(this._fd_),
-            cloneNode(this._pValue_));
+            cloneNode(this._integer_));
     }
 
     public void apply(Switch sw)
@@ -64,16 +64,16 @@ public final class AFdPForward extends PPForward
         this._fd_ = node;
     }
 
-    public PPValue getPValue()
+    public TInteger getInteger()
     {
-        return this._pValue_;
+        return this._integer_;
     }
 
-    public void setPValue(PPValue node)
+    public void setInteger(TInteger node)
     {
-        if(this._pValue_ != null)
+        if(this._integer_ != null)
         {
-            this._pValue_.parent(null);
+            this._integer_.parent(null);
         }
 
         if(node != null)
@@ -86,7 +86,7 @@ public final class AFdPForward extends PPForward
             node.parent(this);
         }
 
-        this._pValue_ = node;
+        this._integer_ = node;
     }
 
     @Override
@@ -94,7 +94,7 @@ public final class AFdPForward extends PPForward
     {
         return ""
             + toString(this._fd_)
-            + toString(this._pValue_);
+            + toString(this._integer_);
     }
 
     @Override
@@ -107,9 +107,9 @@ public final class AFdPForward extends PPForward
             return;
         }
 
-        if(this._pValue_ == child)
+        if(this._integer_ == child)
         {
-            this._pValue_ = null;
+            this._integer_ = null;
             return;
         }
 
@@ -126,9 +126,9 @@ public final class AFdPForward extends PPForward
             return;
         }
 
-        if(this._pValue_ == oldChild)
+        if(this._integer_ == oldChild)
         {
-            setPValue((PPValue) newChild);
+            setInteger((TInteger) newChild);
             return;
         }
 
