@@ -8,8 +8,8 @@ import comp.logo.analysis.*;
 public final class APSetxy extends PPSetxy
 {
     private TSetxy _setxy_;
-    private PPValue _base_;
-    private PPValue _exp_;
+    private TInteger _base_;
+    private TInteger _exp_;
 
     public APSetxy()
     {
@@ -18,8 +18,8 @@ public final class APSetxy extends PPSetxy
 
     public APSetxy(
         @SuppressWarnings("hiding") TSetxy _setxy_,
-        @SuppressWarnings("hiding") PPValue _base_,
-        @SuppressWarnings("hiding") PPValue _exp_)
+        @SuppressWarnings("hiding") TInteger _base_,
+        @SuppressWarnings("hiding") TInteger _exp_)
     {
         // Constructor
         setSetxy(_setxy_);
@@ -69,12 +69,12 @@ public final class APSetxy extends PPSetxy
         this._setxy_ = node;
     }
 
-    public PPValue getBase()
+    public TInteger getBase()
     {
         return this._base_;
     }
 
-    public void setBase(PPValue node)
+    public void setBase(TInteger node)
     {
         if(this._base_ != null)
         {
@@ -94,12 +94,12 @@ public final class APSetxy extends PPSetxy
         this._base_ = node;
     }
 
-    public PPValue getExp()
+    public TInteger getExp()
     {
         return this._exp_;
     }
 
-    public void setExp(PPValue node)
+    public void setExp(TInteger node)
     {
         if(this._exp_ != null)
         {
@@ -165,13 +165,13 @@ public final class APSetxy extends PPSetxy
 
         if(this._base_ == oldChild)
         {
-            setBase((PPValue) newChild);
+            setBase((TInteger) newChild);
             return;
         }
 
         if(this._exp_ == oldChild)
         {
-            setExp((PPValue) newChild);
+            setExp((TInteger) newChild);
             return;
         }
 

@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import javax.swing.ImageIcon;
 import java.awt.event.*;
+import java.awt.geom.AffineTransform;
 
 public class Tortuguita extends JFrame
 {
@@ -52,7 +53,6 @@ class panelTuga extends JPanel
 {
 	private Image tuga;
 	myPoint posActual;
-	myPoint posFutur;
 	public panelTuga()
 	{
 		super();
@@ -60,13 +60,34 @@ class panelTuga extends JPanel
 		this.setLayout(null);
 		this.setLocation(0,0);
 		tuga = this.getToolkit().getImage("src/turti.png");
-		posActual = new myPoint(375,200);
-		posFutur = new myPoint(posActual.X(), posActual.Y());
+		posActual = Helper.add(new myPoint(375,200));
 	}
 	public void paint(Graphics g)
 	{
-		g.drawLine(posActual.X(), posActual.Y(), posFutur.X(), posFutur.Y());
-		g.drawImage(tuga,(int)(posFutur.getX()-tuga.getWidth(this)/2),(int)(posFutur.getY()-tuga.getWidth(this)/2),this);
+		   super.paintComponent(g);
+		     Graphics2D g2d = (Graphics2D)g;
+		     AffineTransform origXform = g2d.getTransform();
+		     AffineTransform newXform = (AffineTransform)(origXform.clone());
+		     //center of rotation is center of the panel
+		     int xRot = this.getWidth()/2;
+		     int yRot = this.getHeight()/2;
+		     newXform.rotate(Math.toRadians(Helper.getAngle()), xRot, yRot);
+		     g2d.setTransform(newXform);
+		     //draw image centered in panel
+//		     int x = (getWidth() - tuga.getWidth(this))/2;
+//		     int y = (getHeight() - tuga.getHeight(this))/2;
+//		     g2d.drawImage(tuga, x, y, this);
+		     
+			for (int i = 0 ; i < Helper.getPuntos().size(); i++)
+				{
+					myPoint siguiente = Helper.getPuntos().get(i);
+					g2d.drawLine(posActual.X(), posActual.Y(), siguiente.X(), siguiente.Y());
+					posActual = siguiente;
+				}
+			g2d.drawImage(tuga,(int)(posActual.getX()-tuga.getWidth(this)/2),(int)(posActual.getY()-tuga.getWidth(this)/2),this);
+		
+		     
+		     g2d.setTransform(origXform);
 	}
 	public void update(Graphics g)
 	{
@@ -74,17 +95,7 @@ class panelTuga extends JPanel
 	}
 	
 }
-class myPoint extends Point
-{
-	public myPoint(int x, int y)
-	{
-		super(x,y);
-	}
-	public int X() {return (int)super.getX();}
-	public int Y() {return (int)super.getY();}
-	public String toString()
-	{return "[x="+getX()+",y="+getY()+"]";}
-}
+
 class myKey implements KeyListener
 {
 	Tortuguita t;
@@ -99,11 +110,12 @@ class myKey implements KeyListener
 		{
 			t.command.setText("");	
 		}
+		t.repaint();
 	}
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_ENTER )
 		{			
-			t.history.setText(t.history.getText()+"\n\r"+Compiler.Compile(t.command.getText()));
+			t.history.setText(t.history.getText()+"\n\r"+Compiler.Compile(t.command.getText().toUpperCase()));
 		}
 	}
 	public void keyTyped(KeyEvent e) {}	

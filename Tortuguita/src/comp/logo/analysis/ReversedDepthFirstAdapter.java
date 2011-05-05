@@ -757,88 +757,88 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outANotPLogic(node);
     }
 
-    public void inAFdPGraphics(AFdPGraphics node)
+    public void inAFdsPGraphics(AFdsPGraphics node)
     {
         defaultIn(node);
     }
 
-    public void outAFdPGraphics(AFdPGraphics node)
+    public void outAFdsPGraphics(AFdsPGraphics node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAFdPGraphics(AFdPGraphics node)
+    public void caseAFdsPGraphics(AFdsPGraphics node)
     {
-        inAFdPGraphics(node);
+        inAFdsPGraphics(node);
         if(node.getPForward() != null)
         {
             node.getPForward().apply(this);
         }
-        outAFdPGraphics(node);
+        outAFdsPGraphics(node);
     }
 
-    public void inABkPGraphics(ABkPGraphics node)
+    public void inABksPGraphics(ABksPGraphics node)
     {
         defaultIn(node);
     }
 
-    public void outABkPGraphics(ABkPGraphics node)
+    public void outABksPGraphics(ABksPGraphics node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseABkPGraphics(ABkPGraphics node)
+    public void caseABksPGraphics(ABksPGraphics node)
     {
-        inABkPGraphics(node);
+        inABksPGraphics(node);
         if(node.getPBack() != null)
         {
             node.getPBack().apply(this);
         }
-        outABkPGraphics(node);
+        outABksPGraphics(node);
     }
 
-    public void inALtPGraphics(ALtPGraphics node)
+    public void inALtsPGraphics(ALtsPGraphics node)
     {
         defaultIn(node);
     }
 
-    public void outALtPGraphics(ALtPGraphics node)
+    public void outALtsPGraphics(ALtsPGraphics node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseALtPGraphics(ALtPGraphics node)
+    public void caseALtsPGraphics(ALtsPGraphics node)
     {
-        inALtPGraphics(node);
+        inALtsPGraphics(node);
         if(node.getPLeft() != null)
         {
             node.getPLeft().apply(this);
         }
-        outALtPGraphics(node);
+        outALtsPGraphics(node);
     }
 
-    public void inARtPGraphics(ARtPGraphics node)
+    public void inARtsPGraphics(ARtsPGraphics node)
     {
         defaultIn(node);
     }
 
-    public void outARtPGraphics(ARtPGraphics node)
+    public void outARtsPGraphics(ARtsPGraphics node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseARtPGraphics(ARtPGraphics node)
+    public void caseARtsPGraphics(ARtsPGraphics node)
     {
-        inARtPGraphics(node);
+        inARtsPGraphics(node);
         if(node.getPRight() != null)
         {
             node.getPRight().apply(this);
         }
-        outARtPGraphics(node);
+        outARtsPGraphics(node);
     }
 
     public void inASetposPGraphics(ASetposPGraphics node)
@@ -1952,9 +1952,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseAForwardPForward(AForwardPForward node)
     {
         inAForwardPForward(node);
-        if(node.getPValue() != null)
+        if(node.getInteger() != null)
         {
-            node.getPValue().apply(this);
+            node.getInteger().apply(this);
         }
         if(node.getForward() != null)
         {
@@ -1977,9 +1977,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseAFdPForward(AFdPForward node)
     {
         inAFdPForward(node);
-        if(node.getPValue() != null)
+        if(node.getInteger() != null)
         {
-            node.getPValue().apply(this);
+            node.getInteger().apply(this);
         }
         if(node.getFd() != null)
         {
@@ -2002,9 +2002,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseABackPBack(ABackPBack node)
     {
         inABackPBack(node);
-        if(node.getPValue() != null)
+        if(node.getInteger() != null)
         {
-            node.getPValue().apply(this);
+            node.getInteger().apply(this);
         }
         if(node.getBack() != null)
         {
@@ -2027,9 +2027,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseABkPBack(ABkPBack node)
     {
         inABkPBack(node);
-        if(node.getPValue() != null)
+        if(node.getInteger() != null)
         {
-            node.getPValue().apply(this);
+            node.getInteger().apply(this);
         }
         if(node.getBk() != null)
         {
@@ -2052,9 +2052,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseALeftPLeft(ALeftPLeft node)
     {
         inALeftPLeft(node);
-        if(node.getPValue() != null)
+        if(node.getInteger() != null)
         {
-            node.getPValue().apply(this);
+            node.getInteger().apply(this);
         }
         if(node.getLeft() != null)
         {
@@ -2077,9 +2077,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseALtPLeft(ALtPLeft node)
     {
         inALtPLeft(node);
-        if(node.getPValue() != null)
+        if(node.getInteger() != null)
         {
-            node.getPValue().apply(this);
+            node.getInteger().apply(this);
         }
         if(node.getLf() != null)
         {
@@ -2102,9 +2102,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseARightPRight(ARightPRight node)
     {
         inARightPRight(node);
-        if(node.getPValue() != null)
+        if(node.getInteger() != null)
         {
-            node.getPValue().apply(this);
+            node.getInteger().apply(this);
         }
         if(node.getRight() != null)
         {
@@ -2127,9 +2127,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseARtPRight(ARtPRight node)
     {
         inARtPRight(node);
-        if(node.getPValue() != null)
+        if(node.getInteger() != null)
         {
-            node.getPValue().apply(this);
+            node.getInteger().apply(this);
         }
         if(node.getRt() != null)
         {
@@ -2206,9 +2206,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseAPSetx(APSetx node)
     {
         inAPSetx(node);
-        if(node.getPValue() != null)
+        if(node.getInteger() != null)
         {
-            node.getPValue().apply(this);
+            node.getInteger().apply(this);
         }
         if(node.getSetx() != null)
         {
@@ -2231,9 +2231,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseAPSety(APSety node)
     {
         inAPSety(node);
-        if(node.getPValue() != null)
+        if(node.getInteger() != null)
         {
-            node.getPValue().apply(this);
+            node.getInteger().apply(this);
         }
         if(node.getSety() != null)
         {
@@ -2256,9 +2256,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseASetheadingPSetheading(ASetheadingPSetheading node)
     {
         inASetheadingPSetheading(node);
-        if(node.getPValue() != null)
+        if(node.getInteger() != null)
         {
-            node.getPValue().apply(this);
+            node.getInteger().apply(this);
         }
         if(node.getSetheading() != null)
         {
@@ -2281,9 +2281,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseASethPSetheading(ASethPSetheading node)
     {
         inASethPSetheading(node);
-        if(node.getPValue() != null)
+        if(node.getInteger() != null)
         {
-            node.getPValue().apply(this);
+            node.getInteger().apply(this);
         }
         if(node.getSeth() != null)
         {

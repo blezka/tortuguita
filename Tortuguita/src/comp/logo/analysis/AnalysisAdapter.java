@@ -234,22 +234,22 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseAFdPGraphics(AFdPGraphics node)
+    public void caseAFdsPGraphics(AFdsPGraphics node)
     {
         defaultCase(node);
     }
 
-    public void caseABkPGraphics(ABkPGraphics node)
+    public void caseABksPGraphics(ABksPGraphics node)
     {
         defaultCase(node);
     }
 
-    public void caseALtPGraphics(ALtPGraphics node)
+    public void caseALtsPGraphics(ALtsPGraphics node)
     {
         defaultCase(node);
     }
 
-    public void caseARtPGraphics(ARtPGraphics node)
+    public void caseARtsPGraphics(ARtsPGraphics node)
     {
         defaultCase(node);
     }

@@ -373,25 +373,25 @@ public class Parser
 			push(goTo(8), list, false);
 		    }
 		    break;
-                    case 33: /* reduce AFdPGraphics */
+                    case 33: /* reduce AFdsPGraphics */
 		    {
 			ArrayList list = new33();
 			push(goTo(9), list, false);
 		    }
 		    break;
-                    case 34: /* reduce ABkPGraphics */
+                    case 34: /* reduce ABksPGraphics */
 		    {
 			ArrayList list = new34();
 			push(goTo(9), list, false);
 		    }
 		    break;
-                    case 35: /* reduce ALtPGraphics */
+                    case 35: /* reduce ALtsPGraphics */
 		    {
 			ArrayList list = new35();
 			push(goTo(9), list, false);
 		    }
 		    break;
-                    case 36: /* reduce ARtPGraphics */
+                    case 36: /* reduce ARtsPGraphics */
 		    {
 			ArrayList list = new36();
 			push(goTo(9), list, false);
@@ -1674,7 +1674,7 @@ public class Parser
 
 
     @SuppressWarnings("unchecked")
-    ArrayList new33() /* reduce AFdPGraphics */
+    ArrayList new33() /* reduce AFdsPGraphics */
     {
         @SuppressWarnings("hiding") ArrayList nodeList = new ArrayList();
 
@@ -1685,7 +1685,7 @@ public class Parser
         PPForward ppforwardNode2;
         ppforwardNode2 = (PPForward)nodeArrayList1.get(0);
 
-        ppgraphicsNode1 = new AFdPGraphics(ppforwardNode2);
+        ppgraphicsNode1 = new AFdsPGraphics(ppforwardNode2);
         }
 	nodeList.add(ppgraphicsNode1);
         return nodeList;
@@ -1694,7 +1694,7 @@ public class Parser
 
 
     @SuppressWarnings("unchecked")
-    ArrayList new34() /* reduce ABkPGraphics */
+    ArrayList new34() /* reduce ABksPGraphics */
     {
         @SuppressWarnings("hiding") ArrayList nodeList = new ArrayList();
 
@@ -1705,7 +1705,7 @@ public class Parser
         PPBack ppbackNode2;
         ppbackNode2 = (PPBack)nodeArrayList1.get(0);
 
-        ppgraphicsNode1 = new ABkPGraphics(ppbackNode2);
+        ppgraphicsNode1 = new ABksPGraphics(ppbackNode2);
         }
 	nodeList.add(ppgraphicsNode1);
         return nodeList;
@@ -1714,7 +1714,7 @@ public class Parser
 
 
     @SuppressWarnings("unchecked")
-    ArrayList new35() /* reduce ALtPGraphics */
+    ArrayList new35() /* reduce ALtsPGraphics */
     {
         @SuppressWarnings("hiding") ArrayList nodeList = new ArrayList();
 
@@ -1725,7 +1725,7 @@ public class Parser
         PPLeft ppleftNode2;
         ppleftNode2 = (PPLeft)nodeArrayList1.get(0);
 
-        ppgraphicsNode1 = new ALtPGraphics(ppleftNode2);
+        ppgraphicsNode1 = new ALtsPGraphics(ppleftNode2);
         }
 	nodeList.add(ppgraphicsNode1);
         return nodeList;
@@ -1734,7 +1734,7 @@ public class Parser
 
 
     @SuppressWarnings("unchecked")
-    ArrayList new36() /* reduce ARtPGraphics */
+    ArrayList new36() /* reduce ARtsPGraphics */
     {
         @SuppressWarnings("hiding") ArrayList nodeList = new ArrayList();
 
@@ -1745,7 +1745,7 @@ public class Parser
         PPRight pprightNode2;
         pprightNode2 = (PPRight)nodeArrayList1.get(0);
 
-        ppgraphicsNode1 = new ARtPGraphics(pprightNode2);
+        ppgraphicsNode1 = new ARtsPGraphics(pprightNode2);
         }
 	nodeList.add(ppgraphicsNode1);
         return nodeList;
@@ -2778,11 +2778,11 @@ public class Parser
         {
             // Block
         TForward tforwardNode2;
-        PPValue ppvalueNode3;
+        TInteger tintegerNode3;
         tforwardNode2 = (TForward)nodeArrayList1.get(0);
-        ppvalueNode3 = (PPValue)nodeArrayList2.get(0);
+        tintegerNode3 = (TInteger)nodeArrayList2.get(0);
 
-        ppforwardNode1 = new AForwardPForward(tforwardNode2, ppvalueNode3);
+        ppforwardNode1 = new AForwardPForward(tforwardNode2, tintegerNode3);
         }
 	nodeList.add(ppforwardNode1);
         return nodeList;
@@ -2801,11 +2801,11 @@ public class Parser
         {
             // Block
         TFd tfdNode2;
-        PPValue ppvalueNode3;
+        TInteger tintegerNode3;
         tfdNode2 = (TFd)nodeArrayList1.get(0);
-        ppvalueNode3 = (PPValue)nodeArrayList2.get(0);
+        tintegerNode3 = (TInteger)nodeArrayList2.get(0);
 
-        ppforwardNode1 = new AFdPForward(tfdNode2, ppvalueNode3);
+        ppforwardNode1 = new AFdPForward(tfdNode2, tintegerNode3);
         }
 	nodeList.add(ppforwardNode1);
         return nodeList;
@@ -2824,11 +2824,11 @@ public class Parser
         {
             // Block
         TBack tbackNode2;
-        PPValue ppvalueNode3;
+        TInteger tintegerNode3;
         tbackNode2 = (TBack)nodeArrayList1.get(0);
-        ppvalueNode3 = (PPValue)nodeArrayList2.get(0);
+        tintegerNode3 = (TInteger)nodeArrayList2.get(0);
 
-        ppbackNode1 = new ABackPBack(tbackNode2, ppvalueNode3);
+        ppbackNode1 = new ABackPBack(tbackNode2, tintegerNode3);
         }
 	nodeList.add(ppbackNode1);
         return nodeList;
@@ -2847,11 +2847,11 @@ public class Parser
         {
             // Block
         TBk tbkNode2;
-        PPValue ppvalueNode3;
+        TInteger tintegerNode3;
         tbkNode2 = (TBk)nodeArrayList1.get(0);
-        ppvalueNode3 = (PPValue)nodeArrayList2.get(0);
+        tintegerNode3 = (TInteger)nodeArrayList2.get(0);
 
-        ppbackNode1 = new ABkPBack(tbkNode2, ppvalueNode3);
+        ppbackNode1 = new ABkPBack(tbkNode2, tintegerNode3);
         }
 	nodeList.add(ppbackNode1);
         return nodeList;
@@ -2870,11 +2870,11 @@ public class Parser
         {
             // Block
         TLeft tleftNode2;
-        PPValue ppvalueNode3;
+        TInteger tintegerNode3;
         tleftNode2 = (TLeft)nodeArrayList1.get(0);
-        ppvalueNode3 = (PPValue)nodeArrayList2.get(0);
+        tintegerNode3 = (TInteger)nodeArrayList2.get(0);
 
-        ppleftNode1 = new ALeftPLeft(tleftNode2, ppvalueNode3);
+        ppleftNode1 = new ALeftPLeft(tleftNode2, tintegerNode3);
         }
 	nodeList.add(ppleftNode1);
         return nodeList;
@@ -2893,11 +2893,11 @@ public class Parser
         {
             // Block
         TLf tlfNode2;
-        PPValue ppvalueNode3;
+        TInteger tintegerNode3;
         tlfNode2 = (TLf)nodeArrayList1.get(0);
-        ppvalueNode3 = (PPValue)nodeArrayList2.get(0);
+        tintegerNode3 = (TInteger)nodeArrayList2.get(0);
 
-        ppleftNode1 = new ALtPLeft(tlfNode2, ppvalueNode3);
+        ppleftNode1 = new ALtPLeft(tlfNode2, tintegerNode3);
         }
 	nodeList.add(ppleftNode1);
         return nodeList;
@@ -2916,11 +2916,11 @@ public class Parser
         {
             // Block
         TRight trightNode2;
-        PPValue ppvalueNode3;
+        TInteger tintegerNode3;
         trightNode2 = (TRight)nodeArrayList1.get(0);
-        ppvalueNode3 = (PPValue)nodeArrayList2.get(0);
+        tintegerNode3 = (TInteger)nodeArrayList2.get(0);
 
-        pprightNode1 = new ARightPRight(trightNode2, ppvalueNode3);
+        pprightNode1 = new ARightPRight(trightNode2, tintegerNode3);
         }
 	nodeList.add(pprightNode1);
         return nodeList;
@@ -2939,11 +2939,11 @@ public class Parser
         {
             // Block
         TRt trtNode2;
-        PPValue ppvalueNode3;
+        TInteger tintegerNode3;
         trtNode2 = (TRt)nodeArrayList1.get(0);
-        ppvalueNode3 = (PPValue)nodeArrayList2.get(0);
+        tintegerNode3 = (TInteger)nodeArrayList2.get(0);
 
-        pprightNode1 = new ARtPRight(trtNode2, ppvalueNode3);
+        pprightNode1 = new ARtPRight(trtNode2, tintegerNode3);
         }
 	nodeList.add(pprightNode1);
         return nodeList;
@@ -2986,13 +2986,13 @@ public class Parser
         {
             // Block
         TSetxy tsetxyNode2;
-        PPValue ppvalueNode3;
-        PPValue ppvalueNode4;
+        TInteger tintegerNode3;
+        TInteger tintegerNode4;
         tsetxyNode2 = (TSetxy)nodeArrayList1.get(0);
-        ppvalueNode3 = (PPValue)nodeArrayList2.get(0);
-        ppvalueNode4 = (PPValue)nodeArrayList3.get(0);
+        tintegerNode3 = (TInteger)nodeArrayList2.get(0);
+        tintegerNode4 = (TInteger)nodeArrayList3.get(0);
 
-        ppsetxyNode1 = new APSetxy(tsetxyNode2, ppvalueNode3, ppvalueNode4);
+        ppsetxyNode1 = new APSetxy(tsetxyNode2, tintegerNode3, tintegerNode4);
         }
 	nodeList.add(ppsetxyNode1);
         return nodeList;
@@ -3011,11 +3011,11 @@ public class Parser
         {
             // Block
         TSetx tsetxNode2;
-        PPValue ppvalueNode3;
+        TInteger tintegerNode3;
         tsetxNode2 = (TSetx)nodeArrayList1.get(0);
-        ppvalueNode3 = (PPValue)nodeArrayList2.get(0);
+        tintegerNode3 = (TInteger)nodeArrayList2.get(0);
 
-        ppsetxNode1 = new APSetx(tsetxNode2, ppvalueNode3);
+        ppsetxNode1 = new APSetx(tsetxNode2, tintegerNode3);
         }
 	nodeList.add(ppsetxNode1);
         return nodeList;
@@ -3034,11 +3034,11 @@ public class Parser
         {
             // Block
         TSety tsetyNode2;
-        PPValue ppvalueNode3;
+        TInteger tintegerNode3;
         tsetyNode2 = (TSety)nodeArrayList1.get(0);
-        ppvalueNode3 = (PPValue)nodeArrayList2.get(0);
+        tintegerNode3 = (TInteger)nodeArrayList2.get(0);
 
-        ppsetyNode1 = new APSety(tsetyNode2, ppvalueNode3);
+        ppsetyNode1 = new APSety(tsetyNode2, tintegerNode3);
         }
 	nodeList.add(ppsetyNode1);
         return nodeList;
@@ -3057,11 +3057,11 @@ public class Parser
         {
             // Block
         TSetheading tsetheadingNode2;
-        PPValue ppvalueNode3;
+        TInteger tintegerNode3;
         tsetheadingNode2 = (TSetheading)nodeArrayList1.get(0);
-        ppvalueNode3 = (PPValue)nodeArrayList2.get(0);
+        tintegerNode3 = (TInteger)nodeArrayList2.get(0);
 
-        ppsetheadingNode1 = new ASetheadingPSetheading(tsetheadingNode2, ppvalueNode3);
+        ppsetheadingNode1 = new ASetheadingPSetheading(tsetheadingNode2, tintegerNode3);
         }
 	nodeList.add(ppsetheadingNode1);
         return nodeList;
@@ -3080,11 +3080,11 @@ public class Parser
         {
             // Block
         TSeth tsethNode2;
-        PPValue ppvalueNode3;
+        TInteger tintegerNode3;
         tsethNode2 = (TSeth)nodeArrayList1.get(0);
-        ppvalueNode3 = (PPValue)nodeArrayList2.get(0);
+        tintegerNode3 = (TInteger)nodeArrayList2.get(0);
 
-        ppsetheadingNode1 = new ASethPSetheading(tsethNode2, ppvalueNode3);
+        ppsetheadingNode1 = new ASethPSetheading(tsethNode2, tintegerNode3);
         }
 	nodeList.add(ppsetheadingNode1);
         return nodeList;
@@ -3967,20 +3967,20 @@ public class Parser
 			{{-1, ERROR, 19}, {59, SHIFT, 133}, {60, SHIFT, 134}, {73, SHIFT, 135}, },
 			{{-1, ERROR, 20}, {59, SHIFT, 133}, {60, SHIFT, 134}, {73, SHIFT, 135}, },
 			{{-1, ERROR, 21}, {59, SHIFT, 133}, {60, SHIFT, 134}, {73, SHIFT, 135}, },
-			{{-1, ERROR, 22}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
-			{{-1, ERROR, 23}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
-			{{-1, ERROR, 24}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
-			{{-1, ERROR, 25}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
-			{{-1, ERROR, 26}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
-			{{-1, ERROR, 27}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
-			{{-1, ERROR, 28}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
-			{{-1, ERROR, 29}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
+			{{-1, ERROR, 22}, {74, SHIFT, 139}, },
+			{{-1, ERROR, 23}, {74, SHIFT, 140}, },
+			{{-1, ERROR, 24}, {74, SHIFT, 141}, },
+			{{-1, ERROR, 25}, {74, SHIFT, 142}, },
+			{{-1, ERROR, 26}, {74, SHIFT, 143}, },
+			{{-1, ERROR, 27}, {74, SHIFT, 144}, },
+			{{-1, ERROR, 28}, {74, SHIFT, 145}, },
+			{{-1, ERROR, 29}, {74, SHIFT, 146}, },
 			{{-1, ERROR, 30}, {73, SHIFT, 147}, },
-			{{-1, ERROR, 31}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
-			{{-1, ERROR, 32}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
-			{{-1, ERROR, 33}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
-			{{-1, ERROR, 34}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
-			{{-1, ERROR, 35}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
+			{{-1, ERROR, 31}, {74, SHIFT, 148}, },
+			{{-1, ERROR, 32}, {74, SHIFT, 149}, },
+			{{-1, ERROR, 33}, {74, SHIFT, 150}, },
+			{{-1, ERROR, 34}, {74, SHIFT, 151}, },
+			{{-1, ERROR, 35}, {74, SHIFT, 152}, },
 			{{-1, REDUCE, 96}, },
 			{{-1, ERROR, 37}, {74, SHIFT, 153}, },
 			{{-1, REDUCE, 98}, },
@@ -4093,7 +4093,7 @@ public class Parser
 			{{-1, REDUCE, 88}, },
 			{{-1, REDUCE, 89}, },
 			{{-1, REDUCE, 90}, },
-			{{-1, ERROR, 148}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
+			{{-1, ERROR, 148}, {74, SHIFT, 188}, },
 			{{-1, REDUCE, 92}, },
 			{{-1, REDUCE, 93}, },
 			{{-1, REDUCE, 94}, },
@@ -4221,7 +4221,7 @@ public class Parser
 			{{-1, 112}, },
 			{{-1, 113}, },
 			{{-1, 176}, {116, 177}, {122, 179}, {175, 200}, },
-			{{-1, 114}, {9, 123}, {10, 124}, {11, 125}, {12, 126}, {14, 128}, {15, 129}, {16, 130}, {17, 131}, {18, 132}, {22, 139}, {23, 140}, {24, 141}, {25, 142}, {26, 143}, {27, 144}, {28, 145}, {29, 146}, {31, 148}, {32, 149}, {33, 150}, {34, 151}, {35, 152}, {55, 167}, {123, 180}, {124, 180}, {126, 180}, {131, 185}, {148, 188}, {153, 189}, {161, 191}, {169, 197}, {170, 198}, {171, 199}, {178, 201}, {180, 180}, },
+			{{-1, 114}, {9, 123}, {10, 124}, {11, 125}, {12, 126}, {14, 128}, {15, 129}, {16, 130}, {17, 131}, {18, 132}, {55, 167}, {123, 180}, {124, 180}, {126, 180}, {131, 185}, {153, 189}, {161, 191}, {169, 197}, {170, 198}, {171, 199}, {178, 201}, {180, 180}, },
 			{{-1, 181}, {124, 182}, {126, 183}, {180, 203}, },
 			{{-1, 172}, {197, 209}, },
 			{{-1, 173}, {198, 210}, },
@@ -4262,7 +4262,7 @@ public class Parser
         };*/
     private static int[] errors;
 /*      {
-			0, 1, 1, 1, 1, 1, 1, 2, 3, 4, 4, 4, 4, 2, 4, 4, 4, 4, 4, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 1, 4, 4, 4, 4, 4, 6, 2, 6, 6, 6, 6, 6, 6, 7, 7, 7, 1, 1, 8, 2, 5, 5, 6, 1, 4, 9, 9, 10, 10, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 11, 1, 1, 6, 6, 6, 6, 1, 1, 4, 4, 6, 4, 2, 6, 6, 6, 4, 6, 12, 12, 12, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 4, 6, 6, 6, 6, 4, 6, 6, 6, 6, 6, 6, 0, 4, 0, 13, 0, 0, 6, 6, 14, 4, 4, 4, 6, 6, 6, 15, 6, 6, 4, 16, 17, 6, 6, 6, 6, 6, 6, 6, 6, 6, 18, 6, 19, 0, 20, 21, 22, 23, 24, 25, 26, 6, 6, 6, 6, 6, 27, 0, 0, 6, 6, 6, 22, 6, 6, 6, 
+			0, 1, 1, 1, 1, 1, 1, 2, 3, 4, 4, 4, 4, 2, 4, 4, 4, 4, 4, 5, 5, 5, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 6, 2, 6, 6, 6, 6, 6, 6, 7, 7, 7, 1, 1, 8, 2, 5, 5, 6, 1, 4, 9, 9, 10, 10, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 11, 1, 1, 6, 6, 6, 6, 1, 1, 4, 4, 6, 4, 2, 6, 6, 6, 4, 6, 12, 12, 12, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 2, 6, 6, 6, 6, 4, 6, 6, 6, 6, 6, 6, 0, 4, 0, 13, 0, 0, 6, 6, 14, 4, 4, 4, 6, 6, 6, 15, 6, 6, 4, 16, 17, 6, 6, 6, 6, 6, 6, 6, 6, 6, 18, 6, 19, 0, 20, 21, 22, 23, 24, 25, 26, 6, 6, 6, 6, 6, 27, 0, 0, 6, 6, 6, 22, 6, 6, 6, 
         };*/
 
     static 

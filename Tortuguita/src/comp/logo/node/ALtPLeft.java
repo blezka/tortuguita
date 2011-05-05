@@ -8,7 +8,7 @@ import comp.logo.analysis.*;
 public final class ALtPLeft extends PPLeft
 {
     private TLf _lf_;
-    private PPValue _pValue_;
+    private TInteger _integer_;
 
     public ALtPLeft()
     {
@@ -17,12 +17,12 @@ public final class ALtPLeft extends PPLeft
 
     public ALtPLeft(
         @SuppressWarnings("hiding") TLf _lf_,
-        @SuppressWarnings("hiding") PPValue _pValue_)
+        @SuppressWarnings("hiding") TInteger _integer_)
     {
         // Constructor
         setLf(_lf_);
 
-        setPValue(_pValue_);
+        setInteger(_integer_);
 
     }
 
@@ -31,7 +31,7 @@ public final class ALtPLeft extends PPLeft
     {
         return new ALtPLeft(
             cloneNode(this._lf_),
-            cloneNode(this._pValue_));
+            cloneNode(this._integer_));
     }
 
     public void apply(Switch sw)
@@ -64,16 +64,16 @@ public final class ALtPLeft extends PPLeft
         this._lf_ = node;
     }
 
-    public PPValue getPValue()
+    public TInteger getInteger()
     {
-        return this._pValue_;
+        return this._integer_;
     }
 
-    public void setPValue(PPValue node)
+    public void setInteger(TInteger node)
     {
-        if(this._pValue_ != null)
+        if(this._integer_ != null)
         {
-            this._pValue_.parent(null);
+            this._integer_.parent(null);
         }
 
         if(node != null)
@@ -86,7 +86,7 @@ public final class ALtPLeft extends PPLeft
             node.parent(this);
         }
 
-        this._pValue_ = node;
+        this._integer_ = node;
     }
 
     @Override
@@ -94,7 +94,7 @@ public final class ALtPLeft extends PPLeft
     {
         return ""
             + toString(this._lf_)
-            + toString(this._pValue_);
+            + toString(this._integer_);
     }
 
     @Override
@@ -107,9 +107,9 @@ public final class ALtPLeft extends PPLeft
             return;
         }
 
-        if(this._pValue_ == child)
+        if(this._integer_ == child)
         {
-            this._pValue_ = null;
+            this._integer_ = null;
             return;
         }
 
@@ -126,9 +126,9 @@ public final class ALtPLeft extends PPLeft
             return;
         }
 
-        if(this._pValue_ == oldChild)
+        if(this._integer_ == oldChild)
         {
-            setPValue((PPValue) newChild);
+            setInteger((TInteger) newChild);
             return;
         }
 
