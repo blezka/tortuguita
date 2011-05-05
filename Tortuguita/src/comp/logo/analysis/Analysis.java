@@ -13,9 +13,9 @@ public interface Analysis extends Switch
 
     void caseStart(Start node);
     void caseAListProg(AListProg node);
-    void caseARunProg(ARunProg node);
     void caseAListaPInstructionlist(AListaPInstructionlist node);
     void caseAInstPInstructionlist(AInstPInstructionlist node);
+    void caseARunPInstructionlist(ARunPInstructionlist node);
     void caseAPrimitivesPInstruction(APrimitivesPInstruction node);
     void caseAComunicationPInstruction(AComunicationPInstruction node);
     void caseAArithmeticPInstruction(AArithmeticPInstruction node);

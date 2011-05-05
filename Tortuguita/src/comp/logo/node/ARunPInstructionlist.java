@@ -5,7 +5,7 @@ package comp.logo.node;
 import comp.logo.analysis.*;
 
 @SuppressWarnings("nls")
-public final class ARunProg extends PProg
+public final class ARunPInstructionlist extends PPInstructionlist
 {
     private TRun _run_;
     private TLKey _lKey_;
@@ -13,12 +13,12 @@ public final class ARunProg extends PProg
     private TRKey _rKey_;
     private TSemi _semi_;
 
-    public ARunProg()
+    public ARunPInstructionlist()
     {
         // Constructor
     }
 
-    public ARunProg(
+    public ARunPInstructionlist(
         @SuppressWarnings("hiding") TRun _run_,
         @SuppressWarnings("hiding") TLKey _lKey_,
         @SuppressWarnings("hiding") PPInstructionlist _pInstructionlist_,
@@ -41,7 +41,7 @@ public final class ARunProg extends PProg
     @Override
     public Object clone()
     {
-        return new ARunProg(
+        return new ARunPInstructionlist(
             cloneNode(this._run_),
             cloneNode(this._lKey_),
             cloneNode(this._pInstructionlist_),
@@ -51,7 +51,7 @@ public final class ARunProg extends PProg
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseARunProg(this);
+        ((Analysis) sw).caseARunPInstructionlist(this);
     }
 
     public TRun getRun()
