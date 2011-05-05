@@ -7,9 +7,10 @@ import java.io.*;
 
 public class Compiler {
 
-	public static void main(String[] arguments) {
+	public static String Compile(String instructions) {
+		String output = "";
         try {
-            System.out.println("Se esta haciendo el analisis lexico y semantico =)");
+//            System.out.println("Se esta haciendo el analisis lexico y semantico =)");
 
 
             // Create a Parser instance.
@@ -17,20 +18,22 @@ public class Compiler {
                     new Parser(
                     new Lexer(
                     new PushbackReader(
-                    new FileReader("src/test.in"), 1024)));
+                    new StringReader(instructions), 1024)));
 
 
             // Parse the input.
             Start tree = p.parse();
 
-            System.out.print(tree);
+            output += tree;
 
 
             // Apply the translation.
-            //tree.apply(new Translation());
+            tree.apply(new Translation());
             //Esto lo vamos a ver para el final =)
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+			output += instructions + "\n\rError: ";
+            output += e.getMessage();
         }
+		return output;
     }
 }
