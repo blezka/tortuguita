@@ -2,10 +2,10 @@ package comp.logo;
 
 import javax.swing.*;
 import java.awt.*;
-import javax.swing.ImageIcon;
 import java.awt.event.*;
 import java.awt.geom.AffineTransform;
 
+@SuppressWarnings("serial")
 public class Tortuguita extends JFrame
 {
 	JTextArea history;
@@ -20,14 +20,14 @@ public class Tortuguita extends JFrame
 		super("Tortuguita");
 		this.setSize(800,600);
 		this.setPreferredSize(new Dimension(800,600));
-		this.setResizable(false);
+//		this.setResizable(false);
 		this.setVisible(true);
 		this.setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.getContentPane().setBackground(new Color(10,10,243));
+		this.getContentPane().setBackground(Helper.transp);
 		
 		panelTuga panT = new panelTuga();
-		panT.setBackground(new Color(10,10,243));
+		panT.setBackground(Helper.transp);
 
 		history = new JTextArea(5,10);
 		history.setBackground(new Color(190,190,190));
@@ -49,6 +49,7 @@ public class Tortuguita extends JFrame
 	}
 	
 }
+@SuppressWarnings("serial")
 class panelTuga extends JPanel
 {
 	private Image tuga;
@@ -56,38 +57,44 @@ class panelTuga extends JPanel
 	public panelTuga()
 	{
 		super();
-		setBackground(new Color(10,10,243));
+		setBackground(Helper.transp);
 		this.setLayout(null);
 		this.setLocation(0,0);
 		tuga = this.getToolkit().getImage("src/turti.png");
-		posActual = Helper.add(new myPoint(375,200));
+		posActual = Helper.add(new myPoint(Helper.centerX,Helper.centerY));
 	}
 	public void paint(Graphics g)
 	{
 		   super.paintComponent(g);
+
+		   posActual = new myPoint(Helper.centerX,Helper.centerY);
+		   for (int i = 0 ; i < Helper.getPuntos().size(); i++)
+				{
+					myPoint siguiente = Helper.getPuntos().get(i);
+			   		g.setColor(siguiente.getLinecolor());
+			   		g.drawArc(siguiente.X()-siguiente.getRadius()/2, siguiente.Y()-siguiente.getRadius()/2, siguiente.getRadius(),siguiente.getRadius(), siguiente.getAngleStart(), siguiente.getAngleEnd());
+					g.drawLine(posActual.X(), posActual.Y(), siguiente.X(), siguiente.Y());
+					posActual = siguiente;
+				}
+
 		     Graphics2D g2d = (Graphics2D)g;
 		     AffineTransform origXform = g2d.getTransform();
 		     AffineTransform newXform = (AffineTransform)(origXform.clone());
 		     //center of rotation is center of the panel
-		     int xRot = this.getWidth()/2;
-		     int yRot = this.getHeight()/2;
-		     newXform.rotate(Math.toRadians(Helper.getAngle()), xRot, yRot);
+//		     int xRot = this.getWidth()/2;
+//		     int yRot = this.getHeight()/2;
+		     //center turtle
+		     newXform.rotate(Math.toRadians(Helper.getAngle()), posActual.X(), posActual.Y());
 		     g2d.setTransform(newXform);
 		     //draw image centered in panel
 //		     int x = (getWidth() - tuga.getWidth(this))/2;
 //		     int y = (getHeight() - tuga.getHeight(this))/2;
 //		     g2d.drawImage(tuga, x, y, this);
 		     
-			for (int i = 0 ; i < Helper.getPuntos().size(); i++)
-				{
-					myPoint siguiente = Helper.getPuntos().get(i);
-					g2d.drawLine(posActual.X(), posActual.Y(), siguiente.X(), siguiente.Y());
-					posActual = siguiente;
-				}
-			g2d.drawImage(tuga,(int)(posActual.getX()-tuga.getWidth(this)/2),(int)(posActual.getY()-tuga.getWidth(this)/2),this);
-		
-		     
-		     g2d.setTransform(origXform);
+			g2d.drawImage(tuga, posActual.X()-tuga.getWidth(this)/2, posActual.Y()-tuga.getHeight(this)/2, this);		     
+		    g2d.setTransform(origXform);
+
+
 	}
 	public void update(Graphics g)
 	{

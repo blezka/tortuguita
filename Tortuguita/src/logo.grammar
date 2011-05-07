@@ -108,7 +108,7 @@ Productions
  					{inst}p_instruction semi |
  					 {run}  run l_key p_instructionlist r_key semi; 
  p_instruction  = {primitives} p_primitives |
- 				{comunication} p_communication |
+ 				{communication} p_communication |
  				{arithmetic} p_arithmetic |
  				{logic} p_logic |
  				{graphics} p_graphics |
@@ -146,7 +146,7 @@ Productions
  				{setxy} p_setxy|
  				{setx} p_setx|
  				{sety} p_sety|
- 				{seth} p_setheading|
+ 				{seths} p_setheading|
  				{home} p_home|
  				{arc} p_arc |
  				{clr} p_clearscreen |
@@ -192,12 +192,12 @@ Productions
  p_left        = {left} left integer | {lt} lf integer;                 
  p_right       = {right} right integer | {rt} rt integer; 
  p_setpos      = setpos identifier; 
- p_setxy       = setxy [base]:integer [exp]:integer; 
+ p_setxy       = setxy [x]:integer [y]:integer; 
  p_setx        = setx integer; 
  p_sety        = sety integer;
  p_setheading  =  {setheading} setheading integer | {seth} seth integer;
  p_home        =  home;
- p_arc         =  arc integer p_value;
+ p_arc         =  arc [angle]:integer [radius]:integer;
  p_clearscreen =  {clearscreen}clearscreen|{cs}cs;
  p_pendown     =  {pendown}pendown|{pd} pd;
  p_penup       =  {penup}penup|{pu}pu;

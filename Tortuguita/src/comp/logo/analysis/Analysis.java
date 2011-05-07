@@ -17,7 +17,7 @@ public interface Analysis extends Switch
     void caseAInstPInstructionlist(AInstPInstructionlist node);
     void caseARunPInstructionlist(ARunPInstructionlist node);
     void caseAPrimitivesPInstruction(APrimitivesPInstruction node);
-    void caseAComunicationPInstruction(AComunicationPInstruction node);
+    void caseACommunicationPInstruction(ACommunicationPInstruction node);
     void caseAArithmeticPInstruction(AArithmeticPInstruction node);
     void caseALogicPInstruction(ALogicPInstruction node);
     void caseAGraphicsPInstruction(AGraphicsPInstruction node);
@@ -53,7 +53,7 @@ public interface Analysis extends Switch
     void caseASetxyPGraphics(ASetxyPGraphics node);
     void caseASetxPGraphics(ASetxPGraphics node);
     void caseASetyPGraphics(ASetyPGraphics node);
-    void caseASethPGraphics(ASethPGraphics node);
+    void caseASethsPGraphics(ASethsPGraphics node);
     void caseAHomePGraphics(AHomePGraphics node);
     void caseAArcPGraphics(AArcPGraphics node);
     void caseAClrPGraphics(AClrPGraphics node);

@@ -23,13 +23,11 @@ public class Compiler {
 
             // Parse the input.
             Start tree = p.parse();
-
             output += tree;
 
 
             // Apply the translation.
             tree.apply(new Translation());
-            //Esto lo vamos a ver para el final =)
         } catch (Exception e) {
 			output += "\n\rError: " + instructions ;
             output += e.getMessage();

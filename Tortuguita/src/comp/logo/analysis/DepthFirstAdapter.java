@@ -169,25 +169,25 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outAPrimitivesPInstruction(node);
     }
 
-    public void inAComunicationPInstruction(AComunicationPInstruction node)
+    public void inACommunicationPInstruction(ACommunicationPInstruction node)
     {
         defaultIn(node);
     }
 
-    public void outAComunicationPInstruction(AComunicationPInstruction node)
+    public void outACommunicationPInstruction(ACommunicationPInstruction node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAComunicationPInstruction(AComunicationPInstruction node)
+    public void caseACommunicationPInstruction(ACommunicationPInstruction node)
     {
-        inAComunicationPInstruction(node);
+        inACommunicationPInstruction(node);
         if(node.getPCommunication() != null)
         {
             node.getPCommunication().apply(this);
         }
-        outAComunicationPInstruction(node);
+        outACommunicationPInstruction(node);
     }
 
     public void inAArithmeticPInstruction(AArithmeticPInstruction node)
@@ -925,25 +925,25 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outASetyPGraphics(node);
     }
 
-    public void inASethPGraphics(ASethPGraphics node)
+    public void inASethsPGraphics(ASethsPGraphics node)
     {
         defaultIn(node);
     }
 
-    public void outASethPGraphics(ASethPGraphics node)
+    public void outASethsPGraphics(ASethsPGraphics node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseASethPGraphics(ASethPGraphics node)
+    public void caseASethsPGraphics(ASethsPGraphics node)
     {
-        inASethPGraphics(node);
+        inASethsPGraphics(node);
         if(node.getPSetheading() != null)
         {
             node.getPSetheading().apply(this);
         }
-        outASethPGraphics(node);
+        outASethsPGraphics(node);
     }
 
     public void inAHomePGraphics(AHomePGraphics node)
@@ -2181,13 +2181,13 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getSetxy().apply(this);
         }
-        if(node.getBase() != null)
+        if(node.getX() != null)
         {
-            node.getBase().apply(this);
+            node.getX().apply(this);
         }
-        if(node.getExp() != null)
+        if(node.getY() != null)
         {
-            node.getExp().apply(this);
+            node.getY().apply(this);
         }
         outAPSetxy(node);
     }
@@ -2331,13 +2331,13 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getArc().apply(this);
         }
-        if(node.getInteger() != null)
+        if(node.getAngle() != null)
         {
-            node.getInteger().apply(this);
+            node.getAngle().apply(this);
         }
-        if(node.getPValue() != null)
+        if(node.getRadius() != null)
         {
-            node.getPValue().apply(this);
+            node.getRadius().apply(this);
         }
         outAPArc(node);
     }
