@@ -84,7 +84,7 @@ class panelTuga extends JPanel
 //		     int xRot = this.getWidth()/2;
 //		     int yRot = this.getHeight()/2;
 		     //center turtle
-		     newXform.rotate(Math.toRadians(Helper.getAngle()), posActual.X(), posActual.Y());
+		     newXform.rotate(Math.toRadians(Helper.getTurtleAngle()), posActual.X(), posActual.Y());
 		     g2d.setTransform(newXform);
 		     //draw image centered in panel
 //		     int x = (getWidth() - tuga.getWidth(this))/2;

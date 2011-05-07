@@ -9,6 +9,62 @@ class Translation extends DepthFirstAdapter
 //	primitives
 //	communication
 //	arithmetic
+    public void caseAPRound(APRound node)
+    {
+        inAPRound(node);
+        if(node.getRound() != null && node.getPValue() != null)
+        {
+            if (node.getPValue() instanceof AIntPValue )
+            	Helper.setOutput(((AIntPValue)node.getPValue()).getInteger().getText());
+            else
+            	Helper.setOutput(""+Math.round(Double.parseDouble(((ADobPValue)node.getPValue()).getDouble().getText())));
+            
+        }
+        outAPRound(node);
+    }
+    public void caseAPSqrt(APSqrt node)
+    {
+        inAPSqrt(node);
+        if(node.getSqrt() != null&&node.getPValue() != null)
+        {
+        	if (node.getPValue() instanceof AIntPValue )
+            	Helper.setOutput(""+Math.sqrt(Integer.parseInt(((AIntPValue)node.getPValue()).getInteger().getText())));
+            else
+            	Helper.setOutput(""+Math.sqrt(Double.parseDouble(((ADobPValue)node.getPValue()).getDouble().getText())));
+        }
+        outAPSqrt(node);
+    }
+    public void caseAPPower(APPower node)
+    {
+        inAPPower(node);
+        if(node.getPower() != null&&node.getBase() != null&&node.getExp() != null)
+        {
+        	if (node.getBase() instanceof AIntPValue )
+            	if (node.getExp() instanceof AIntPValue )
+                	Helper.setOutput(""+Math.pow(Double.parseDouble(((AIntPValue)node.getBase()).getInteger().getText()), Double.parseDouble(((AIntPValue)node.getExp()).getInteger().getText())));
+                else
+                	Helper.setOutput(""+Math.pow(Double.parseDouble(((AIntPValue)node.getBase()).getInteger().getText()), Double.parseDouble(((ADobPValue)node.getExp()).getDouble().getText())));
+            else
+            	if (node.getExp() instanceof AIntPValue )
+                	Helper.setOutput(""+Math.pow(Double.parseDouble(((ADobPValue)node.getBase()).getDouble().getText()), Double.parseDouble(((AIntPValue)node.getExp()).getInteger().getText())));
+                else
+                	Helper.setOutput(""+Math.pow(Double.parseDouble(((ADobPValue)node.getBase()).getDouble().getText()), Double.parseDouble(((ADobPValue)node.getExp()).getDouble().getText())));
+        	
+        }
+        outAPPower(node);
+    }
+    public void caseAPExp(APExp node)
+    {
+        inAPExp(node);
+        if(node.getExp() != null&&node.getPValue() != null)
+        {
+        	if (node.getPValue() instanceof AIntPValue )
+            	Helper.setOutput(""+Math.pow(Math.E, (Integer.parseInt(((AIntPValue)node.getPValue()).getInteger().getText()))));
+            else
+            	Helper.setOutput(""+Math.pow(Math.E, (Double.parseDouble(((ADobPValue)node.getPValue()).getDouble().getText()))));
+        }
+        outAPExp(node);
+    }
 //	logic
 //	graphics
     public void caseAFdsPGraphics(AFdsPGraphics node)
@@ -30,14 +86,14 @@ class Translation extends DepthFirstAdapter
         inABksPGraphics(node);
         if(node.getPBack() != null)
         {
-        	Helper.setAngle(180);
+        	Helper.setTurtleAngle(180);
         	Integer dist = 0;
             if (node.getPBack() instanceof ABackPBack)
             	dist = Integer.parseInt(((ABackPBack)node.getPBack()).getInteger().getText());
             else
                 dist = Integer.parseInt(((ABkPBack)node.getPBack()).getInteger().getText());
             Helper.add(dist);
-        	Helper.setAngle(180);
+        	Helper.setTurtleAngle(180);
         }
         outABksPGraphics(node);
     }
@@ -51,7 +107,7 @@ class Translation extends DepthFirstAdapter
         		degree = Integer.parseInt(((ALeftPLeft)node.getPLeft()).getInteger().getText());
         	else
         		degree = Integer.parseInt(((ALtPLeft)node.getPLeft()).getInteger().getText());
-        	Helper.setAngle(-degree);
+        	Helper.setTurtleAngle(-degree);
         }
         outALtsPGraphics(node);
     }
@@ -65,7 +121,7 @@ class Translation extends DepthFirstAdapter
         		degree = Integer.parseInt(((ARightPRight)node.getPRight()).getInteger().getText());
         	else
         		degree = Integer.parseInt(((ARtPRight)node.getPRight()).getInteger().getText());
-        	Helper.setAngle(degree);
+        	Helper.setTurtleAngle(degree);
         }
         outARtsPGraphics(node);
     }
@@ -102,9 +158,9 @@ class Translation extends DepthFirstAdapter
         if(node.getPSetheading() != null)
         {
         	if (node.getPSetheading()instanceof ASetheadingPSetheading)
-        		Helper.setAngle(-Helper.getAngle()+Integer.parseInt(((ASetheadingPSetheading)node.getPSetheading()).getInteger().getText()));
+        		Helper.setTurtleAngle(-Helper.getTurtleAngle()+Integer.parseInt(((ASetheadingPSetheading)node.getPSetheading()).getInteger().getText()));
         	else
-        		Helper.setAngle(-Helper.getAngle()+Integer.parseInt(((ASethPSetheading)node.getPSetheading()).getInteger().getText()));
+        		Helper.setTurtleAngle(-Helper.getTurtleAngle()+Integer.parseInt(((ASethPSetheading)node.getPSetheading()).getInteger().getText()));
         }
         outASethsPGraphics(node);
     }
@@ -113,7 +169,7 @@ class Translation extends DepthFirstAdapter
         inAPHome(node);
         if(node.getHome() != null)
         {
-            Helper.setAngle(-Helper.getAngle());
+            Helper.setTurtleAngle(-Helper.getTurtleAngle());
             Helper.add(new myPoint(Helper.centerX,Helper.centerY, Helper.transp));
         }
         outAPHome(node);
@@ -125,7 +181,7 @@ class Translation extends DepthFirstAdapter
         {
         	myPoint anterior = Helper.getPuntos().get(Helper.getCantPuntos()-1);
         	//radius = angle ; angle = radius;
-        	Helper.add(new myPoint(anterior.X(), anterior.Y(), Integer.parseInt(node.getAngle().getText()),Helper.getAngle(),Integer.parseInt(node.getRadius().getText())));
+        	Helper.add(new myPoint(anterior.X(), anterior.Y(), Integer.parseInt(node.getAngle().getText()),Helper.getTurtleAngle(),Integer.parseInt(node.getRadius().getText())));
         }
         outAPArc(node);
     }
@@ -135,12 +191,12 @@ class Translation extends DepthFirstAdapter
         if(node.getPClearscreen() != null)
         {
         	Helper.clearPuntos();
-        	Helper.setAngle(0);
+        	Helper.setTurtleAngle(0);
         }
         outAClrPGraphics(node);
     }
 
-    //	workspace
+//	workspace
 //  control
     public void caseAPRepeat(APRepeat node)
     {
