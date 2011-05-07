@@ -205,7 +205,7 @@ public class Parser
 			push(goTo(2), list, false);
 		    }
 		    break;
-                    case 5: /* reduce AComunicationPInstruction */
+                    case 5: /* reduce ACommunicationPInstruction */
 		    {
 			ArrayList list = new5();
 			push(goTo(2), list, false);
@@ -421,7 +421,7 @@ public class Parser
 			push(goTo(9), list, false);
 		    }
 		    break;
-                    case 41: /* reduce ASethPGraphics */
+                    case 41: /* reduce ASethsPGraphics */
 		    {
 			ArrayList list = new41();
 			push(goTo(9), list, false);
@@ -1114,7 +1114,7 @@ public class Parser
 
 
     @SuppressWarnings("unchecked")
-    ArrayList new5() /* reduce AComunicationPInstruction */
+    ArrayList new5() /* reduce ACommunicationPInstruction */
     {
         @SuppressWarnings("hiding") ArrayList nodeList = new ArrayList();
 
@@ -1125,7 +1125,7 @@ public class Parser
         PPCommunication ppcommunicationNode2;
         ppcommunicationNode2 = (PPCommunication)nodeArrayList1.get(0);
 
-        ppinstructionNode1 = new AComunicationPInstruction(ppcommunicationNode2);
+        ppinstructionNode1 = new ACommunicationPInstruction(ppcommunicationNode2);
         }
 	nodeList.add(ppinstructionNode1);
         return nodeList;
@@ -1834,7 +1834,7 @@ public class Parser
 
 
     @SuppressWarnings("unchecked")
-    ArrayList new41() /* reduce ASethPGraphics */
+    ArrayList new41() /* reduce ASethsPGraphics */
     {
         @SuppressWarnings("hiding") ArrayList nodeList = new ArrayList();
 
@@ -1845,7 +1845,7 @@ public class Parser
         PPSetheading ppsetheadingNode2;
         ppsetheadingNode2 = (PPSetheading)nodeArrayList1.get(0);
 
-        ppgraphicsNode1 = new ASethPGraphics(ppsetheadingNode2);
+        ppgraphicsNode1 = new ASethsPGraphics(ppsetheadingNode2);
         }
 	nodeList.add(ppgraphicsNode1);
         return nodeList;
@@ -3125,12 +3125,12 @@ public class Parser
             // Block
         TArc tarcNode2;
         TInteger tintegerNode3;
-        PPValue ppvalueNode4;
+        TInteger tintegerNode4;
         tarcNode2 = (TArc)nodeArrayList1.get(0);
         tintegerNode3 = (TInteger)nodeArrayList2.get(0);
-        ppvalueNode4 = (PPValue)nodeArrayList3.get(0);
+        tintegerNode4 = (TInteger)nodeArrayList3.get(0);
 
-        pparcNode1 = new APArc(tarcNode2, tintegerNode3, ppvalueNode4);
+        pparcNode1 = new APArc(tarcNode2, tintegerNode3, tintegerNode4);
         }
 	nodeList.add(pparcNode1);
         return nodeList;
@@ -4098,7 +4098,7 @@ public class Parser
 			{{-1, REDUCE, 93}, },
 			{{-1, REDUCE, 94}, },
 			{{-1, REDUCE, 95}, },
-			{{-1, ERROR, 153}, {74, SHIFT, 56}, {75, SHIFT, 57}, },
+			{{-1, ERROR, 153}, {74, SHIFT, 189}, },
 			{{-1, REDUCE, 132}, },
 			{{-1, REDUCE, 131}, },
 			{{-1, REDUCE, 104}, },
@@ -4221,7 +4221,7 @@ public class Parser
 			{{-1, 112}, },
 			{{-1, 113}, },
 			{{-1, 176}, {116, 177}, {122, 179}, {175, 200}, },
-			{{-1, 114}, {9, 123}, {10, 124}, {11, 125}, {12, 126}, {14, 128}, {15, 129}, {16, 130}, {17, 131}, {18, 132}, {55, 167}, {123, 180}, {124, 180}, {126, 180}, {131, 185}, {153, 189}, {161, 191}, {169, 197}, {170, 198}, {171, 199}, {178, 201}, {180, 180}, },
+			{{-1, 114}, {9, 123}, {10, 124}, {11, 125}, {12, 126}, {14, 128}, {15, 129}, {16, 130}, {17, 131}, {18, 132}, {55, 167}, {123, 180}, {124, 180}, {126, 180}, {131, 185}, {161, 191}, {169, 197}, {170, 198}, {171, 199}, {178, 201}, {180, 180}, },
 			{{-1, 181}, {124, 182}, {126, 183}, {180, 203}, },
 			{{-1, 172}, {197, 209}, },
 			{{-1, 173}, {198, 210}, },
@@ -4262,7 +4262,7 @@ public class Parser
         };*/
     private static int[] errors;
 /*      {
-			0, 1, 1, 1, 1, 1, 1, 2, 3, 4, 4, 4, 4, 2, 4, 4, 4, 4, 4, 5, 5, 5, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 6, 2, 6, 6, 6, 6, 6, 6, 7, 7, 7, 1, 1, 8, 2, 5, 5, 6, 1, 4, 9, 9, 10, 10, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 11, 1, 1, 6, 6, 6, 6, 1, 1, 4, 4, 6, 4, 2, 6, 6, 6, 4, 6, 12, 12, 12, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 2, 6, 6, 6, 6, 4, 6, 6, 6, 6, 6, 6, 0, 4, 0, 13, 0, 0, 6, 6, 14, 4, 4, 4, 6, 6, 6, 15, 6, 6, 4, 16, 17, 6, 6, 6, 6, 6, 6, 6, 6, 6, 18, 6, 19, 0, 20, 21, 22, 23, 24, 25, 26, 6, 6, 6, 6, 6, 27, 0, 0, 6, 6, 6, 22, 6, 6, 6, 
+			0, 1, 1, 1, 1, 1, 1, 2, 3, 4, 4, 4, 4, 2, 4, 4, 4, 4, 4, 5, 5, 5, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 6, 2, 6, 6, 6, 6, 6, 6, 7, 7, 7, 1, 1, 8, 2, 5, 5, 6, 1, 4, 9, 9, 10, 10, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 11, 1, 1, 6, 6, 6, 6, 1, 1, 4, 4, 6, 4, 2, 6, 6, 6, 4, 6, 12, 12, 12, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 2, 6, 6, 6, 6, 2, 6, 6, 6, 6, 6, 6, 0, 4, 0, 13, 0, 0, 6, 6, 14, 4, 4, 4, 6, 6, 6, 15, 6, 6, 4, 16, 17, 6, 6, 6, 6, 6, 6, 6, 6, 6, 18, 6, 19, 0, 20, 21, 22, 23, 24, 25, 26, 6, 6, 6, 6, 6, 27, 0, 0, 6, 6, 6, 22, 6, 6, 6, 
         };*/
 
     static 

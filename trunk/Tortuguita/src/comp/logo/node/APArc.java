@@ -8,8 +8,8 @@ import comp.logo.analysis.*;
 public final class APArc extends PPArc
 {
     private TArc _arc_;
-    private TInteger _integer_;
-    private PPValue _pValue_;
+    private TInteger _angle_;
+    private TInteger _radius_;
 
     public APArc()
     {
@@ -18,15 +18,15 @@ public final class APArc extends PPArc
 
     public APArc(
         @SuppressWarnings("hiding") TArc _arc_,
-        @SuppressWarnings("hiding") TInteger _integer_,
-        @SuppressWarnings("hiding") PPValue _pValue_)
+        @SuppressWarnings("hiding") TInteger _angle_,
+        @SuppressWarnings("hiding") TInteger _radius_)
     {
         // Constructor
         setArc(_arc_);
 
-        setInteger(_integer_);
+        setAngle(_angle_);
 
-        setPValue(_pValue_);
+        setRadius(_radius_);
 
     }
 
@@ -35,8 +35,8 @@ public final class APArc extends PPArc
     {
         return new APArc(
             cloneNode(this._arc_),
-            cloneNode(this._integer_),
-            cloneNode(this._pValue_));
+            cloneNode(this._angle_),
+            cloneNode(this._radius_));
     }
 
     public void apply(Switch sw)
@@ -69,16 +69,16 @@ public final class APArc extends PPArc
         this._arc_ = node;
     }
 
-    public TInteger getInteger()
+    public TInteger getAngle()
     {
-        return this._integer_;
+        return this._angle_;
     }
 
-    public void setInteger(TInteger node)
+    public void setAngle(TInteger node)
     {
-        if(this._integer_ != null)
+        if(this._angle_ != null)
         {
-            this._integer_.parent(null);
+            this._angle_.parent(null);
         }
 
         if(node != null)
@@ -91,19 +91,19 @@ public final class APArc extends PPArc
             node.parent(this);
         }
 
-        this._integer_ = node;
+        this._angle_ = node;
     }
 
-    public PPValue getPValue()
+    public TInteger getRadius()
     {
-        return this._pValue_;
+        return this._radius_;
     }
 
-    public void setPValue(PPValue node)
+    public void setRadius(TInteger node)
     {
-        if(this._pValue_ != null)
+        if(this._radius_ != null)
         {
-            this._pValue_.parent(null);
+            this._radius_.parent(null);
         }
 
         if(node != null)
@@ -116,7 +116,7 @@ public final class APArc extends PPArc
             node.parent(this);
         }
 
-        this._pValue_ = node;
+        this._radius_ = node;
     }
 
     @Override
@@ -124,8 +124,8 @@ public final class APArc extends PPArc
     {
         return ""
             + toString(this._arc_)
-            + toString(this._integer_)
-            + toString(this._pValue_);
+            + toString(this._angle_)
+            + toString(this._radius_);
     }
 
     @Override
@@ -138,15 +138,15 @@ public final class APArc extends PPArc
             return;
         }
 
-        if(this._integer_ == child)
+        if(this._angle_ == child)
         {
-            this._integer_ = null;
+            this._angle_ = null;
             return;
         }
 
-        if(this._pValue_ == child)
+        if(this._radius_ == child)
         {
-            this._pValue_ = null;
+            this._radius_ = null;
             return;
         }
 
@@ -163,15 +163,15 @@ public final class APArc extends PPArc
             return;
         }
 
-        if(this._integer_ == oldChild)
+        if(this._angle_ == oldChild)
         {
-            setInteger((TInteger) newChild);
+            setAngle((TInteger) newChild);
             return;
         }
 
-        if(this._pValue_ == oldChild)
+        if(this._radius_ == oldChild)
         {
-            setPValue((PPValue) newChild);
+            setRadius((TInteger) newChild);
             return;
         }
 

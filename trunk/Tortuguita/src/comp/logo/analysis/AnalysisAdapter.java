@@ -94,7 +94,7 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseAComunicationPInstruction(AComunicationPInstruction node)
+    public void caseACommunicationPInstruction(ACommunicationPInstruction node)
     {
         defaultCase(node);
     }
@@ -274,7 +274,7 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseASethPGraphics(ASethPGraphics node)
+    public void caseASethsPGraphics(ASethsPGraphics node)
     {
         defaultCase(node);
     }

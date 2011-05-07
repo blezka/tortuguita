@@ -8,8 +8,8 @@ import comp.logo.analysis.*;
 public final class APSetxy extends PPSetxy
 {
     private TSetxy _setxy_;
-    private TInteger _base_;
-    private TInteger _exp_;
+    private TInteger _x_;
+    private TInteger _y_;
 
     public APSetxy()
     {
@@ -18,15 +18,15 @@ public final class APSetxy extends PPSetxy
 
     public APSetxy(
         @SuppressWarnings("hiding") TSetxy _setxy_,
-        @SuppressWarnings("hiding") TInteger _base_,
-        @SuppressWarnings("hiding") TInteger _exp_)
+        @SuppressWarnings("hiding") TInteger _x_,
+        @SuppressWarnings("hiding") TInteger _y_)
     {
         // Constructor
         setSetxy(_setxy_);
 
-        setBase(_base_);
+        setX(_x_);
 
-        setExp(_exp_);
+        setY(_y_);
 
     }
 
@@ -35,8 +35,8 @@ public final class APSetxy extends PPSetxy
     {
         return new APSetxy(
             cloneNode(this._setxy_),
-            cloneNode(this._base_),
-            cloneNode(this._exp_));
+            cloneNode(this._x_),
+            cloneNode(this._y_));
     }
 
     public void apply(Switch sw)
@@ -69,16 +69,16 @@ public final class APSetxy extends PPSetxy
         this._setxy_ = node;
     }
 
-    public TInteger getBase()
+    public TInteger getX()
     {
-        return this._base_;
+        return this._x_;
     }
 
-    public void setBase(TInteger node)
+    public void setX(TInteger node)
     {
-        if(this._base_ != null)
+        if(this._x_ != null)
         {
-            this._base_.parent(null);
+            this._x_.parent(null);
         }
 
         if(node != null)
@@ -91,19 +91,19 @@ public final class APSetxy extends PPSetxy
             node.parent(this);
         }
 
-        this._base_ = node;
+        this._x_ = node;
     }
 
-    public TInteger getExp()
+    public TInteger getY()
     {
-        return this._exp_;
+        return this._y_;
     }
 
-    public void setExp(TInteger node)
+    public void setY(TInteger node)
     {
-        if(this._exp_ != null)
+        if(this._y_ != null)
         {
-            this._exp_.parent(null);
+            this._y_.parent(null);
         }
 
         if(node != null)
@@ -116,7 +116,7 @@ public final class APSetxy extends PPSetxy
             node.parent(this);
         }
 
-        this._exp_ = node;
+        this._y_ = node;
     }
 
     @Override
@@ -124,8 +124,8 @@ public final class APSetxy extends PPSetxy
     {
         return ""
             + toString(this._setxy_)
-            + toString(this._base_)
-            + toString(this._exp_);
+            + toString(this._x_)
+            + toString(this._y_);
     }
 
     @Override
@@ -138,15 +138,15 @@ public final class APSetxy extends PPSetxy
             return;
         }
 
-        if(this._base_ == child)
+        if(this._x_ == child)
         {
-            this._base_ = null;
+            this._x_ = null;
             return;
         }
 
-        if(this._exp_ == child)
+        if(this._y_ == child)
         {
-            this._exp_ = null;
+            this._y_ = null;
             return;
         }
 
@@ -163,15 +163,15 @@ public final class APSetxy extends PPSetxy
             return;
         }
 
-        if(this._base_ == oldChild)
+        if(this._x_ == oldChild)
         {
-            setBase((TInteger) newChild);
+            setX((TInteger) newChild);
             return;
         }
 
-        if(this._exp_ == oldChild)
+        if(this._y_ == oldChild)
         {
-            setExp((TInteger) newChild);
+            setY((TInteger) newChild);
             return;
         }
 
