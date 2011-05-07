@@ -7,7 +7,9 @@ public class Helper {
 	public static final int centerX = 375;
 	public static final int centerY = 200;
 	public static final Color transp = new Color(10,10,243);
-	private static int angle = 0;
+	private static int TurtleAngle = 0;
+	private static String output = "";
+	
 	private static Vector<myPoint> puntos = new Vector<myPoint>();
 	private static Hashtable<String,Object> variables = new Hashtable<String,Object>();
 	
@@ -40,20 +42,26 @@ public class Helper {
 	}
 	public static myPoint add(int dist)
 	{
-		myPoint added = new myPoint(Math.sin(Math.toRadians(180-angle))*Math.abs(dist), Math.cos(Math.toRadians(180-angle))*Math.abs(dist));
+		myPoint added = new myPoint(Math.sin(Math.toRadians(180-TurtleAngle))*Math.abs(dist), Math.cos(Math.toRadians(180-TurtleAngle))*Math.abs(dist));
 		if (puntos.size()>0)
 			puntos.add(new myPoint(puntos.get(puntos.size()-1).x+added.X(), puntos.get(puntos.size()-1).y+added.Y()));
 //		System.out.println(puntos);
 		return new myPoint(0,0);
 	}
 
-	public static int getAngle() {
-		return angle;
+	public static int getTurtleAngle() {
+		return TurtleAngle;
 	}
 
-	public static void setAngle(int angle) {
-		Helper.angle = (Helper.angle+angle)%360;
+	public static void setTurtleAngle(int angle) {
+		Helper.TurtleAngle = (Helper.TurtleAngle+angle)%360;
 //		System.out.println(Helper.angle);
+	}
+	public static String getOutput(){
+		return output;
+	}
+	public static void setOutput(String out){
+		output+=" "+out;
 	}
 
 }

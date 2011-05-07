@@ -8,7 +8,7 @@ import java.io.*;
 public class Compiler {
 
 	public static String Compile(String instructions) {
-		String output = "";
+		String output = ""; Helper.setOutput("");
         try {
 //            System.out.println("Se esta haciendo el analisis lexico y semantico =)");
 
@@ -28,6 +28,7 @@ public class Compiler {
 
             // Apply the translation.
             tree.apply(new Translation());
+            output += (Helper.getOutput().equals("")?"":"\n\r"+Helper.getOutput());
         } catch (Exception e) {
 			output += "\n\rError: " + instructions ;
             output += e.getMessage();
