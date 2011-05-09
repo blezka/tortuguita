@@ -269,6 +269,119 @@ class Translation extends DepthFirstAdapter
         		Helper.setOutput(""+-1*Double.parseDouble(((ADobPValue)node.getPValue()).getDouble().getText()));        }
         outAMinPMinus(node);
     }
+    public void caseAProdPProduct(AProdPProduct node)
+    {
+        inAProdPProduct(node);
+        if(node.getProduct() != null&&node.getPValue() != null&&node.getPValueList() != null)
+        {
+        	double prod = 0;
+        	if (node.getPValue()instanceof AIntPValue)
+        		prod = Integer.parseInt(((AIntPValue)node.getPValue()).getInteger().getText());
+        	else
+        		prod = Double.parseDouble(((ADobPValue)node.getPValue()).getDouble().getText());
+        	if (node.getPValueList()instanceof AValueListPValueList)
+        	{
+        		AValueListPValueList list = (AValueListPValueList)node.getPValueList();
+        		while (list.getPValueList() instanceof AValueListPValueList)
+        		{
+                	if (list.getPValue()instanceof AIntPValue)
+                		prod *= Integer.parseInt(((AIntPValue)list.getPValue()).getInteger().getText());
+                	else
+                		prod *= Double.parseDouble(((ADobPValue)list.getPValue()).getDouble().getText());
+        			
+        			list = (AValueListPValueList) list.getPValueList();
+        		}
+            	if (list.getPValue()instanceof AIntPValue)
+            		prod *= Integer.parseInt(((AIntPValue)list.getPValue()).getInteger().getText());
+            	else
+            		prod *= Double.parseDouble(((ADobPValue)list.getPValue()).getDouble().getText());
+
+            	if (((AValuePValueList)list.getPValueList()).getPValue() instanceof AIntPValue)
+            		prod *= Integer.parseInt(((AIntPValue)((AValuePValueList)list.getPValueList()).getPValue()).getInteger().getText());
+            	else
+            		prod *= Double.parseDouble(((ADobPValue)((AValuePValueList)list.getPValueList()).getPValue()).getDouble().getText());
+
+        	}
+        	else
+        	{
+        		if (((AValuePValueList)node.getPValueList()).getPValue() instanceof AIntPValue)
+        			prod *= Integer.parseInt(((AIntPValue)((AValuePValueList)node.getPValueList()).getPValue()).getInteger().getText());
+            	else
+            		prod *= Double.parseDouble(((ADobPValue)((AValuePValueList)node.getPValueList()).getPValue()).getDouble().getText());
+
+        	}
+        	Helper.setOutput(""+prod);
+        		
+        }
+        outAProdPProduct(node);
+    }
+    public void caseAMultPProduct(AMultPProduct node)
+    {
+        inAMultPProduct(node);
+        if(node.getPValue() != null&&node.getPMultList() != null)
+        {
+        	int prod = 1;
+        	if (node.getPValue()instanceof AIntPValue)
+        		prod *= Integer.parseInt(((AIntPValue)node.getPValue()).getInteger().getText());
+        	else
+        		prod *= Double.parseDouble(((ADobPValue)node.getPValue()).getDouble().getText());
+            if (node.getPMultList() instanceof AMultListPMultList)
+        	{
+            	AMultListPMultList list = (AMultListPMultList)node.getPMultList();
+        		while (list.getPMultList() instanceof AMultListPMultList)
+        		{
+        			if (list.getPValue()instanceof AIntPValue)
+        				prod *= Integer.parseInt(((AIntPValue)list.getPValue()).getInteger().getText());
+                	else
+                		prod *= Double.parseDouble(((ADobPValue)list.getPValue()).getDouble().getText());
+        			
+        			list = (AMultListPMultList) list.getPMultList();
+        		}
+        		if (list.getPValue()instanceof AIntPValue)
+        			prod *= Integer.parseInt(((AIntPValue)list.getPValue()).getInteger().getText());
+            	else
+            		prod *= Double.parseDouble(((ADobPValue)list.getPValue()).getDouble().getText());
+
+        		if (((AMultValPMultList)list.getPMultList()).getPValue() instanceof AIntPValue)
+        			prod *= Integer.parseInt(((AIntPValue)((AMultValPMultList)list.getPMultList()).getPValue()).getInteger().getText());
+            	else
+            		prod *= Double.parseDouble(((ADobPValue)((AMultValPMultList)list.getPMultList()).getPValue()).getDouble().getText());
+
+        	}
+            else
+        	{
+        		if (((AMultValPMultList)node.getPMultList()).getPValue() instanceof AIntPValue)
+        			prod *= Integer.parseInt(((AIntPValue)((AMultValPMultList)node.getPMultList()).getPValue()).getInteger().getText());
+            	else
+            		prod *= Double.parseDouble(((ADobPValue)((AMultValPMultList)node.getPMultList()).getPValue()).getDouble().getText());
+
+        	}
+        	Helper.setOutput(""+prod);
+        }
+        outAMultPProduct(node);
+    }
+
+    public void caseAPModulo(APModulo node)
+    {
+        inAPModulo(node);
+        if(node.getModulo() != null&&node.getDiv() != null&&node.getDivd() != null)
+        {
+        	Helper.setOutput(""+(int)(Integer.parseInt(node.getDiv().getText())%Integer.parseInt(node.getDivd().getText())));
+        }
+        outAPModulo(node);
+    }    
+    public void caseAPInt(APInt node)
+    {
+        inAPInt(node);
+        if(node.getInt() != null&&node.getPValue() != null)
+        {
+        	if (node.getPValue()instanceof AIntPValue)
+        		Helper.setOutput(""+Math.floor(Integer.parseInt(((AIntPValue)node.getPValue()).getInteger().getText())));
+        	else
+        		Helper.setOutput(""+Math.floor(Double.parseDouble(((ADobPValue)node.getPValue()).getDouble().getText())));
+        }
+        outAPInt(node);
+    }
     public void caseAPRound(APRound node)
     {
         inAPRound(node);
