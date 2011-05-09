@@ -299,17 +299,17 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseAPdPPencontrol(APdPPencontrol node)
+    public void caseAPdsPPencontrol(APdsPPencontrol node)
     {
         defaultCase(node);
     }
 
-    public void caseAPuPPencontrol(APuPPencontrol node)
+    public void caseAPusPPencontrol(APusPPencontrol node)
     {
         defaultCase(node);
     }
 
-    public void caseASetpcPPencontrol(ASetpcPPencontrol node)
+    public void caseASetpcsPPencontrol(ASetpcsPPencontrol node)
     {
         defaultCase(node);
     }

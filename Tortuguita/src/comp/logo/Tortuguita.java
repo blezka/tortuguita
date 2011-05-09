@@ -24,10 +24,10 @@ public class Tortuguita extends JFrame
 		this.setVisible(true);
 		this.setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.getContentPane().setBackground(Helper.transp);
+		this.getContentPane().setBackground(new Color(10,10,243));
 		
 		panelTuga panT = new panelTuga();
-		panT.setBackground(Helper.transp);
+		panT.setBackground(new Color(10,10,243));
 
 		history = new JTextArea(5,10);
 		history.setBackground(new Color(190,190,190));
@@ -57,7 +57,7 @@ class panelTuga extends JPanel
 	public panelTuga()
 	{
 		super();
-		setBackground(Helper.transp);
+		setBackground(new Color(10,10,243));
 		this.setLayout(null);
 		this.setLocation(0,0);
 		tuga = this.getToolkit().getImage("src/turti.png");
@@ -66,18 +66,22 @@ class panelTuga extends JPanel
 	public void paint(Graphics g)
 	{
 		   super.paintComponent(g);
+		   Graphics2D g2d = (Graphics2D)g;
 
 		   posActual = new myPoint(Helper.centerX,Helper.centerY);
 		   for (int i = 0 ; i < Helper.getPuntos().size(); i++)
 				{
 					myPoint siguiente = Helper.getPuntos().get(i);
-			   		g.setColor(siguiente.getLinecolor());
-			   		g.drawArc(siguiente.X()-siguiente.getRadius()/2, siguiente.Y()-siguiente.getRadius()/2, siguiente.getRadius(),siguiente.getRadius(), siguiente.getAngleStart(), siguiente.getAngleEnd());
-					g.drawLine(posActual.X(), posActual.Y(), siguiente.X(), siguiente.Y());
+			   		g2d.setColor(siguiente.getLinecolor());
+			   		g2d.setStroke(new BasicStroke(siguiente.getSize()));
+			   		if (siguiente.isPenDown())
+			   		{
+				   		g2d.drawArc(siguiente.X()-siguiente.getRadius()/2, siguiente.Y()-siguiente.getRadius()/2, siguiente.getRadius(),siguiente.getRadius(), siguiente.getAngleStart(), siguiente.getAngleEnd());
+				   		g2d.drawLine(posActual.X(), posActual.Y(), siguiente.X(), siguiente.Y());
+					}
 					posActual = siguiente;
 				}
-
-		     Graphics2D g2d = (Graphics2D)g;
+//girar tortuga
 		     AffineTransform origXform = g2d.getTransform();
 		     AffineTransform newXform = (AffineTransform)(origXform.clone());
 		     //center of rotation is center of the panel

@@ -150,9 +150,9 @@ Productions
  				{arc} p_arc |
  				{clr} p_clearscreen |
  				{penctrl} p_pencontrol;
- p_pencontrol 	= {pd} p_pendown |
- 				{pu} p_penup |
- 				{setpc} p_setpencolor|
+ p_pencontrol 	= {pds} p_pendown |
+ 				{pus} p_penup |
+ 				{setpcs} p_setpencolor|
  				{setpensize} p_setpensize;
  p_workspace	= {to} p_to |
 				{make} p_make;

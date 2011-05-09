@@ -1030,67 +1030,67 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outAPenctrlPGraphics(node);
     }
 
-    public void inAPdPPencontrol(APdPPencontrol node)
+    public void inAPdsPPencontrol(APdsPPencontrol node)
     {
         defaultIn(node);
     }
 
-    public void outAPdPPencontrol(APdPPencontrol node)
+    public void outAPdsPPencontrol(APdsPPencontrol node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAPdPPencontrol(APdPPencontrol node)
+    public void caseAPdsPPencontrol(APdsPPencontrol node)
     {
-        inAPdPPencontrol(node);
+        inAPdsPPencontrol(node);
         if(node.getPPendown() != null)
         {
             node.getPPendown().apply(this);
         }
-        outAPdPPencontrol(node);
+        outAPdsPPencontrol(node);
     }
 
-    public void inAPuPPencontrol(APuPPencontrol node)
+    public void inAPusPPencontrol(APusPPencontrol node)
     {
         defaultIn(node);
     }
 
-    public void outAPuPPencontrol(APuPPencontrol node)
+    public void outAPusPPencontrol(APusPPencontrol node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAPuPPencontrol(APuPPencontrol node)
+    public void caseAPusPPencontrol(APusPPencontrol node)
     {
-        inAPuPPencontrol(node);
+        inAPusPPencontrol(node);
         if(node.getPPenup() != null)
         {
             node.getPPenup().apply(this);
         }
-        outAPuPPencontrol(node);
+        outAPusPPencontrol(node);
     }
 
-    public void inASetpcPPencontrol(ASetpcPPencontrol node)
+    public void inASetpcsPPencontrol(ASetpcsPPencontrol node)
     {
         defaultIn(node);
     }
 
-    public void outASetpcPPencontrol(ASetpcPPencontrol node)
+    public void outASetpcsPPencontrol(ASetpcsPPencontrol node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseASetpcPPencontrol(ASetpcPPencontrol node)
+    public void caseASetpcsPPencontrol(ASetpcsPPencontrol node)
     {
-        inASetpcPPencontrol(node);
+        inASetpcsPPencontrol(node);
         if(node.getPSetpencolor() != null)
         {
             node.getPSetpencolor().apply(this);
         }
-        outASetpcPPencontrol(node);
+        outASetpcsPPencontrol(node);
     }
 
     public void inASetpensizePPencontrol(ASetpensizePPencontrol node)

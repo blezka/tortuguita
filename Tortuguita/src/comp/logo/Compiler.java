@@ -28,7 +28,7 @@ public class Compiler {
 
             // Apply the translation.
             tree.apply(new Translation());
-            output += (Helper.getOutput().equals("")?"":"\n\r"+Helper.getOutput());
+            output += (Helper.getOutput().equals(" ")?"":("\n\rOutput:"+Helper.getOutput()));
         } catch (Exception e) {
 			output += "\n\rError: " + instructions ;
             output += e.getMessage();
