@@ -58,9 +58,9 @@ public interface Analysis extends Switch
     void caseAArcPGraphics(AArcPGraphics node);
     void caseAClrPGraphics(AClrPGraphics node);
     void caseAPenctrlPGraphics(APenctrlPGraphics node);
-    void caseAPdPPencontrol(APdPPencontrol node);
-    void caseAPuPPencontrol(APuPPencontrol node);
-    void caseASetpcPPencontrol(ASetpcPPencontrol node);
+    void caseAPdsPPencontrol(APdsPPencontrol node);
+    void caseAPusPPencontrol(APusPPencontrol node);
+    void caseASetpcsPPencontrol(ASetpcsPPencontrol node);
     void caseASetpensizePPencontrol(ASetpensizePPencontrol node);
     void caseAToPWorkspace(AToPWorkspace node);
     void caseAMakePWorkspace(AMakePWorkspace node);

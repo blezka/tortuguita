@@ -451,19 +451,19 @@ public class Parser
 			push(goTo(9), list, false);
 		    }
 		    break;
-                    case 46: /* reduce APdPPencontrol */
+                    case 46: /* reduce APdsPPencontrol */
 		    {
 			ArrayList list = new46();
 			push(goTo(10), list, false);
 		    }
 		    break;
-                    case 47: /* reduce APuPPencontrol */
+                    case 47: /* reduce APusPPencontrol */
 		    {
 			ArrayList list = new47();
 			push(goTo(10), list, false);
 		    }
 		    break;
-                    case 48: /* reduce ASetpcPPencontrol */
+                    case 48: /* reduce ASetpcsPPencontrol */
 		    {
 			ArrayList list = new48();
 			push(goTo(10), list, false);
@@ -1934,7 +1934,7 @@ public class Parser
 
 
     @SuppressWarnings("unchecked")
-    ArrayList new46() /* reduce APdPPencontrol */
+    ArrayList new46() /* reduce APdsPPencontrol */
     {
         @SuppressWarnings("hiding") ArrayList nodeList = new ArrayList();
 
@@ -1945,7 +1945,7 @@ public class Parser
         PPPendown pppendownNode2;
         pppendownNode2 = (PPPendown)nodeArrayList1.get(0);
 
-        pppencontrolNode1 = new APdPPencontrol(pppendownNode2);
+        pppencontrolNode1 = new APdsPPencontrol(pppendownNode2);
         }
 	nodeList.add(pppencontrolNode1);
         return nodeList;
@@ -1954,7 +1954,7 @@ public class Parser
 
 
     @SuppressWarnings("unchecked")
-    ArrayList new47() /* reduce APuPPencontrol */
+    ArrayList new47() /* reduce APusPPencontrol */
     {
         @SuppressWarnings("hiding") ArrayList nodeList = new ArrayList();
 
@@ -1965,7 +1965,7 @@ public class Parser
         PPPenup pppenupNode2;
         pppenupNode2 = (PPPenup)nodeArrayList1.get(0);
 
-        pppencontrolNode1 = new APuPPencontrol(pppenupNode2);
+        pppencontrolNode1 = new APusPPencontrol(pppenupNode2);
         }
 	nodeList.add(pppencontrolNode1);
         return nodeList;
@@ -1974,7 +1974,7 @@ public class Parser
 
 
     @SuppressWarnings("unchecked")
-    ArrayList new48() /* reduce ASetpcPPencontrol */
+    ArrayList new48() /* reduce ASetpcsPPencontrol */
     {
         @SuppressWarnings("hiding") ArrayList nodeList = new ArrayList();
 
@@ -1985,7 +1985,7 @@ public class Parser
         PPSetpencolor ppsetpencolorNode2;
         ppsetpencolorNode2 = (PPSetpencolor)nodeArrayList1.get(0);
 
-        pppencontrolNode1 = new ASetpcPPencontrol(ppsetpencolorNode2);
+        pppencontrolNode1 = new ASetpcsPPencontrol(ppsetpencolorNode2);
         }
 	nodeList.add(pppencontrolNode1);
         return nodeList;
