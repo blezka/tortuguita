@@ -5,45 +5,45 @@ package comp.logo.node;
 import comp.logo.analysis.*;
 
 @SuppressWarnings("nls")
-public final class APuPPencontrol extends PPPencontrol
+public final class AMakesPWorkspace extends PPWorkspace
 {
-    private PPPenup _pPenup_;
+    private PPMake _pMake_;
 
-    public APuPPencontrol()
+    public AMakesPWorkspace()
     {
         // Constructor
     }
 
-    public APuPPencontrol(
-        @SuppressWarnings("hiding") PPPenup _pPenup_)
+    public AMakesPWorkspace(
+        @SuppressWarnings("hiding") PPMake _pMake_)
     {
         // Constructor
-        setPPenup(_pPenup_);
+        setPMake(_pMake_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new APuPPencontrol(
-            cloneNode(this._pPenup_));
+        return new AMakesPWorkspace(
+            cloneNode(this._pMake_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAPuPPencontrol(this);
+        ((Analysis) sw).caseAMakesPWorkspace(this);
     }
 
-    public PPPenup getPPenup()
+    public PPMake getPMake()
     {
-        return this._pPenup_;
+        return this._pMake_;
     }
 
-    public void setPPenup(PPPenup node)
+    public void setPMake(PPMake node)
     {
-        if(this._pPenup_ != null)
+        if(this._pMake_ != null)
         {
-            this._pPenup_.parent(null);
+            this._pMake_.parent(null);
         }
 
         if(node != null)
@@ -56,23 +56,23 @@ public final class APuPPencontrol extends PPPencontrol
             node.parent(this);
         }
 
-        this._pPenup_ = node;
+        this._pMake_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._pPenup_);
+            + toString(this._pMake_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._pPenup_ == child)
+        if(this._pMake_ == child)
         {
-            this._pPenup_ = null;
+            this._pMake_ = null;
             return;
         }
 
@@ -83,9 +83,9 @@ public final class APuPPencontrol extends PPPencontrol
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._pPenup_ == oldChild)
+        if(this._pMake_ == oldChild)
         {
-            setPPenup((PPPenup) newChild);
+            setPMake((PPMake) newChild);
             return;
         }
 

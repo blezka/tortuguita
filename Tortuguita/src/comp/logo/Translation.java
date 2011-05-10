@@ -38,9 +38,8 @@ class Translation extends DepthFirstAdapter
         inAPList(node);
         if(node.getList() != null&&node.getIdentifier() != null&&node.getPIdentList() != null)
         {
-//            Helper.getVariables().put(node.getIdentifier().getText(), node.getPIdentList());
         	Vector<String> lista = new Vector<String>();
-        	lista.add(node.getIdentifier().getText());
+//        	lista.add(node.getIdentifier().getText());
         	PPIdentList l = node.getPIdentList();
         	while (l instanceof AIdentListPIdentList)
         	{
@@ -49,41 +48,108 @@ class Translation extends DepthFirstAdapter
         	}
         	lista.add(((AIdentPIdentList)l).getIdentifier().getText());
         	Helper.setOutput(lista.toString());
+            Helper.getVariables().put(node.getIdentifier().getText(), lista);
         }
         outAPList(node);
     }
-    public void caseAPFirst(APFirst node)
+    @SuppressWarnings("unchecked")
+	public void caseAPFirst(APFirst node)
     {
         inAPFirst(node);
         if(node.getFirst() != null&&node.getIdentifier() != null)
         {
         	if (Helper.getVariables().get(node.getIdentifier().getText())!=null)
         	{
-        		Helper.setOutput(""+Helper.getVariables().get(node.getIdentifier().getText()).toString().charAt(0));
+        		if (Helper.getVariables().get(node.getIdentifier().getText())instanceof Vector)
+        		{
+        			Vector<String> lista = (Vector<String>)(Helper.getVariables().get(node.getIdentifier().getText()));
+        			Helper.setOutput(""+lista.get(0));
+        		}
+        		else
+        			Helper.setOutput(""+Helper.getVariables().get(node.getIdentifier().getText()).toString().charAt(0));
         	}
         	else
         		Helper.setOutput(node.getIdentifier().getText()+" not found");
         }
         outAPFirst(node);
     }
-    public void caseAButfirstsPSelectors(AButfirstsPSelectors node)
+    @SuppressWarnings("unchecked")
+	public void caseAButfirstsPSelectors(AButfirstsPSelectors node)
     {
         inAButfirstsPSelectors(node);
         if(node.getPButfirst() != null)
         {
         	if (node.getPButfirst() instanceof AButfirstPButfirst)
             	if (Helper.getVariables().get(((AButfirstPButfirst)node.getPButfirst()).getIdentifier().getText())!=null)
-            		Helper.setOutput(""+Helper.getVariables().get(((AButfirstPButfirst)node.getPButfirst()).getIdentifier().getText()).toString().substring(1));
+            		if (Helper.getVariables().get(((AButfirstPButfirst)node.getPButfirst()).getIdentifier().getText())instanceof Vector)
+            		{
+            			Vector<String> lista = new Vector<String>((Vector<String>)(Helper.getVariables().get(((AButfirstPButfirst)node.getPButfirst()).getIdentifier().getText())));
+            			lista.remove(0);
+            			Helper.setOutput(""+lista);
+            		}
+            		else
+            			Helper.setOutput(""+Helper.getVariables().get(((AButfirstPButfirst)node.getPButfirst()).getIdentifier().getText()).toString().substring(1));
             	else
             		Helper.setOutput(((AButfirstPButfirst)node.getPButfirst()).getIdentifier().getText()+" not found");
         	else
             	if (Helper.getVariables().get(((ABfPButfirst)node.getPButfirst()).getIdentifier().getText())!=null)
-            		Helper.setOutput(""+Helper.getVariables().get(((ABfPButfirst)node.getPButfirst()).getIdentifier().getText()).toString().substring(1));
+            		if (Helper.getVariables().get(((ABfPButfirst)node.getPButfirst()).getIdentifier().getText())instanceof Vector)
+            		{
+            			Vector<String> lista = new Vector<String>( (Vector<String>)(Helper.getVariables().get(((ABfPButfirst)node.getPButfirst()).getIdentifier().getText())));
+            			lista.remove(0);
+            			Helper.setOutput(""+lista);
+            		}
+            		else
+            			Helper.setOutput(""+Helper.getVariables().get(((ABfPButfirst)node.getPButfirst()).getIdentifier().getText()).toString().substring(1));
             	else
             		Helper.setOutput(((ABfPButfirst)node.getPButfirst()).getIdentifier().getText()+" not found");
         		
         }
         outAButfirstsPSelectors(node);
+    }
+    @SuppressWarnings("unchecked")
+	public void caseAPLast(APLast node)
+    {
+        inAPLast(node);
+        if(node.getLast() != null&&node.getIdentifier() != null)
+        {
+        	if (Helper.getVariables().get(node.getIdentifier().getText())!=null)
+        	{
+        		if (Helper.getVariables().get(node.getIdentifier().getText())instanceof Vector)
+        		{
+        			Vector<String> lista = (Vector<String>)(Helper.getVariables().get(node.getIdentifier().getText()));
+        			Helper.setOutput(""+lista.get(lista.size()-1));
+        		}
+        		else
+        		{
+	        		String item = Helper.getVariables().get(node.getIdentifier().getText()).toString();
+	        		Helper.setOutput(""+item.charAt(item.length()-1));
+        		}
+        	}
+        	else
+        		Helper.setOutput(node.getIdentifier().getText()+" not found");
+        }
+        outAPLast(node);
+    }
+    @SuppressWarnings("unchecked")
+	public void caseAPSetitem(APSetitem node)
+    {
+        inAPSetitem(node);
+        if(node.getSetitem() != null&&node.getInteger() != null&&node.getIdentifier() != null&&node.getPValue() != null)
+        {
+            if (Helper.getVariables().get(node.getIdentifier().getText())!= null)
+            {
+            	if (Helper.getVariables().get(node.getIdentifier().getText()) instanceof Vector)
+            	{
+                	Vector<String> lista =(Vector<String>) Helper.getVariables().get(node.getIdentifier().getText()) ;
+            		if (Integer.parseInt(node.getInteger().getText()) < lista.size())
+            		lista.set(Integer.parseInt(node.getInteger().getText()), node.getPValue().toString());
+            	}
+            }
+            else
+            	Helper.setOutput(node.getIdentifier().getText()+" list not found");
+        }
+        outAPSetitem(node);
     }
 //	communication
 	public void caseAPPrint(APPrint node)
@@ -482,6 +548,111 @@ class Translation extends DepthFirstAdapter
         outAPExp(node);
     }
 //	logic
+    public void caseAPAnd(APAnd node)
+    {
+        inAPAnd(node);
+        if(node.getAnd() != null&&node.getV1() != null&&node.getV2() != null)
+        {
+        	if (node.getV1() instanceof ATruePBoolean && node.getV2() instanceof ATruePBoolean)
+            	Helper.setOutput("true");
+        	else if (node.getV1() instanceof ATruePBoolean && node.getV2() instanceof AVarPBoolean)
+        	{
+        		String var = "";
+        		if (Helper.getVariables().get(((AVarPBoolean)node.getV2()).getIdentifier().getText())!= null)
+        			var = Helper.getVariables().get(((AVarPBoolean)node.getV2()).getIdentifier().getText()).toString();
+        		if (var.trim().equalsIgnoreCase("true"))
+        			Helper.setOutput("true");
+        		else
+            		Helper.setOutput("false");
+        	}
+        	else if (node.getV2() instanceof ATruePBoolean && node.getV1() instanceof AVarPBoolean)
+        	{
+        		String var = "";
+        		if (Helper.getVariables().get(((AVarPBoolean)node.getV1()).getIdentifier().getText())!= null)
+        			var = Helper.getVariables().get(((AVarPBoolean)node.getV1()).getIdentifier().getText()).toString();
+        		if (var.trim().equalsIgnoreCase("true"))
+        			Helper.setOutput("true");
+        		else
+            		Helper.setOutput("false");
+        	}
+        	else if (node.getV1() instanceof AVarPBoolean && node.getV2() instanceof AVarPBoolean)
+        	{
+        		String var1 = "";
+        		if (Helper.getVariables().get(((AVarPBoolean)node.getV1()).getIdentifier().getText())!= null)
+        			var1 = Helper.getVariables().get(((AVarPBoolean)node.getV1()).getIdentifier().getText()).toString();
+
+        		String var2 = "";
+        		if (Helper.getVariables().get(((AVarPBoolean)node.getV2()).getIdentifier().getText())!= null)
+        			var2 = Helper.getVariables().get(((AVarPBoolean)node.getV2()).getIdentifier().getText()).toString();
+        		
+        		if (var1.trim().equalsIgnoreCase("true")&&var2.trim().equalsIgnoreCase("true"))
+           			Helper.setOutput("true");
+        		else
+            		Helper.setOutput("false");
+        	}
+        	else
+        		Helper.setOutput("false");
+        }
+        outAPAnd(node);
+    }
+    public void caseAPOr(APOr node)
+    {
+        inAPOr(node);
+        if(node.getOr() != null&&node.getV1() != null&&node.getV2() != null)
+        {
+        	if (node.getV1() instanceof ATruePBoolean || node.getV2() instanceof ATruePBoolean)
+            	Helper.setOutput("true");
+        	else if (node.getV1() instanceof AVarPBoolean)
+        	{
+        		String var1 = "";
+        		if (Helper.getVariables().get(((AVarPBoolean)node.getV1()).getIdentifier().getText())!= null)
+        			var1 = Helper.getVariables().get(((AVarPBoolean)node.getV1()).getIdentifier().getText()).toString();
+        	
+        		if (var1.trim().equalsIgnoreCase("true"))
+           			Helper.setOutput("true");
+        		else
+            		Helper.setOutput("false");
+        	}
+        	else if (node.getV2() instanceof AVarPBoolean)
+        	{
+        		String var2 = "";
+        		if (Helper.getVariables().get(((AVarPBoolean)node.getV2()).getIdentifier().getText())!= null)
+        			var2 = Helper.getVariables().get(((AVarPBoolean)node.getV2()).getIdentifier().getText()).toString();
+        		if (var2.trim().equalsIgnoreCase("true"))
+           			Helper.setOutput("true");
+        		else
+            		Helper.setOutput("false");
+        	}
+        	else
+        		Helper.setOutput("false");
+    		
+        }
+        outAPOr(node);
+    }
+    public void caseAPNot(APNot node)
+    {
+        inAPNot(node);
+        if(node.getNot() != null&&node.getV1() != null)
+        {
+        	if (node.getV1() instanceof ATruePBoolean)
+        		Helper.setOutput("false");
+        	else if (node.getV1()instanceof AFalsePBoolean)
+        		Helper.setOutput("true");
+        	else
+        	{
+        		String var1 = "";
+        		if (Helper.getVariables().get(((AVarPBoolean)node.getV1()).getIdentifier().getText())!= null)
+        			var1 = Helper.getVariables().get(((AVarPBoolean)node.getV1()).getIdentifier().getText()).toString();
+        	
+        		if (var1.trim().equalsIgnoreCase("true"))
+           			Helper.setOutput("false");
+        		else
+            		Helper.setOutput("true");
+        	}
+        	
+        }
+        outAPNot(node);
+    }
 //	graphics
     public void caseAFdsPGraphics(AFdsPGraphics node)
     {
@@ -750,18 +921,30 @@ class Translation extends DepthFirstAdapter
         }
         outACalltofunctionPInstruction(node);
     }
-    public void caseAPMake(APMake node)
+    public void caseAMakesPWorkspace(AMakesPWorkspace node)
     {
-        inAPMake(node);
-        if(node.getMake() != null&&node.getIdentifier() != null&&node.getPValue() != null)
-        {
-        	if (node.getPValue()instanceof AIntPValue)
-        		Helper.getVariables().put(node.getIdentifier().getText(), ((AIntPValue)node.getPValue()).getInteger().getText());
+        inAMakesPWorkspace(node);
+        if(node.getPMake() != null)
+    	{
+        	if (node.getPMake()instanceof AVarnumPMake)
+        	{
+        		if(((AVarnumPMake)node.getPMake()).getValor() instanceof AIntPValue)
+        			Helper.getVariables().put(((AVarnumPMake)node.getPMake()).getVar().getText(), Integer.parseInt(((AIntPValue)((AVarnumPMake)node.getPMake()).getValor()).getInteger().getText()));
+        		else
+        			Helper.getVariables().put(((AVarnumPMake)node.getPMake()).getVar().getText(), Double.parseDouble(((ADobPValue)((AVarnumPMake)node.getPMake()).getValor()).getDouble().getText()));
+        	}
         	else
-                Helper.getVariables().put(node.getIdentifier().getText(), ((ADobPValue)node.getPValue()).getDouble().getText());
+        		if (((AVarwordPMake)node.getPMake()).getValor().toString().trim().equalsIgnoreCase("true") ||
+        				((AVarwordPMake)node.getPMake()).getValor().toString().trim().equalsIgnoreCase("false"))
+//Apuntadores a variable...	Helper.getVariables().get(((AVarwordPMake)node.getPMake()).getValor().toString().trim())!= null)
+        			Helper.getVariables().put(((AVarwordPMake)node.getPMake()).getVar().getText(),((AVarwordPMake)node.getPMake()).getValor().toString());
+        		else
+        			Helper.setOutput("Cannot create variable "+((AVarwordPMake)node.getPMake()).getVar().getText());
+    		System.out.println(Helper.getVariables());
+        		
         		
         }
-        outAPMake(node);
+        outAMakesPWorkspace(node);
     }
 //  control
     public void caseARunPInstructionlist(ARunPInstructionlist node)

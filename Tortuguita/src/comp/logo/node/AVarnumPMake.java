@@ -5,43 +5,43 @@ package comp.logo.node;
 import comp.logo.analysis.*;
 
 @SuppressWarnings("nls")
-public final class APMake extends PPMake
+public final class AVarnumPMake extends PPMake
 {
     private TMake _make_;
-    private TIdentifier _identifier_;
-    private PPValue _pValue_;
+    private TIdentifier _var_;
+    private PPValue _valor_;
 
-    public APMake()
+    public AVarnumPMake()
     {
         // Constructor
     }
 
-    public APMake(
+    public AVarnumPMake(
         @SuppressWarnings("hiding") TMake _make_,
-        @SuppressWarnings("hiding") TIdentifier _identifier_,
-        @SuppressWarnings("hiding") PPValue _pValue_)
+        @SuppressWarnings("hiding") TIdentifier _var_,
+        @SuppressWarnings("hiding") PPValue _valor_)
     {
         // Constructor
         setMake(_make_);
 
-        setIdentifier(_identifier_);
+        setVar(_var_);
 
-        setPValue(_pValue_);
+        setValor(_valor_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new APMake(
+        return new AVarnumPMake(
             cloneNode(this._make_),
-            cloneNode(this._identifier_),
-            cloneNode(this._pValue_));
+            cloneNode(this._var_),
+            cloneNode(this._valor_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAPMake(this);
+        ((Analysis) sw).caseAVarnumPMake(this);
     }
 
     public TMake getMake()
@@ -69,16 +69,16 @@ public final class APMake extends PPMake
         this._make_ = node;
     }
 
-    public TIdentifier getIdentifier()
+    public TIdentifier getVar()
     {
-        return this._identifier_;
+        return this._var_;
     }
 
-    public void setIdentifier(TIdentifier node)
+    public void setVar(TIdentifier node)
     {
-        if(this._identifier_ != null)
+        if(this._var_ != null)
         {
-            this._identifier_.parent(null);
+            this._var_.parent(null);
         }
 
         if(node != null)
@@ -91,19 +91,19 @@ public final class APMake extends PPMake
             node.parent(this);
         }
 
-        this._identifier_ = node;
+        this._var_ = node;
     }
 
-    public PPValue getPValue()
+    public PPValue getValor()
     {
-        return this._pValue_;
+        return this._valor_;
     }
 
-    public void setPValue(PPValue node)
+    public void setValor(PPValue node)
     {
-        if(this._pValue_ != null)
+        if(this._valor_ != null)
         {
-            this._pValue_.parent(null);
+            this._valor_.parent(null);
         }
 
         if(node != null)
@@ -116,7 +116,7 @@ public final class APMake extends PPMake
             node.parent(this);
         }
 
-        this._pValue_ = node;
+        this._valor_ = node;
     }
 
     @Override
@@ -124,8 +124,8 @@ public final class APMake extends PPMake
     {
         return ""
             + toString(this._make_)
-            + toString(this._identifier_)
-            + toString(this._pValue_);
+            + toString(this._var_)
+            + toString(this._valor_);
     }
 
     @Override
@@ -138,15 +138,15 @@ public final class APMake extends PPMake
             return;
         }
 
-        if(this._identifier_ == child)
+        if(this._var_ == child)
         {
-            this._identifier_ = null;
+            this._var_ = null;
             return;
         }
 
-        if(this._pValue_ == child)
+        if(this._valor_ == child)
         {
-            this._pValue_ = null;
+            this._valor_ = null;
             return;
         }
 
@@ -163,15 +163,15 @@ public final class APMake extends PPMake
             return;
         }
 
-        if(this._identifier_ == oldChild)
+        if(this._var_ == oldChild)
         {
-            setIdentifier((TIdentifier) newChild);
+            setVar((TIdentifier) newChild);
             return;
         }
 
-        if(this._pValue_ == oldChild)
+        if(this._valor_ == oldChild)
         {
-            setPValue((PPValue) newChild);
+            setValor((PPValue) newChild);
             return;
         }
 

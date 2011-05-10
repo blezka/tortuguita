@@ -1156,25 +1156,25 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outAToPWorkspace(node);
     }
 
-    public void inAMakePWorkspace(AMakePWorkspace node)
+    public void inAMakesPWorkspace(AMakesPWorkspace node)
     {
         defaultIn(node);
     }
 
-    public void outAMakePWorkspace(AMakePWorkspace node)
+    public void outAMakesPWorkspace(AMakesPWorkspace node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAMakePWorkspace(AMakePWorkspace node)
+    public void caseAMakesPWorkspace(AMakesPWorkspace node)
     {
-        inAMakePWorkspace(node);
+        inAMakesPWorkspace(node);
         if(node.getPMake() != null)
         {
             node.getPMake().apply(this);
         }
-        outAMakePWorkspace(node);
+        outAMakesPWorkspace(node);
     }
 
     public void inARepeatPControlStructures(ARepeatPControlStructures node)
@@ -2622,33 +2622,62 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outAPTo(node);
     }
 
-    public void inAPMake(APMake node)
+    public void inAVarwordPMake(AVarwordPMake node)
     {
         defaultIn(node);
     }
 
-    public void outAPMake(APMake node)
+    public void outAVarwordPMake(AVarwordPMake node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAPMake(APMake node)
+    public void caseAVarwordPMake(AVarwordPMake node)
     {
-        inAPMake(node);
-        if(node.getPValue() != null)
+        inAVarwordPMake(node);
+        if(node.getValor() != null)
         {
-            node.getPValue().apply(this);
+            node.getValor().apply(this);
         }
-        if(node.getIdentifier() != null)
+        if(node.getVar() != null)
         {
-            node.getIdentifier().apply(this);
+            node.getVar().apply(this);
         }
         if(node.getMake() != null)
         {
             node.getMake().apply(this);
         }
-        outAPMake(node);
+        outAVarwordPMake(node);
+    }
+
+    public void inAVarnumPMake(AVarnumPMake node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAVarnumPMake(AVarnumPMake node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAVarnumPMake(AVarnumPMake node)
+    {
+        inAVarnumPMake(node);
+        if(node.getValor() != null)
+        {
+            node.getValor().apply(this);
+        }
+        if(node.getVar() != null)
+        {
+            node.getVar().apply(this);
+        }
+        if(node.getMake() != null)
+        {
+            node.getMake().apply(this);
+        }
+        outAVarnumPMake(node);
     }
 
     public void inAPRepeat(APRepeat node)
@@ -2702,13 +2731,29 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseAIfPIf(AIfPIf node)
     {
         inAIfPIf(node);
+        if(node.getRBrk() != null)
+        {
+            node.getRBrk().apply(this);
+        }
         if(node.getPInstructionlist() != null)
         {
             node.getPInstructionlist().apply(this);
         }
+        if(node.getLBrk() != null)
+        {
+            node.getLBrk().apply(this);
+        }
+        if(node.getRPar() != null)
+        {
+            node.getRPar().apply(this);
+        }
         if(node.getPBoolean() != null)
         {
             node.getPBoolean().apply(this);
+        }
+        if(node.getLPar() != null)
+        {
+            node.getLPar().apply(this);
         }
         if(node.getIf() != null)
         {
@@ -2731,21 +2776,41 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseAIfelsePIf(AIfelsePIf node)
     {
         inAIfelsePIf(node);
+        if(node.getFalser() != null)
+        {
+            node.getFalser().apply(this);
+        }
         if(node.getFalse() != null)
         {
             node.getFalse().apply(this);
         }
-        if(node.getComma() != null)
+        if(node.getFalsel() != null)
         {
-            node.getComma().apply(this);
+            node.getFalsel().apply(this);
+        }
+        if(node.getRBrk() != null)
+        {
+            node.getRBrk().apply(this);
         }
         if(node.getTrue() != null)
         {
             node.getTrue().apply(this);
         }
+        if(node.getLBrk() != null)
+        {
+            node.getLBrk().apply(this);
+        }
+        if(node.getRPar() != null)
+        {
+            node.getRPar().apply(this);
+        }
         if(node.getPBoolean() != null)
         {
             node.getPBoolean().apply(this);
+        }
+        if(node.getLPar() != null)
+        {
+            node.getLPar().apply(this);
         }
         if(node.getIf() != null)
         {
@@ -2768,21 +2833,41 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseAPIfelse(APIfelse node)
     {
         inAPIfelse(node);
+        if(node.getFalser() != null)
+        {
+            node.getFalser().apply(this);
+        }
         if(node.getInst2() != null)
         {
             node.getInst2().apply(this);
         }
-        if(node.getComma() != null)
+        if(node.getFalsel() != null)
         {
-            node.getComma().apply(this);
+            node.getFalsel().apply(this);
+        }
+        if(node.getRBrk() != null)
+        {
+            node.getRBrk().apply(this);
         }
         if(node.getInst1() != null)
         {
             node.getInst1().apply(this);
         }
+        if(node.getLBrk() != null)
+        {
+            node.getLBrk().apply(this);
+        }
+        if(node.getRPar() != null)
+        {
+            node.getRPar().apply(this);
+        }
         if(node.getPBoolean() != null)
         {
             node.getPBoolean().apply(this);
+        }
+        if(node.getLPar() != null)
+        {
+            node.getLPar().apply(this);
         }
         if(node.getIfelse() != null)
         {

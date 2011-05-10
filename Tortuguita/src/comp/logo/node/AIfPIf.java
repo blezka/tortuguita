@@ -8,8 +8,12 @@ import comp.logo.analysis.*;
 public final class AIfPIf extends PPIf
 {
     private TIf _if_;
+    private TLPar _lPar_;
     private PPBoolean _pBoolean_;
+    private TRPar _rPar_;
+    private TLBrk _lBrk_;
     private PPInstructionlist _pInstructionlist_;
+    private TRBrk _rBrk_;
 
     public AIfPIf()
     {
@@ -18,15 +22,27 @@ public final class AIfPIf extends PPIf
 
     public AIfPIf(
         @SuppressWarnings("hiding") TIf _if_,
+        @SuppressWarnings("hiding") TLPar _lPar_,
         @SuppressWarnings("hiding") PPBoolean _pBoolean_,
-        @SuppressWarnings("hiding") PPInstructionlist _pInstructionlist_)
+        @SuppressWarnings("hiding") TRPar _rPar_,
+        @SuppressWarnings("hiding") TLBrk _lBrk_,
+        @SuppressWarnings("hiding") PPInstructionlist _pInstructionlist_,
+        @SuppressWarnings("hiding") TRBrk _rBrk_)
     {
         // Constructor
         setIf(_if_);
 
+        setLPar(_lPar_);
+
         setPBoolean(_pBoolean_);
 
+        setRPar(_rPar_);
+
+        setLBrk(_lBrk_);
+
         setPInstructionlist(_pInstructionlist_);
+
+        setRBrk(_rBrk_);
 
     }
 
@@ -35,8 +51,12 @@ public final class AIfPIf extends PPIf
     {
         return new AIfPIf(
             cloneNode(this._if_),
+            cloneNode(this._lPar_),
             cloneNode(this._pBoolean_),
-            cloneNode(this._pInstructionlist_));
+            cloneNode(this._rPar_),
+            cloneNode(this._lBrk_),
+            cloneNode(this._pInstructionlist_),
+            cloneNode(this._rBrk_));
     }
 
     public void apply(Switch sw)
@@ -69,6 +89,31 @@ public final class AIfPIf extends PPIf
         this._if_ = node;
     }
 
+    public TLPar getLPar()
+    {
+        return this._lPar_;
+    }
+
+    public void setLPar(TLPar node)
+    {
+        if(this._lPar_ != null)
+        {
+            this._lPar_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._lPar_ = node;
+    }
+
     public PPBoolean getPBoolean()
     {
         return this._pBoolean_;
@@ -92,6 +137,56 @@ public final class AIfPIf extends PPIf
         }
 
         this._pBoolean_ = node;
+    }
+
+    public TRPar getRPar()
+    {
+        return this._rPar_;
+    }
+
+    public void setRPar(TRPar node)
+    {
+        if(this._rPar_ != null)
+        {
+            this._rPar_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._rPar_ = node;
+    }
+
+    public TLBrk getLBrk()
+    {
+        return this._lBrk_;
+    }
+
+    public void setLBrk(TLBrk node)
+    {
+        if(this._lBrk_ != null)
+        {
+            this._lBrk_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._lBrk_ = node;
     }
 
     public PPInstructionlist getPInstructionlist()
@@ -119,13 +214,42 @@ public final class AIfPIf extends PPIf
         this._pInstructionlist_ = node;
     }
 
+    public TRBrk getRBrk()
+    {
+        return this._rBrk_;
+    }
+
+    public void setRBrk(TRBrk node)
+    {
+        if(this._rBrk_ != null)
+        {
+            this._rBrk_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._rBrk_ = node;
+    }
+
     @Override
     public String toString()
     {
         return ""
             + toString(this._if_)
+            + toString(this._lPar_)
             + toString(this._pBoolean_)
-            + toString(this._pInstructionlist_);
+            + toString(this._rPar_)
+            + toString(this._lBrk_)
+            + toString(this._pInstructionlist_)
+            + toString(this._rBrk_);
     }
 
     @Override
@@ -138,15 +262,39 @@ public final class AIfPIf extends PPIf
             return;
         }
 
+        if(this._lPar_ == child)
+        {
+            this._lPar_ = null;
+            return;
+        }
+
         if(this._pBoolean_ == child)
         {
             this._pBoolean_ = null;
             return;
         }
 
+        if(this._rPar_ == child)
+        {
+            this._rPar_ = null;
+            return;
+        }
+
+        if(this._lBrk_ == child)
+        {
+            this._lBrk_ = null;
+            return;
+        }
+
         if(this._pInstructionlist_ == child)
         {
             this._pInstructionlist_ = null;
+            return;
+        }
+
+        if(this._rBrk_ == child)
+        {
+            this._rBrk_ = null;
             return;
         }
 
@@ -163,15 +311,39 @@ public final class AIfPIf extends PPIf
             return;
         }
 
+        if(this._lPar_ == oldChild)
+        {
+            setLPar((TLPar) newChild);
+            return;
+        }
+
         if(this._pBoolean_ == oldChild)
         {
             setPBoolean((PPBoolean) newChild);
             return;
         }
 
+        if(this._rPar_ == oldChild)
+        {
+            setRPar((TRPar) newChild);
+            return;
+        }
+
+        if(this._lBrk_ == oldChild)
+        {
+            setLBrk((TLBrk) newChild);
+            return;
+        }
+
         if(this._pInstructionlist_ == oldChild)
         {
             setPInstructionlist((PPInstructionlist) newChild);
+            return;
+        }
+
+        if(this._rBrk_ == oldChild)
+        {
+            setRBrk((TRBrk) newChild);
             return;
         }
 

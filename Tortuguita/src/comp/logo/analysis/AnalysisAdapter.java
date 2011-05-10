@@ -329,7 +329,7 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseAMakePWorkspace(AMakePWorkspace node)
+    public void caseAMakesPWorkspace(AMakesPWorkspace node)
     {
         defaultCase(node);
     }
@@ -619,7 +619,12 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseAPMake(APMake node)
+    public void caseAVarwordPMake(AVarwordPMake node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAVarnumPMake(AVarnumPMake node)
     {
         defaultCase(node);
     }
