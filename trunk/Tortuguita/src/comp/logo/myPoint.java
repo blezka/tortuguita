@@ -39,7 +39,7 @@ public class myPoint extends Point
 	public myPoint(int x, int y,  int radius, int angleStart, int angleEnd)
 	{
 		this(x,y);
-		this.radius = radius;
+		this.radius = radius*2;
 		this.angleStart = 90-angleStart;//90° porque se mide apartir del eje y no del x
 		this.angleEnd = -angleEnd;
 	}

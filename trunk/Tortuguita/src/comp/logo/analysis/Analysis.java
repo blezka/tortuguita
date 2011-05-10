@@ -23,12 +23,13 @@ public interface Analysis extends Switch
     void caseAGraphicsPInstruction(AGraphicsPInstruction node);
     void caseAWorkspacePInstruction(AWorkspacePInstruction node);
     void caseAControlPInstruction(AControlPInstruction node);
+    void caseACalltofunctionPInstruction(ACalltofunctionPInstruction node);
     void caseAVarsPPrimitives(AVarsPPrimitives node);
     void caseAListPPrimitives(AListPPrimitives node);
     void caseASelectorsPPrimitives(ASelectorsPPrimitives node);
     void caseAMutatorPPrimitives(AMutatorPPrimitives node);
     void caseAFirstPSelectors(AFirstPSelectors node);
-    void caseAButfirstPSelectors(AButfirstPSelectors node);
+    void caseAButfirstsPSelectors(AButfirstsPSelectors node);
     void caseALastPSelectors(ALastPSelectors node);
     void caseASetPMutator(ASetPMutator node);
     void caseAPCommunication(APCommunication node);
