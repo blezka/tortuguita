@@ -553,43 +553,8 @@ class Translation extends DepthFirstAdapter
         inAPAnd(node);
         if(node.getAnd() != null&&node.getV1() != null&&node.getV2() != null)
         {
-        	if (node.getV1() instanceof ATruePBoolean && node.getV2() instanceof ATruePBoolean)
-            	Helper.setOutput("true");
-        	else if (node.getV1() instanceof ATruePBoolean && node.getV2() instanceof AVarPBoolean)
-        	{
-        		String var = "";
-        		if (Helper.getVariables().get(((AVarPBoolean)node.getV2()).getIdentifier().getText())!= null)
-        			var = Helper.getVariables().get(((AVarPBoolean)node.getV2()).getIdentifier().getText()).toString();
-        		if (var.trim().equalsIgnoreCase("true"))
-        			Helper.setOutput("true");
-        		else
-            		Helper.setOutput("false");
-        	}
-        	else if (node.getV2() instanceof ATruePBoolean && node.getV1() instanceof AVarPBoolean)
-        	{
-        		String var = "";
-        		if (Helper.getVariables().get(((AVarPBoolean)node.getV1()).getIdentifier().getText())!= null)
-        			var = Helper.getVariables().get(((AVarPBoolean)node.getV1()).getIdentifier().getText()).toString();
-        		if (var.trim().equalsIgnoreCase("true"))
-        			Helper.setOutput("true");
-        		else
-            		Helper.setOutput("false");
-        	}
-        	else if (node.getV1() instanceof AVarPBoolean && node.getV2() instanceof AVarPBoolean)
-        	{
-        		String var1 = "";
-        		if (Helper.getVariables().get(((AVarPBoolean)node.getV1()).getIdentifier().getText())!= null)
-        			var1 = Helper.getVariables().get(((AVarPBoolean)node.getV1()).getIdentifier().getText()).toString();
-
-        		String var2 = "";
-        		if (Helper.getVariables().get(((AVarPBoolean)node.getV2()).getIdentifier().getText())!= null)
-        			var2 = Helper.getVariables().get(((AVarPBoolean)node.getV2()).getIdentifier().getText()).toString();
-        		
-        		if (var1.trim().equalsIgnoreCase("true")&&var2.trim().equalsIgnoreCase("true"))
-           			Helper.setOutput("true");
-        		else
-            		Helper.setOutput("false");
-        	}
+        	if (myBoolean.getBoolean(node.getV1()) && myBoolean.getBoolean(node.getV2()))
+        		Helper.setOutput("true");
         	else
         		Helper.setOutput("false");
         }
@@ -600,32 +565,10 @@ class Translation extends DepthFirstAdapter
         inAPOr(node);
         if(node.getOr() != null&&node.getV1() != null&&node.getV2() != null)
         {
-        	if (node.getV1() instanceof ATruePBoolean || node.getV2() instanceof ATruePBoolean)
-            	Helper.setOutput("true");
-        	else if (node.getV1() instanceof AVarPBoolean)
-        	{
-        		String var1 = "";
-        		if (Helper.getVariables().get(((AVarPBoolean)node.getV1()).getIdentifier().getText())!= null)
-        			var1 = Helper.getVariables().get(((AVarPBoolean)node.getV1()).getIdentifier().getText()).toString();
-        	
-        		if (var1.trim().equalsIgnoreCase("true"))
-           			Helper.setOutput("true");
-        		else
-            		Helper.setOutput("false");
-        	}
-        	else if (node.getV2() instanceof AVarPBoolean)
-        	{
-        		String var2 = "";
-        		if (Helper.getVariables().get(((AVarPBoolean)node.getV2()).getIdentifier().getText())!= null)
-        			var2 = Helper.getVariables().get(((AVarPBoolean)node.getV2()).getIdentifier().getText()).toString();
-        		if (var2.trim().equalsIgnoreCase("true"))
-           			Helper.setOutput("true");
-        		else
-            		Helper.setOutput("false");
-        	}
+        	if (myBoolean.getBoolean(node.getV1())|| myBoolean.getBoolean(node.getV2()))
+        		Helper.setOutput("true");
         	else
-        		Helper.setOutput("false");
-    		
+        		Helper.setOutput("false");    		
         }
         outAPOr(node);
     }
@@ -634,22 +577,10 @@ class Translation extends DepthFirstAdapter
         inAPNot(node);
         if(node.getNot() != null&&node.getV1() != null)
         {
-        	if (node.getV1() instanceof ATruePBoolean)
-        		Helper.setOutput("false");
-        	else if (node.getV1()instanceof AFalsePBoolean)
-        		Helper.setOutput("true");
-        	else
-        	{
-        		String var1 = "";
-        		if (Helper.getVariables().get(((AVarPBoolean)node.getV1()).getIdentifier().getText())!= null)
-        			var1 = Helper.getVariables().get(((AVarPBoolean)node.getV1()).getIdentifier().getText()).toString();
-        	
-        		if (var1.trim().equalsIgnoreCase("true"))
-           			Helper.setOutput("false");
-        		else
-            		Helper.setOutput("true");
-        	}
-        	
+    		if (myBoolean.getBoolean(node.getV1()))
+       			Helper.setOutput("false");
+    		else
+        		Helper.setOutput("true");        	
         }
         outAPNot(node);
     }
@@ -966,5 +897,61 @@ class Translation extends DepthFirstAdapter
         }
         outAPRepeat(node);
     }
-    
+    public void caseAIfPIf(AIfPIf node)
+    {
+        inAIfPIf(node);
+        if(node.getIf() != null&&node.getLPar() != null&&node.getPBoolean() != null&&node.getRPar() != null&&node.getLBrk() != null&&node.getPInstructionlist() != null&&node.getRBrk() != null)
+        {
+        	if (myBoolean.getBoolean(node.getPBoolean()))
+        		node.getPInstructionlist().apply(this);
+        }
+        outAIfPIf(node);
+    }
+    public void caseAIfelsePIf(AIfelsePIf node)
+    {
+        inAIfelsePIf(node);
+        if(node.getIf() != null&&node.getLPar() != null&&node.getPBoolean() != null
+        		&&node.getRPar() != null&&node.getLBrk() != null&&node.getTrue() != null&&node.getRBrk() != null
+        		&&node.getFalsel() != null&&node.getFalse() != null&&node.getFalser() != null)
+        {
+            if (myBoolean.getBoolean(node.getPBoolean()))
+            	node.getTrue().apply(this);
+            else
+            	node.getFalse().apply(this);
+        }
+        outAIfelsePIf(node);
+    }
+    public void caseAPIfelse(APIfelse node)
+    {
+        inAPIfelse(node);
+        if(node.getIfelse() != null&&node.getLPar() != null&&node.getPBoolean() != null
+        		&&node.getRPar() != null&&node.getLBrk() != null&&node.getInst1() != null
+        		&&node.getRBrk() != null&&node.getFalsel() != null&&node.getInst2() != null&&node.getFalser() != null)
+        {
+        	if (myBoolean.getBoolean(node.getPBoolean()))
+        		node.getInst1().apply(this);
+        	else
+        		node.getInst2().apply(this);
+        }
+        outAPIfelse(node);
+    }
+    public void caseAStopPControlStructures(AStopPControlStructures node)
+    {
+        inAStopPControlStructures(node);
+        if(node.getPStop() != null)
+        {
+        	Helper.setOutput("STOOOOOOOOOOOOOOOOP!!!");
+        }
+        outAStopPControlStructures(node);
+    }
+    public void caseAPGoto(APGoto node)
+    {
+        inAPGoto(node);
+        if(node.getGoto() != null&&node.getIdentifier() != null)
+        {
+        	Helper.setOutput("GOOOOOOOOOOOOOOOO!!!");
+        }
+        outAPGoto(node);
+    }
+
 }
