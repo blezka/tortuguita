@@ -1,6 +1,7 @@
 package comp.logo;
 
 import java.awt.Color;
+import java.util.Vector;
 
 import comp.logo.analysis.*;
 import comp.logo.node.*;
@@ -37,9 +38,52 @@ class Translation extends DepthFirstAdapter
         inAPList(node);
         if(node.getList() != null&&node.getIdentifier() != null&&node.getPIdentList() != null)
         {
-            Helper.getVariables().put("lista", "listando");
+//            Helper.getVariables().put(node.getIdentifier().getText(), node.getPIdentList());
+        	Vector<String> lista = new Vector<String>();
+        	lista.add(node.getIdentifier().getText());
+        	PPIdentList l = node.getPIdentList();
+        	while (l instanceof AIdentListPIdentList)
+        	{
+        		lista.add(((AIdentListPIdentList)l).getIdentifier().getText());
+        		l = ((AIdentListPIdentList)l).getPIdentList();
+        	}
+        	lista.add(((AIdentPIdentList)l).getIdentifier().getText());
+        	Helper.setOutput(lista.toString());
         }
         outAPList(node);
+    }
+    public void caseAPFirst(APFirst node)
+    {
+        inAPFirst(node);
+        if(node.getFirst() != null&&node.getIdentifier() != null)
+        {
+        	if (Helper.getVariables().get(node.getIdentifier().getText())!=null)
+        	{
+        		Helper.setOutput(""+Helper.getVariables().get(node.getIdentifier().getText()).toString().charAt(0));
+        	}
+        	else
+        		Helper.setOutput(node.getIdentifier().getText()+" not found");
+        }
+        outAPFirst(node);
+    }
+    public void caseAButfirstsPSelectors(AButfirstsPSelectors node)
+    {
+        inAButfirstsPSelectors(node);
+        if(node.getPButfirst() != null)
+        {
+        	if (node.getPButfirst() instanceof AButfirstPButfirst)
+            	if (Helper.getVariables().get(((AButfirstPButfirst)node.getPButfirst()).getIdentifier().getText())!=null)
+            		Helper.setOutput(""+Helper.getVariables().get(((AButfirstPButfirst)node.getPButfirst()).getIdentifier().getText()).toString().substring(1));
+            	else
+            		Helper.setOutput(((AButfirstPButfirst)node.getPButfirst()).getIdentifier().getText()+" not found");
+        	else
+            	if (Helper.getVariables().get(((ABfPButfirst)node.getPButfirst()).getIdentifier().getText())!=null)
+            		Helper.setOutput(""+Helper.getVariables().get(((ABfPButfirst)node.getPButfirst()).getIdentifier().getText()).toString().substring(1));
+            	else
+            		Helper.setOutput(((ABfPButfirst)node.getPButfirst()).getIdentifier().getText()+" not found");
+        		
+        }
+        outAButfirstsPSelectors(node);
     }
 //	communication
 	public void caseAPPrint(APPrint node)
@@ -360,7 +404,6 @@ class Translation extends DepthFirstAdapter
         }
         outAMultPProduct(node);
     }
-
     public void caseAPModulo(APModulo node)
     {
         inAPModulo(node);
@@ -568,8 +611,10 @@ class Translation extends DepthFirstAdapter
         inAClrPGraphics(node);
         if(node.getPClearscreen() != null)
         {
+        	myPoint turtlepos = Helper.getPuntos().get(Helper.getCantPuntos()-1);
+        	turtlepos = new myPoint(turtlepos.X(), turtlepos.Y(), false);
         	Helper.clearPuntos();
-        	Helper.setTurtleAngle(0);
+        	Helper.add(turtlepos);
         	Helper.clearOutput();
         }
         outAClrPGraphics(node);
@@ -682,7 +727,29 @@ class Translation extends DepthFirstAdapter
         outASetpensizePPencontrol(node);
     }
 //	workspace
-//  control
+    public void caseAPTo(APTo node)
+    {
+        inAPTo(node);
+        if(node.getTo() != null&&node.getIdentifier() != null&&node.getPInstructionlist() != null&&node.getEnd() != null)
+        {
+        	if (Helper.getVariables().get(node.getIdentifier().getText()) == null)
+        		Helper.getVariables().put(node.getIdentifier().getText(), node.getPInstructionlist());
+        }
+        outAPTo(node);
+    }
+    public void caseACalltofunctionPInstruction(ACalltofunctionPInstruction node) //to exectute TO
+    {
+        inACalltofunctionPInstruction(node);
+        if(node.getIdentifier() != null)
+        {
+        	System.out.println(Helper.getVariables());
+        	if (Helper.getVariables().get(node.getIdentifier().getText()) != null && Helper.getVariables().get(node.getIdentifier().getText())instanceof AInstPInstructionlist)
+        		((AInstPInstructionlist)Helper.getVariables().get(node.getIdentifier().getText())).apply(this);
+        	else
+        		Helper.setOutput(node.getIdentifier().getText()+" function not found");
+        }
+        outACalltofunctionPInstruction(node);
+    }
     public void caseAPMake(APMake node)
     {
         inAPMake(node);
@@ -696,6 +763,16 @@ class Translation extends DepthFirstAdapter
         }
         outAPMake(node);
     }
+//  control
+    public void caseARunPInstructionlist(ARunPInstructionlist node)
+    {
+        inARunPInstructionlist(node);
+        if(node.getRun() != null&&node.getLKey() != null&&node.getPInstructionlist() != null&&node.getRKey() != null&&node.getSemi() != null)
+        {
+            node.getPInstructionlist().apply(this);
+        }
+        outARunPInstructionlist(node);
+    }
     public void caseAPRepeat(APRepeat node)
     {
         inAPRepeat(node);
@@ -707,7 +784,4 @@ class Translation extends DepthFirstAdapter
         outAPRepeat(node);
     }
     
-    
-
-
 }

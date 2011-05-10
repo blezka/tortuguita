@@ -295,6 +295,27 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outAControlPInstruction(node);
     }
 
+    public void inACalltofunctionPInstruction(ACalltofunctionPInstruction node)
+    {
+        defaultIn(node);
+    }
+
+    public void outACalltofunctionPInstruction(ACalltofunctionPInstruction node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseACalltofunctionPInstruction(ACalltofunctionPInstruction node)
+    {
+        inACalltofunctionPInstruction(node);
+        if(node.getIdentifier() != null)
+        {
+            node.getIdentifier().apply(this);
+        }
+        outACalltofunctionPInstruction(node);
+    }
+
     public void inAVarsPPrimitives(AVarsPPrimitives node)
     {
         defaultIn(node);
@@ -400,25 +421,25 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outAFirstPSelectors(node);
     }
 
-    public void inAButfirstPSelectors(AButfirstPSelectors node)
+    public void inAButfirstsPSelectors(AButfirstsPSelectors node)
     {
         defaultIn(node);
     }
 
-    public void outAButfirstPSelectors(AButfirstPSelectors node)
+    public void outAButfirstsPSelectors(AButfirstsPSelectors node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAButfirstPSelectors(AButfirstPSelectors node)
+    public void caseAButfirstsPSelectors(AButfirstsPSelectors node)
     {
-        inAButfirstPSelectors(node);
+        inAButfirstsPSelectors(node);
         if(node.getPButfirst() != null)
         {
             node.getPButfirst().apply(this);
         }
-        outAButfirstPSelectors(node);
+        outAButfirstsPSelectors(node);
     }
 
     public void inALastPSelectors(ALastPSelectors node)

@@ -124,6 +124,11 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
+    public void caseACalltofunctionPInstruction(ACalltofunctionPInstruction node)
+    {
+        defaultCase(node);
+    }
+
     public void caseAVarsPPrimitives(AVarsPPrimitives node)
     {
         defaultCase(node);
@@ -149,7 +154,7 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseAButfirstPSelectors(AButfirstPSelectors node)
+    public void caseAButfirstsPSelectors(AButfirstsPSelectors node)
     {
         defaultCase(node);
     }

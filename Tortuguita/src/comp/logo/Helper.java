@@ -17,18 +17,10 @@ public class Helper {
 	private static Vector<myPoint> puntos = new Vector<myPoint>();
 	//mapas para guardar
 	private static Hashtable<String,Object> variables = new Hashtable<String,Object>();
-	private static Hashtable<String,Object> funciones = new Hashtable<String,Object>();
 	
 	public static void setPenDown(boolean pen)
 	{
 		penDown = pen;
-	}
-
-	public static Hashtable<String, Object> getFunciones() {
-		return funciones;
-	}
-	public static void setFunciones(Hashtable<String, Object> funciones) {
-		Helper.funciones = funciones;
 	}
 	
 	public static Vector<myPoint> getPuntos() {

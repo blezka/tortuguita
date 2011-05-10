@@ -112,13 +112,14 @@ Productions
  				{logic} p_logic |
  				{graphics} p_graphics |
  				{workspace} p_workspace |
- 				{control} p_control_structures;
+ 				{control} p_control_structures|
+ 				{calltofunction} identifier;
  			
  p_primitives   = {vars}p_word | {list} p_list | 
   				{selectors} p_selectors |
   				{mutator} p_mutator;
  p_selectors    = {first} p_first |
-  				{butfirst} p_butfirst |
+  				{butfirsts} p_butfirst |
   				{last} p_last;
  p_mutator		= {set} p_setitem ;
  // 				{push} p_push |
