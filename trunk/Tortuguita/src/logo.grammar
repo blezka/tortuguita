@@ -156,7 +156,7 @@ Productions
  				{setpcs} p_setpencolor|
  				{setpensize} p_setpensize;
  p_workspace	= {to} p_to |
-				{make} p_make;
+				{makes} p_make;
  p_control_structures = {repeat} p_repeat |
  				{if} p_if |
  				{ifelse} p_ifelse |
@@ -204,10 +204,11 @@ Productions
  p_setpencolor =  {setpencolor} setpencolor p_color| {setpc} setpc p_color;
  p_setpensize  =  {size} setpensize integer | {sizexy} setpensize identifier;
  p_to          =  to identifier p_instructionlist end; 
- p_make        =  make identifier p_value;
+ p_make        =  {varword}make [var]:identifier [valor]:p_boolean | {varnum}make [var]:identifier [valor]:p_value;
  p_repeat      = repeat integer  l_brk p_instructionlist r_brk;
- p_if		   = {if}if p_boolean p_instructionlist | {ifelse}if p_boolean [true]:p_instructionlist comma [false]:p_instructionlist;
- p_ifelse	   = ifelse p_boolean [inst1]:p_instructionlist comma [inst2]:p_instructionlist;
+ p_if		   = {if}if l_par p_boolean r_par l_brk p_instructionlist r_brk |
+ 				 {ifelse}if l_par p_boolean r_par l_brk [true]:p_instructionlist r_brk [falsel]:l_brk [false]:p_instructionlist [falser]:r_brk;
+ p_ifelse	   = ifelse l_par p_boolean r_par l_brk [inst1]:p_instructionlist r_brk [falsel]:l_brk [inst2]:p_instructionlist [falser]:r_brk;
  p_stop        = stop;
  p_goto        = goto identifier;
  
