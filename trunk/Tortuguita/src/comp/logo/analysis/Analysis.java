@@ -64,7 +64,7 @@ public interface Analysis extends Switch
     void caseASetpcsPPencontrol(ASetpcsPPencontrol node);
     void caseASetpensizePPencontrol(ASetpensizePPencontrol node);
     void caseAToPWorkspace(AToPWorkspace node);
-    void caseAMakePWorkspace(AMakePWorkspace node);
+    void caseAMakesPWorkspace(AMakesPWorkspace node);
     void caseARepeatPControlStructures(ARepeatPControlStructures node);
     void caseAIfPControlStructures(AIfPControlStructures node);
     void caseAIfelsePControlStructures(AIfelsePControlStructures node);
@@ -122,7 +122,8 @@ public interface Analysis extends Switch
     void caseASizePSetpensize(ASizePSetpensize node);
     void caseASizexyPSetpensize(ASizexyPSetpensize node);
     void caseAPTo(APTo node);
-    void caseAPMake(APMake node);
+    void caseAVarwordPMake(AVarwordPMake node);
+    void caseAVarnumPMake(AVarnumPMake node);
     void caseAPRepeat(APRepeat node);
     void caseAIfPIf(AIfPIf node);
     void caseAIfelsePIf(AIfelsePIf node);

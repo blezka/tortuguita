@@ -8,10 +8,15 @@ import comp.logo.analysis.*;
 public final class AIfelsePIf extends PPIf
 {
     private TIf _if_;
+    private TLPar _lPar_;
     private PPBoolean _pBoolean_;
+    private TRPar _rPar_;
+    private TLBrk _lBrk_;
     private PPInstructionlist _true_;
-    private TComma _comma_;
+    private TRBrk _rBrk_;
+    private TLBrk _falsel_;
     private PPInstructionlist _false_;
+    private TRBrk _falser_;
 
     public AIfelsePIf()
     {
@@ -20,21 +25,36 @@ public final class AIfelsePIf extends PPIf
 
     public AIfelsePIf(
         @SuppressWarnings("hiding") TIf _if_,
+        @SuppressWarnings("hiding") TLPar _lPar_,
         @SuppressWarnings("hiding") PPBoolean _pBoolean_,
+        @SuppressWarnings("hiding") TRPar _rPar_,
+        @SuppressWarnings("hiding") TLBrk _lBrk_,
         @SuppressWarnings("hiding") PPInstructionlist _true_,
-        @SuppressWarnings("hiding") TComma _comma_,
-        @SuppressWarnings("hiding") PPInstructionlist _false_)
+        @SuppressWarnings("hiding") TRBrk _rBrk_,
+        @SuppressWarnings("hiding") TLBrk _falsel_,
+        @SuppressWarnings("hiding") PPInstructionlist _false_,
+        @SuppressWarnings("hiding") TRBrk _falser_)
     {
         // Constructor
         setIf(_if_);
 
+        setLPar(_lPar_);
+
         setPBoolean(_pBoolean_);
+
+        setRPar(_rPar_);
+
+        setLBrk(_lBrk_);
 
         setTrue(_true_);
 
-        setComma(_comma_);
+        setRBrk(_rBrk_);
+
+        setFalsel(_falsel_);
 
         setFalse(_false_);
+
+        setFalser(_falser_);
 
     }
 
@@ -43,10 +63,15 @@ public final class AIfelsePIf extends PPIf
     {
         return new AIfelsePIf(
             cloneNode(this._if_),
+            cloneNode(this._lPar_),
             cloneNode(this._pBoolean_),
+            cloneNode(this._rPar_),
+            cloneNode(this._lBrk_),
             cloneNode(this._true_),
-            cloneNode(this._comma_),
-            cloneNode(this._false_));
+            cloneNode(this._rBrk_),
+            cloneNode(this._falsel_),
+            cloneNode(this._false_),
+            cloneNode(this._falser_));
     }
 
     public void apply(Switch sw)
@@ -79,6 +104,31 @@ public final class AIfelsePIf extends PPIf
         this._if_ = node;
     }
 
+    public TLPar getLPar()
+    {
+        return this._lPar_;
+    }
+
+    public void setLPar(TLPar node)
+    {
+        if(this._lPar_ != null)
+        {
+            this._lPar_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._lPar_ = node;
+    }
+
     public PPBoolean getPBoolean()
     {
         return this._pBoolean_;
@@ -102,6 +152,56 @@ public final class AIfelsePIf extends PPIf
         }
 
         this._pBoolean_ = node;
+    }
+
+    public TRPar getRPar()
+    {
+        return this._rPar_;
+    }
+
+    public void setRPar(TRPar node)
+    {
+        if(this._rPar_ != null)
+        {
+            this._rPar_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._rPar_ = node;
+    }
+
+    public TLBrk getLBrk()
+    {
+        return this._lBrk_;
+    }
+
+    public void setLBrk(TLBrk node)
+    {
+        if(this._lBrk_ != null)
+        {
+            this._lBrk_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._lBrk_ = node;
     }
 
     public PPInstructionlist getTrue()
@@ -129,16 +229,16 @@ public final class AIfelsePIf extends PPIf
         this._true_ = node;
     }
 
-    public TComma getComma()
+    public TRBrk getRBrk()
     {
-        return this._comma_;
+        return this._rBrk_;
     }
 
-    public void setComma(TComma node)
+    public void setRBrk(TRBrk node)
     {
-        if(this._comma_ != null)
+        if(this._rBrk_ != null)
         {
-            this._comma_.parent(null);
+            this._rBrk_.parent(null);
         }
 
         if(node != null)
@@ -151,7 +251,32 @@ public final class AIfelsePIf extends PPIf
             node.parent(this);
         }
 
-        this._comma_ = node;
+        this._rBrk_ = node;
+    }
+
+    public TLBrk getFalsel()
+    {
+        return this._falsel_;
+    }
+
+    public void setFalsel(TLBrk node)
+    {
+        if(this._falsel_ != null)
+        {
+            this._falsel_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._falsel_ = node;
     }
 
     public PPInstructionlist getFalse()
@@ -179,15 +304,45 @@ public final class AIfelsePIf extends PPIf
         this._false_ = node;
     }
 
+    public TRBrk getFalser()
+    {
+        return this._falser_;
+    }
+
+    public void setFalser(TRBrk node)
+    {
+        if(this._falser_ != null)
+        {
+            this._falser_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._falser_ = node;
+    }
+
     @Override
     public String toString()
     {
         return ""
             + toString(this._if_)
+            + toString(this._lPar_)
             + toString(this._pBoolean_)
+            + toString(this._rPar_)
+            + toString(this._lBrk_)
             + toString(this._true_)
-            + toString(this._comma_)
-            + toString(this._false_);
+            + toString(this._rBrk_)
+            + toString(this._falsel_)
+            + toString(this._false_)
+            + toString(this._falser_);
     }
 
     @Override
@@ -200,9 +355,27 @@ public final class AIfelsePIf extends PPIf
             return;
         }
 
+        if(this._lPar_ == child)
+        {
+            this._lPar_ = null;
+            return;
+        }
+
         if(this._pBoolean_ == child)
         {
             this._pBoolean_ = null;
+            return;
+        }
+
+        if(this._rPar_ == child)
+        {
+            this._rPar_ = null;
+            return;
+        }
+
+        if(this._lBrk_ == child)
+        {
+            this._lBrk_ = null;
             return;
         }
 
@@ -212,15 +385,27 @@ public final class AIfelsePIf extends PPIf
             return;
         }
 
-        if(this._comma_ == child)
+        if(this._rBrk_ == child)
         {
-            this._comma_ = null;
+            this._rBrk_ = null;
+            return;
+        }
+
+        if(this._falsel_ == child)
+        {
+            this._falsel_ = null;
             return;
         }
 
         if(this._false_ == child)
         {
             this._false_ = null;
+            return;
+        }
+
+        if(this._falser_ == child)
+        {
+            this._falser_ = null;
             return;
         }
 
@@ -237,9 +422,27 @@ public final class AIfelsePIf extends PPIf
             return;
         }
 
+        if(this._lPar_ == oldChild)
+        {
+            setLPar((TLPar) newChild);
+            return;
+        }
+
         if(this._pBoolean_ == oldChild)
         {
             setPBoolean((PPBoolean) newChild);
+            return;
+        }
+
+        if(this._rPar_ == oldChild)
+        {
+            setRPar((TRPar) newChild);
+            return;
+        }
+
+        if(this._lBrk_ == oldChild)
+        {
+            setLBrk((TLBrk) newChild);
             return;
         }
 
@@ -249,15 +452,27 @@ public final class AIfelsePIf extends PPIf
             return;
         }
 
-        if(this._comma_ == oldChild)
+        if(this._rBrk_ == oldChild)
         {
-            setComma((TComma) newChild);
+            setRBrk((TRBrk) newChild);
+            return;
+        }
+
+        if(this._falsel_ == oldChild)
+        {
+            setFalsel((TLBrk) newChild);
             return;
         }
 
         if(this._false_ == oldChild)
         {
             setFalse((PPInstructionlist) newChild);
+            return;
+        }
+
+        if(this._falser_ == oldChild)
+        {
+            setFalser((TRBrk) newChild);
             return;
         }
 
