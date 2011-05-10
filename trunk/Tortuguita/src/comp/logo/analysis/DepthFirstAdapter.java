@@ -484,25 +484,25 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outASetPMutator(node);
     }
 
-    public void inAPCommunication(APCommunication node)
+    public void inAPrsPCommunication(APrsPCommunication node)
     {
         defaultIn(node);
     }
 
-    public void outAPCommunication(APCommunication node)
+    public void outAPrsPCommunication(APrsPCommunication node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAPCommunication(APCommunication node)
+    public void caseAPrsPCommunication(APrsPCommunication node)
     {
-        inAPCommunication(node);
+        inAPrsPCommunication(node);
         if(node.getPPrint() != null)
         {
             node.getPPrint().apply(this);
         }
-        outAPCommunication(node);
+        outAPrsPCommunication(node);
     }
 
     public void inASumPArithmetic(ASumPArithmetic node)
@@ -1473,20 +1473,20 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outAPSetitem(node);
     }
 
-    public void inAPPrint(APPrint node)
+    public void inAPrintPPrint(APrintPPrint node)
     {
         defaultIn(node);
     }
 
-    public void outAPPrint(APPrint node)
+    public void outAPrintPPrint(APrintPPrint node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAPPrint(APPrint node)
+    public void caseAPrintPPrint(APrintPPrint node)
     {
-        inAPPrint(node);
+        inAPrintPPrint(node);
         if(node.getPrint() != null)
         {
             node.getPrint().apply(this);
@@ -1503,7 +1503,40 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getRPar().apply(this);
         }
-        outAPPrint(node);
+        outAPrintPPrint(node);
+    }
+
+    public void inAPrPPrint(APrPPrint node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPrPPrint(APrPPrint node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPrPPrint(APrPPrint node)
+    {
+        inAPrPPrint(node);
+        if(node.getPr() != null)
+        {
+            node.getPr().apply(this);
+        }
+        if(node.getLPar() != null)
+        {
+            node.getLPar().apply(this);
+        }
+        if(node.getPIdentList() != null)
+        {
+            node.getPIdentList().apply(this);
+        }
+        if(node.getRPar() != null)
+        {
+            node.getRPar().apply(this);
+        }
+        outAPrPPrint(node);
     }
 
     public void inASumPSum(ASumPSum node)

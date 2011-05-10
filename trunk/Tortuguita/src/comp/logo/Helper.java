@@ -17,7 +17,17 @@ public class Helper {
 	private static Vector<myPoint> puntos = new Vector<myPoint>();
 	//mapas para guardar
 	private static Hashtable<String,Object> variables = new Hashtable<String,Object>();
+	private static Hashtable<String,Object> funciones = new Hashtable<String,Object>();
+	private static Hashtable<String,Object> etiquetas = new Hashtable<String,Object>();
 	
+	public static Hashtable<String, Object> getEtiquetas() {
+		return etiquetas;
+	}
+
+	public static void setEtiquetas(Hashtable<String, Object> etiquetas) {
+		Helper.etiquetas = etiquetas;
+	}
+
 	public static void setPenDown(boolean pen)
 	{
 		penDown = pen;
@@ -41,11 +51,17 @@ public class Helper {
 	public static void setVariables(Hashtable<String, Object> variables) {
 		Helper.variables = variables;
 	}
-	public static String searchVar(String key)
-	{
-		if (variables.get(key)!= null)
-			return variables.get(key).toString();
-		return "["+key+" variable not found]";
+//	public static String searchVar(String key)
+//	{
+//		if (variables.get(key)!= null)
+//			return variables.get(key).toString();
+//		return "["+key+" variable not found]";
+//	}
+	public static Hashtable<String, Object> getFunciones() {
+		return funciones;
+	}
+	public static void setFunciones(Hashtable<String, Object> funciones) {
+		Helper.funciones = funciones;
 	}
 	
 	public static myPoint add(myPoint p)
@@ -77,4 +93,30 @@ public class Helper {
 		output+=" "+out;
 	}
 	public static void clearOutput(){output = "";}
+	@SuppressWarnings("unchecked")
+	public static Color getColor(String var)
+	{
+		if (variables.get(var)!= null)
+		{
+    		if (variables.get(var)instanceof Vector)
+    		{
+    			Vector<String> lista = (Vector<String>)(variables.get(var));
+    			if (lista.size()>=3)
+    			{
+    				try{
+    					int R = Integer.parseInt(lista.get(0).trim());
+    					int G = Integer.parseInt(lista.get(1).trim());
+    					int B = Integer.parseInt(lista.get(2).trim());
+    					if(R>=0 && R<=255 && G>=0 && G<=255 &&B>=0 &&B<=255)
+    						return new Color(R,G,B);
+    					else
+    						setOutput("Error: La lista no contiene números válidos");
+    				}catch(Exception e){Helper.setOutput("Error: La lista no contiene números");}
+    			}
+    			else
+    			Helper.setOutput("Error: La lista no contiene suficientes elementos");
+    		}
+		}
+		return Color.black;
+	}
 }
