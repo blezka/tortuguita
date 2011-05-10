@@ -15,16 +15,16 @@ class Translation extends DepthFirstAdapter
         inAPWord(node);
         if(node.getWord() != null&&node.getIdentifier() != null&&node.getPIdentList() != null)
         {
-        	String concat = node.getIdentifier().getText();
+        	String concat = node.getIdentifier().getText().trim();
         	if (node.getPIdentList() instanceof AIdentListPIdentList)
         	{
         		AIdentListPIdentList list = (AIdentListPIdentList)node.getPIdentList();
         		while (list.getPIdentList() instanceof AIdentListPIdentList)
         		{
-        			concat+=list.getIdentifier().getText();
+        			concat+=list.getIdentifier().getText().trim();
         			list = (AIdentListPIdentList) list.getPIdentList();        			
         		}
-        		concat+=list.getIdentifier().getText();
+        		concat+=list.getIdentifier().getText().trim();
         		concat+=((AIdentPIdentList)list.getPIdentList()).getIdentifier();
         	}
         	else
@@ -39,16 +39,16 @@ class Translation extends DepthFirstAdapter
         if(node.getList() != null&&node.getIdentifier() != null&&node.getPIdentList() != null)
         {
         	Vector<String> lista = new Vector<String>();
-//        	lista.add(node.getIdentifier().getText());
+//        	lista.add(node.getIdentifier().getText().trim());
         	PPIdentList l = node.getPIdentList();
         	while (l instanceof AIdentListPIdentList)
         	{
-        		lista.add(((AIdentListPIdentList)l).getIdentifier().getText());
+        		lista.add(((AIdentListPIdentList)l).getIdentifier().getText().trim());
         		l = ((AIdentListPIdentList)l).getPIdentList();
         	}
-        	lista.add(((AIdentPIdentList)l).getIdentifier().getText());
+        	lista.add(((AIdentPIdentList)l).getIdentifier().getText().trim());
         	Helper.setOutput(lista.toString());
-            Helper.getVariables().put(node.getIdentifier().getText(), lista);
+            Helper.getVariables().put(node.getIdentifier().getText().trim(), lista);
         }
         outAPList(node);
     }
@@ -58,18 +58,18 @@ class Translation extends DepthFirstAdapter
         inAPFirst(node);
         if(node.getFirst() != null&&node.getIdentifier() != null)
         {
-        	if (Helper.getVariables().get(node.getIdentifier().getText())!=null)
+        	if (Helper.getVariables().get(node.getIdentifier().getText().trim())!=null)
         	{
-        		if (Helper.getVariables().get(node.getIdentifier().getText())instanceof Vector)
+        		if (Helper.getVariables().get(node.getIdentifier().getText().trim())instanceof Vector)
         		{
-        			Vector<String> lista = (Vector<String>)(Helper.getVariables().get(node.getIdentifier().getText()));
+        			Vector<String> lista = (Vector<String>)(Helper.getVariables().get(node.getIdentifier().getText().trim()));
         			Helper.setOutput(""+lista.get(0));
         		}
         		else
-        			Helper.setOutput(""+Helper.getVariables().get(node.getIdentifier().getText()).toString().charAt(0));
+        			Helper.setOutput(""+Helper.getVariables().get(node.getIdentifier().getText().trim()).toString().charAt(0));
         	}
         	else
-        		Helper.setOutput(node.getIdentifier().getText()+" not found");
+        		Helper.setOutput(""+(node.getIdentifier().getText().trim().length()>0?node.getIdentifier().getText().trim().charAt(0):""));
         }
         outAPFirst(node);
     }
@@ -80,29 +80,29 @@ class Translation extends DepthFirstAdapter
         if(node.getPButfirst() != null)
         {
         	if (node.getPButfirst() instanceof AButfirstPButfirst)
-            	if (Helper.getVariables().get(((AButfirstPButfirst)node.getPButfirst()).getIdentifier().getText())!=null)
-            		if (Helper.getVariables().get(((AButfirstPButfirst)node.getPButfirst()).getIdentifier().getText())instanceof Vector)
+            	if (Helper.getVariables().get(((AButfirstPButfirst)node.getPButfirst()).getIdentifier().getText().trim())!=null)
+            		if (Helper.getVariables().get(((AButfirstPButfirst)node.getPButfirst()).getIdentifier().getText().trim())instanceof Vector)
             		{
-            			Vector<String> lista = new Vector<String>((Vector<String>)(Helper.getVariables().get(((AButfirstPButfirst)node.getPButfirst()).getIdentifier().getText())));
+            			Vector<String> lista = new Vector<String>((Vector<String>)(Helper.getVariables().get(((AButfirstPButfirst)node.getPButfirst()).getIdentifier().getText().trim())));
             			lista.remove(0);
             			Helper.setOutput(""+lista);
             		}
             		else
-            			Helper.setOutput(""+Helper.getVariables().get(((AButfirstPButfirst)node.getPButfirst()).getIdentifier().getText()).toString().substring(1));
+            			Helper.setOutput(""+Helper.getVariables().get(((AButfirstPButfirst)node.getPButfirst()).getIdentifier().getText().trim()).toString().substring(1));
             	else
-            		Helper.setOutput(((AButfirstPButfirst)node.getPButfirst()).getIdentifier().getText()+" not found");
+            		Helper.setOutput(""+(((AButfirstPButfirst)node.getPButfirst()).getIdentifier().getText().trim().length()>1?((AButfirstPButfirst)node.getPButfirst()).getIdentifier().getText().trim().substring(1):""));
         	else
-            	if (Helper.getVariables().get(((ABfPButfirst)node.getPButfirst()).getIdentifier().getText())!=null)
-            		if (Helper.getVariables().get(((ABfPButfirst)node.getPButfirst()).getIdentifier().getText())instanceof Vector)
+            	if (Helper.getVariables().get(((ABfPButfirst)node.getPButfirst()).getIdentifier().getText().trim())!=null)
+            		if (Helper.getVariables().get(((ABfPButfirst)node.getPButfirst()).getIdentifier().getText().trim())instanceof Vector)
             		{
-            			Vector<String> lista = new Vector<String>( (Vector<String>)(Helper.getVariables().get(((ABfPButfirst)node.getPButfirst()).getIdentifier().getText())));
+            			Vector<String> lista = new Vector<String>( (Vector<String>)(Helper.getVariables().get(((ABfPButfirst)node.getPButfirst()).getIdentifier().getText().trim())));
             			lista.remove(0);
             			Helper.setOutput(""+lista);
             		}
             		else
-            			Helper.setOutput(""+Helper.getVariables().get(((ABfPButfirst)node.getPButfirst()).getIdentifier().getText()).toString().substring(1));
+            			Helper.setOutput(""+Helper.getVariables().get(((ABfPButfirst)node.getPButfirst()).getIdentifier().getText().trim()).toString().substring(1));
             	else
-            		Helper.setOutput(((ABfPButfirst)node.getPButfirst()).getIdentifier().getText()+" not found");
+            		Helper.setOutput(""+(((ABfPButfirst)node.getPButfirst()).getIdentifier().getText().trim().length()>1?((ABfPButfirst)node.getPButfirst()).getIdentifier().getText().trim().substring(1):""));
         		
         }
         outAButfirstsPSelectors(node);
@@ -113,21 +113,24 @@ class Translation extends DepthFirstAdapter
         inAPLast(node);
         if(node.getLast() != null&&node.getIdentifier() != null)
         {
-        	if (Helper.getVariables().get(node.getIdentifier().getText())!=null)
+        	if (Helper.getVariables().get(node.getIdentifier().getText().trim())!=null)
         	{
-        		if (Helper.getVariables().get(node.getIdentifier().getText())instanceof Vector)
+        		if (Helper.getVariables().get(node.getIdentifier().getText().trim())instanceof Vector)
         		{
-        			Vector<String> lista = (Vector<String>)(Helper.getVariables().get(node.getIdentifier().getText()));
+        			Vector<String> lista = (Vector<String>)(Helper.getVariables().get(node.getIdentifier().getText().trim()));
         			Helper.setOutput(""+lista.get(lista.size()-1));
         		}
         		else
         		{
-	        		String item = Helper.getVariables().get(node.getIdentifier().getText()).toString();
+	        		String item = Helper.getVariables().get(node.getIdentifier().getText().trim()).toString().trim();
 	        		Helper.setOutput(""+item.charAt(item.length()-1));
         		}
         	}
         	else
-        		Helper.setOutput(node.getIdentifier().getText()+" not found");
+        		Helper.setOutput(""+(
+        				node.getIdentifier().getText().trim().length()>0?
+        						node.getIdentifier().getText().trim().charAt(
+        								(node.getIdentifier().getText().trim().length()-1)):""));
         }
         outAPLast(node);
     }
@@ -137,41 +140,93 @@ class Translation extends DepthFirstAdapter
         inAPSetitem(node);
         if(node.getSetitem() != null&&node.getInteger() != null&&node.getIdentifier() != null&&node.getPValue() != null)
         {
-            if (Helper.getVariables().get(node.getIdentifier().getText())!= null)
+            if (Helper.getVariables().get(node.getIdentifier().getText().trim())!= null)
             {
-            	if (Helper.getVariables().get(node.getIdentifier().getText()) instanceof Vector)
+            	if (Helper.getVariables().get(node.getIdentifier().getText().trim()) instanceof Vector)
             	{
-                	Vector<String> lista =(Vector<String>) Helper.getVariables().get(node.getIdentifier().getText()) ;
-            		if (Integer.parseInt(node.getInteger().getText()) < lista.size())
-            		lista.set(Integer.parseInt(node.getInteger().getText()), node.getPValue().toString());
+                	Vector<String> lista =(Vector<String>) Helper.getVariables().get(node.getIdentifier().getText().trim()) ;
+            		if (Integer.parseInt(node.getInteger().getText().trim()) < lista.size())
+            		lista.set(Integer.parseInt(node.getInteger().getText().trim()), node.getPValue().toString());
             	}
             }
             else
-            	Helper.setOutput(node.getIdentifier().getText()+" list not found");
+            	Helper.setOutput(node.getIdentifier().getText().trim()+" list not found");
         }
         outAPSetitem(node);
     }
 //	communication
-	public void caseAPPrint(APPrint node)
+    public void caseAPrsPCommunication(APrsPCommunication node)
     {
-        inAPPrint(node);
-        if(node.getPrint() != null&&node.getLPar() != null&&node.getPIdentList() != null&&node.getRPar() != null)
+        inAPrsPCommunication(node);
+        if(node.getPPrint() != null)
         {
-        	if ((node.getPIdentList() instanceof AIdentListPIdentList))
+        	if (node.getPPrint() instanceof APrintPPrint)        	
         	{
-            	AIdentListPIdentList list = (AIdentListPIdentList)node.getPIdentList();
+        	if ((((APrintPPrint)node.getPPrint()).getPIdentList() instanceof AIdentListPIdentList))
+        	{
+            	AIdentListPIdentList list = (AIdentListPIdentList)((APrintPPrint)node.getPPrint()).getPIdentList();
+            	//Recorre cada elemento de la lista
 	        	while (list.getPIdentList() instanceof AIdentListPIdentList)
 	        	{
-	        		Helper.setOutput(Helper.searchVar(list.getIdentifier().getText()));
+	        		if (Helper.getVariables().get(list.getIdentifier().getText().trim())!= null)
+	        			Helper.setOutput(""+Helper.getVariables().get(list.getIdentifier().getText().trim()));
+	        		else
+	        			Helper.setOutput(""+list.getIdentifier().getText().trim());
 	        		list = (AIdentListPIdentList) list.getPIdentList();	        		
 	        	}
-	        	Helper.setOutput(Helper.searchVar(list.getIdentifier().getText()));
-        		Helper.setOutput(Helper.searchVar(((AIdentPIdentList)list.getPIdentList()).getIdentifier().getText()));
+	        	//penultimo
+        		if (Helper.getVariables().get(list.getIdentifier().getText().trim())!= null)
+        			Helper.setOutput(""+Helper.getVariables().get(list.getIdentifier().getText().trim()));
+        		else
+        			Helper.setOutput(""+list.getIdentifier().getText().trim());
+        		//ultimo
+        		if (Helper.getVariables().get(((AIdentPIdentList)list.getPIdentList()).getIdentifier().getText().trim())!= null)
+        			Helper.setOutput(""+Helper.getVariables().get(((AIdentPIdentList)list.getPIdentList()).getIdentifier().getText().trim()));
+        		else
+        			Helper.setOutput(""+((AIdentPIdentList)list.getPIdentList()).getIdentifier().getText().trim());
         	}        	
+        	//solo 1 elemnto
+        	else if (((APrintPPrint)node.getPPrint()).getPIdentList() instanceof AIdentPIdentList)
+	    		if (Helper.getVariables().get(((AIdentPIdentList)((APrintPPrint)node.getPPrint()).getPIdentList()).getIdentifier().getText().trim())!= null)
+	    			Helper.setOutput(""+Helper.getVariables().get(((AIdentPIdentList)((APrintPPrint)node.getPPrint()).getPIdentList()).getIdentifier().getText().trim()));
+	    		else
+	    			Helper.setOutput(""+((AIdentPIdentList)((APrintPPrint)node.getPPrint()).getPIdentList()).getIdentifier().getText().trim());
+        	}
         	else
-        		Helper.setOutput(Helper.searchVar(((AIdentPIdentList)node.getPIdentList()).getIdentifier().getText()));
+        	{
+            	if ((((APrPPrint)node.getPPrint()).getPIdentList() instanceof AIdentListPIdentList))
+            	{
+                	AIdentListPIdentList list = (AIdentListPIdentList)((APrPPrint)node.getPPrint()).getPIdentList();
+                	//Recorre cada elemento de la lista
+    	        	while (list.getPIdentList() instanceof AIdentListPIdentList)
+    	        	{
+    	        		if (Helper.getVariables().get(list.getIdentifier().getText().trim())!= null)
+    	        			Helper.setOutput(""+Helper.getVariables().get(list.getIdentifier().getText().trim()));
+    	        		else
+    	        			Helper.setOutput(""+list.getIdentifier().getText().trim());
+    	        		list = (AIdentListPIdentList) list.getPIdentList();	        		
+    	        	}
+    	        	//penultimo
+            		if (Helper.getVariables().get(list.getIdentifier().getText().trim())!= null)
+            			Helper.setOutput(""+Helper.getVariables().get(list.getIdentifier().getText().trim()));
+            		else
+            			Helper.setOutput(""+list.getIdentifier().getText().trim());
+            		//ultimo
+            		if (Helper.getVariables().get(((AIdentPIdentList)list.getPIdentList()).getIdentifier().getText().trim())!= null)
+            			Helper.setOutput(""+Helper.getVariables().get(((AIdentPIdentList)list.getPIdentList()).getIdentifier().getText().trim()));
+            		else
+            			Helper.setOutput(""+((AIdentPIdentList)list.getPIdentList()).getIdentifier().getText().trim());
+            	}        	
+            	//solo 1 elemnto
+            	else if (((APrPPrint)node.getPPrint()).getPIdentList() instanceof AIdentPIdentList)
+    	    		if (Helper.getVariables().get(((AIdentPIdentList)((APrPPrint)node.getPPrint()).getPIdentList()).getIdentifier().getText().trim())!= null)
+    	    			Helper.setOutput(""+Helper.getVariables().get(((AIdentPIdentList)((APrPPrint)node.getPPrint()).getPIdentList()).getIdentifier().getText().trim()));
+    	    		else
+    	    			Helper.setOutput(""+((AIdentPIdentList)((APrPPrint)node.getPPrint()).getPIdentList()).getIdentifier().getText().trim());
+
+        	}
         }
-        outAPPrint(node);
+        outAPrsPCommunication(node);
     }
 //	arithmetic
 	public void caseASumPSum(ASumPSum node)
@@ -181,38 +236,38 @@ class Translation extends DepthFirstAdapter
         {
         	double sum = 0;
         	if (node.getPValue()instanceof AIntPValue)
-        		sum += Integer.parseInt(((AIntPValue)node.getPValue()).getInteger().getText());
+        		sum += Integer.parseInt(((AIntPValue)node.getPValue()).getInteger().getText().trim());
         	else
-        		sum += Double.parseDouble(((ADobPValue)node.getPValue()).getDouble().getText());
+        		sum += Double.parseDouble(((ADobPValue)node.getPValue()).getDouble().getText().trim());
         	if (node.getPValueList()instanceof AValueListPValueList)
         	{
         		AValueListPValueList list = (AValueListPValueList)node.getPValueList();
         		while (list.getPValueList() instanceof AValueListPValueList)
         		{
                 	if (list.getPValue()instanceof AIntPValue)
-                		sum += Integer.parseInt(((AIntPValue)list.getPValue()).getInteger().getText());
+                		sum += Integer.parseInt(((AIntPValue)list.getPValue()).getInteger().getText().trim());
                 	else
-                		sum += Double.parseDouble(((ADobPValue)list.getPValue()).getDouble().getText());
+                		sum += Double.parseDouble(((ADobPValue)list.getPValue()).getDouble().getText().trim());
         			
         			list = (AValueListPValueList) list.getPValueList();
         		}
             	if (list.getPValue()instanceof AIntPValue)
-            		sum += Integer.parseInt(((AIntPValue)list.getPValue()).getInteger().getText());
+            		sum += Integer.parseInt(((AIntPValue)list.getPValue()).getInteger().getText().trim());
             	else
-            		sum += Double.parseDouble(((ADobPValue)list.getPValue()).getDouble().getText());
+            		sum += Double.parseDouble(((ADobPValue)list.getPValue()).getDouble().getText().trim());
 
             	if (((AValuePValueList)list.getPValueList()).getPValue() instanceof AIntPValue)
-            		sum += Integer.parseInt(((AIntPValue)((AValuePValueList)list.getPValueList()).getPValue()).getInteger().getText());
+            		sum += Integer.parseInt(((AIntPValue)((AValuePValueList)list.getPValueList()).getPValue()).getInteger().getText().trim());
             	else
-            		sum += Double.parseDouble(((ADobPValue)((AValuePValueList)list.getPValueList()).getPValue()).getDouble().getText());
+            		sum += Double.parseDouble(((ADobPValue)((AValuePValueList)list.getPValueList()).getPValue()).getDouble().getText().trim());
 
         	}
         	else
         	{
         		if (((AValuePValueList)node.getPValueList()).getPValue() instanceof AIntPValue)
-            		sum += Integer.parseInt(((AIntPValue)((AValuePValueList)node.getPValueList()).getPValue()).getInteger().getText());
+            		sum += Integer.parseInt(((AIntPValue)((AValuePValueList)node.getPValueList()).getPValue()).getInteger().getText().trim());
             	else
-            		sum += Double.parseDouble(((ADobPValue)((AValuePValueList)node.getPValueList()).getPValue()).getDouble().getText());
+            		sum += Double.parseDouble(((ADobPValue)((AValuePValueList)node.getPValueList()).getPValue()).getDouble().getText().trim());
 
         	}
         	Helper.setOutput(""+sum);
@@ -227,38 +282,38 @@ class Translation extends DepthFirstAdapter
         {
             double sum = 0;
             if (node.getPValue()instanceof AIntPValue)
-        		sum += Integer.parseInt(((AIntPValue)node.getPValue()).getInteger().getText());
+        		sum += Integer.parseInt(((AIntPValue)node.getPValue()).getInteger().getText().trim());
         	else
-        		sum += Double.parseDouble(((ADobPValue)node.getPValue()).getDouble().getText());
+        		sum += Double.parseDouble(((ADobPValue)node.getPValue()).getDouble().getText().trim());
             if (node.getPSumList() instanceof ASumListPSumList)
         	{
             	ASumListPSumList list = (ASumListPSumList)node.getPSumList();
         		while (list.getPSumList() instanceof ASumListPSumList)
         		{
         			if (list.getPValue()instanceof AIntPValue)
-                		sum += Integer.parseInt(((AIntPValue)list.getPValue()).getInteger().getText());
+                		sum += Integer.parseInt(((AIntPValue)list.getPValue()).getInteger().getText().trim());
                 	else
-                		sum += Double.parseDouble(((ADobPValue)list.getPValue()).getDouble().getText());
+                		sum += Double.parseDouble(((ADobPValue)list.getPValue()).getDouble().getText().trim());
         			
         			list = (ASumListPSumList) list.getPSumList();
         		}
         		if (list.getPValue()instanceof AIntPValue)
-            		sum += Integer.parseInt(((AIntPValue)list.getPValue()).getInteger().getText());
+            		sum += Integer.parseInt(((AIntPValue)list.getPValue()).getInteger().getText().trim());
             	else
-            		sum += Double.parseDouble(((ADobPValue)list.getPValue()).getDouble().getText());
+            		sum += Double.parseDouble(((ADobPValue)list.getPValue()).getDouble().getText().trim());
 
         		if (((ASumValPSumList)list.getPSumList()).getPValue() instanceof AIntPValue)
-            		sum += Integer.parseInt(((AIntPValue)((ASumValPSumList)list.getPSumList()).getPValue()).getInteger().getText());
+            		sum += Integer.parseInt(((AIntPValue)((ASumValPSumList)list.getPSumList()).getPValue()).getInteger().getText().trim());
             	else
-            		sum += Double.parseDouble(((ADobPValue)((ASumValPSumList)list.getPSumList()).getPValue()).getDouble().getText());
+            		sum += Double.parseDouble(((ADobPValue)((ASumValPSumList)list.getPSumList()).getPValue()).getDouble().getText().trim());
 
         	}
             else
         	{
         		if (((ASumValPSumList)node.getPSumList()).getPValue() instanceof AIntPValue)
-            		sum += Integer.parseInt(((AIntPValue)((ASumValPSumList)node.getPSumList()).getPValue()).getInteger().getText());
+            		sum += Integer.parseInt(((AIntPValue)((ASumValPSumList)node.getPSumList()).getPValue()).getInteger().getText().trim());
             	else
-            		sum += Double.parseDouble(((ADobPValue)((ASumValPSumList)node.getPSumList()).getPValue()).getDouble().getText());
+            		sum += Double.parseDouble(((ADobPValue)((ASumValPSumList)node.getPSumList()).getPValue()).getDouble().getText().trim());
 
         	}
         	Helper.setOutput(""+sum);
@@ -272,38 +327,38 @@ class Translation extends DepthFirstAdapter
         {
         	double dif = 0;
         	if (node.getPValue()instanceof AIntPValue)
-        		dif = Integer.parseInt(((AIntPValue)node.getPValue()).getInteger().getText());
+        		dif = Integer.parseInt(((AIntPValue)node.getPValue()).getInteger().getText().trim());
         	else
-        		dif = Double.parseDouble(((ADobPValue)node.getPValue()).getDouble().getText());
+        		dif = Double.parseDouble(((ADobPValue)node.getPValue()).getDouble().getText().trim());
         	if (node.getPValueList()instanceof AValueListPValueList)
         	{
         		AValueListPValueList list = (AValueListPValueList)node.getPValueList();
         		while (list.getPValueList() instanceof AValueListPValueList)
         		{
                 	if (list.getPValue()instanceof AIntPValue)
-                		dif -= Integer.parseInt(((AIntPValue)list.getPValue()).getInteger().getText());
+                		dif -= Integer.parseInt(((AIntPValue)list.getPValue()).getInteger().getText().trim());
                 	else
-                		dif -= Double.parseDouble(((ADobPValue)list.getPValue()).getDouble().getText());
+                		dif -= Double.parseDouble(((ADobPValue)list.getPValue()).getDouble().getText().trim());
         			
         			list = (AValueListPValueList) list.getPValueList();
         		}
             	if (list.getPValue()instanceof AIntPValue)
-            		dif -= Integer.parseInt(((AIntPValue)list.getPValue()).getInteger().getText());
+            		dif -= Integer.parseInt(((AIntPValue)list.getPValue()).getInteger().getText().trim());
             	else
-            		dif -= Double.parseDouble(((ADobPValue)list.getPValue()).getDouble().getText());
+            		dif -= Double.parseDouble(((ADobPValue)list.getPValue()).getDouble().getText().trim());
 
             	if (((AValuePValueList)list.getPValueList()).getPValue() instanceof AIntPValue)
-            		dif -= Integer.parseInt(((AIntPValue)((AValuePValueList)list.getPValueList()).getPValue()).getInteger().getText());
+            		dif -= Integer.parseInt(((AIntPValue)((AValuePValueList)list.getPValueList()).getPValue()).getInteger().getText().trim());
             	else
-            		dif -= Double.parseDouble(((ADobPValue)((AValuePValueList)list.getPValueList()).getPValue()).getDouble().getText());
+            		dif -= Double.parseDouble(((ADobPValue)((AValuePValueList)list.getPValueList()).getPValue()).getDouble().getText().trim());
 
         	}
         	else
         	{
         		if (((AValuePValueList)node.getPValueList()).getPValue() instanceof AIntPValue)
-        			dif -= Integer.parseInt(((AIntPValue)((AValuePValueList)node.getPValueList()).getPValue()).getInteger().getText());
+        			dif -= Integer.parseInt(((AIntPValue)((AValuePValueList)node.getPValueList()).getPValue()).getInteger().getText().trim());
             	else
-            		dif -= Double.parseDouble(((ADobPValue)((AValuePValueList)node.getPValueList()).getPValue()).getDouble().getText());
+            		dif -= Double.parseDouble(((ADobPValue)((AValuePValueList)node.getPValueList()).getPValue()).getDouble().getText().trim());
 
         	}
         	Helper.setOutput(""+dif);
@@ -318,38 +373,38 @@ class Translation extends DepthFirstAdapter
         {
             double dif = 0;
             if (node.getPValue()instanceof AIntPValue)
-        		dif = Integer.parseInt(((AIntPValue)node.getPValue()).getInteger().getText());
+        		dif = Integer.parseInt(((AIntPValue)node.getPValue()).getInteger().getText().trim());
         	else
-        		dif = Double.parseDouble(((ADobPValue)node.getPValue()).getDouble().getText());
+        		dif = Double.parseDouble(((ADobPValue)node.getPValue()).getDouble().getText().trim());
             if (node.getPDifList() instanceof ADifListPDifList)
         	{
             	ADifListPDifList list = (ADifListPDifList)node.getPDifList();
         		while (list.getPDifList() instanceof ADifListPDifList)
         		{
         			if (list.getPValue()instanceof AIntPValue)
-                		dif -= Integer.parseInt(((AIntPValue)list.getPValue()).getInteger().getText());
+                		dif -= Integer.parseInt(((AIntPValue)list.getPValue()).getInteger().getText().trim());
                 	else
-                		dif -= Double.parseDouble(((ADobPValue)list.getPValue()).getDouble().getText());
+                		dif -= Double.parseDouble(((ADobPValue)list.getPValue()).getDouble().getText().trim());
         			
         			list = (ADifListPDifList) list.getPDifList();
         		}
         		if (list.getPValue()instanceof AIntPValue)
-        			dif -= Integer.parseInt(((AIntPValue)list.getPValue()).getInteger().getText());
+        			dif -= Integer.parseInt(((AIntPValue)list.getPValue()).getInteger().getText().trim());
             	else
-            		dif -= Double.parseDouble(((ADobPValue)list.getPValue()).getDouble().getText());
+            		dif -= Double.parseDouble(((ADobPValue)list.getPValue()).getDouble().getText().trim());
 
         		if (((ADifValPDifList)list.getPDifList()).getPValue() instanceof AIntPValue)
-        			dif -= Integer.parseInt(((AIntPValue)((ADifValPDifList)list.getPDifList()).getPValue()).getInteger().getText());
+        			dif -= Integer.parseInt(((AIntPValue)((ADifValPDifList)list.getPDifList()).getPValue()).getInteger().getText().trim());
             	else
-            		dif -= Double.parseDouble(((ADobPValue)((ADifValPDifList)list.getPDifList()).getPValue()).getDouble().getText());
+            		dif -= Double.parseDouble(((ADobPValue)((ADifValPDifList)list.getPDifList()).getPValue()).getDouble().getText().trim());
 
         	}
             else
         	{
         		if (((ADifValPDifList)node.getPDifList()).getPValue() instanceof AIntPValue)
-        			dif -= Integer.parseInt(((AIntPValue)((ADifValPDifList)node.getPDifList()).getPValue()).getInteger().getText());
+        			dif -= Integer.parseInt(((AIntPValue)((ADifValPDifList)node.getPDifList()).getPValue()).getInteger().getText().trim());
             	else
-            		dif -= Double.parseDouble(((ADobPValue)((ADifValPDifList)node.getPDifList()).getPValue()).getDouble().getText());
+            		dif -= Double.parseDouble(((ADobPValue)((ADifValPDifList)node.getPDifList()).getPValue()).getDouble().getText().trim());
 
         	}
         	Helper.setOutput(""+dif);
@@ -362,9 +417,9 @@ class Translation extends DepthFirstAdapter
         if(node.getMinus() != null&&node.getPValue() != null)
         {
         	if (node.getPValue() instanceof AIntPValue)
-        		Helper.setOutput(""+-1*Integer.parseInt(((AIntPValue)node.getPValue()).getInteger().getText()));
+        		Helper.setOutput(""+-1*Integer.parseInt(((AIntPValue)node.getPValue()).getInteger().getText().trim()));
         	else
-        		Helper.setOutput(""+-1*Double.parseDouble(((ADobPValue)node.getPValue()).getDouble().getText()));
+        		Helper.setOutput(""+-1*Double.parseDouble(((ADobPValue)node.getPValue()).getDouble().getText().trim()));
         }
         outAMinusPMinus(node);
     }
@@ -374,9 +429,9 @@ class Translation extends DepthFirstAdapter
         if(node.getMin() != null&&node.getPValue() != null)
         {
         	if (node.getPValue() instanceof AIntPValue)
-        		Helper.setOutput(""+-1*Integer.parseInt(((AIntPValue)node.getPValue()).getInteger().getText()));
+        		Helper.setOutput(""+-1*Integer.parseInt(((AIntPValue)node.getPValue()).getInteger().getText().trim()));
         	else
-        		Helper.setOutput(""+-1*Double.parseDouble(((ADobPValue)node.getPValue()).getDouble().getText()));        }
+        		Helper.setOutput(""+-1*Double.parseDouble(((ADobPValue)node.getPValue()).getDouble().getText().trim()));        }
         outAMinPMinus(node);
     }
     public void caseAProdPProduct(AProdPProduct node)
@@ -386,38 +441,38 @@ class Translation extends DepthFirstAdapter
         {
         	double prod = 0;
         	if (node.getPValue()instanceof AIntPValue)
-        		prod = Integer.parseInt(((AIntPValue)node.getPValue()).getInteger().getText());
+        		prod = Integer.parseInt(((AIntPValue)node.getPValue()).getInteger().getText().trim());
         	else
-        		prod = Double.parseDouble(((ADobPValue)node.getPValue()).getDouble().getText());
+        		prod = Double.parseDouble(((ADobPValue)node.getPValue()).getDouble().getText().trim());
         	if (node.getPValueList()instanceof AValueListPValueList)
         	{
         		AValueListPValueList list = (AValueListPValueList)node.getPValueList();
         		while (list.getPValueList() instanceof AValueListPValueList)
         		{
                 	if (list.getPValue()instanceof AIntPValue)
-                		prod *= Integer.parseInt(((AIntPValue)list.getPValue()).getInteger().getText());
+                		prod *= Integer.parseInt(((AIntPValue)list.getPValue()).getInteger().getText().trim());
                 	else
-                		prod *= Double.parseDouble(((ADobPValue)list.getPValue()).getDouble().getText());
+                		prod *= Double.parseDouble(((ADobPValue)list.getPValue()).getDouble().getText().trim());
         			
         			list = (AValueListPValueList) list.getPValueList();
         		}
             	if (list.getPValue()instanceof AIntPValue)
-            		prod *= Integer.parseInt(((AIntPValue)list.getPValue()).getInteger().getText());
+            		prod *= Integer.parseInt(((AIntPValue)list.getPValue()).getInteger().getText().trim());
             	else
-            		prod *= Double.parseDouble(((ADobPValue)list.getPValue()).getDouble().getText());
+            		prod *= Double.parseDouble(((ADobPValue)list.getPValue()).getDouble().getText().trim());
 
             	if (((AValuePValueList)list.getPValueList()).getPValue() instanceof AIntPValue)
-            		prod *= Integer.parseInt(((AIntPValue)((AValuePValueList)list.getPValueList()).getPValue()).getInteger().getText());
+            		prod *= Integer.parseInt(((AIntPValue)((AValuePValueList)list.getPValueList()).getPValue()).getInteger().getText().trim());
             	else
-            		prod *= Double.parseDouble(((ADobPValue)((AValuePValueList)list.getPValueList()).getPValue()).getDouble().getText());
+            		prod *= Double.parseDouble(((ADobPValue)((AValuePValueList)list.getPValueList()).getPValue()).getDouble().getText().trim());
 
         	}
         	else
         	{
         		if (((AValuePValueList)node.getPValueList()).getPValue() instanceof AIntPValue)
-        			prod *= Integer.parseInt(((AIntPValue)((AValuePValueList)node.getPValueList()).getPValue()).getInteger().getText());
+        			prod *= Integer.parseInt(((AIntPValue)((AValuePValueList)node.getPValueList()).getPValue()).getInteger().getText().trim());
             	else
-            		prod *= Double.parseDouble(((ADobPValue)((AValuePValueList)node.getPValueList()).getPValue()).getDouble().getText());
+            		prod *= Double.parseDouble(((ADobPValue)((AValuePValueList)node.getPValueList()).getPValue()).getDouble().getText().trim());
 
         	}
         	Helper.setOutput(""+prod);
@@ -432,38 +487,38 @@ class Translation extends DepthFirstAdapter
         {
         	int prod = 1;
         	if (node.getPValue()instanceof AIntPValue)
-        		prod *= Integer.parseInt(((AIntPValue)node.getPValue()).getInteger().getText());
+        		prod *= Integer.parseInt(((AIntPValue)node.getPValue()).getInteger().getText().trim());
         	else
-        		prod *= Double.parseDouble(((ADobPValue)node.getPValue()).getDouble().getText());
+        		prod *= Double.parseDouble(((ADobPValue)node.getPValue()).getDouble().getText().trim());
             if (node.getPMultList() instanceof AMultListPMultList)
         	{
             	AMultListPMultList list = (AMultListPMultList)node.getPMultList();
         		while (list.getPMultList() instanceof AMultListPMultList)
         		{
         			if (list.getPValue()instanceof AIntPValue)
-        				prod *= Integer.parseInt(((AIntPValue)list.getPValue()).getInteger().getText());
+        				prod *= Integer.parseInt(((AIntPValue)list.getPValue()).getInteger().getText().trim());
                 	else
-                		prod *= Double.parseDouble(((ADobPValue)list.getPValue()).getDouble().getText());
+                		prod *= Double.parseDouble(((ADobPValue)list.getPValue()).getDouble().getText().trim());
         			
         			list = (AMultListPMultList) list.getPMultList();
         		}
         		if (list.getPValue()instanceof AIntPValue)
-        			prod *= Integer.parseInt(((AIntPValue)list.getPValue()).getInteger().getText());
+        			prod *= Integer.parseInt(((AIntPValue)list.getPValue()).getInteger().getText().trim());
             	else
-            		prod *= Double.parseDouble(((ADobPValue)list.getPValue()).getDouble().getText());
+            		prod *= Double.parseDouble(((ADobPValue)list.getPValue()).getDouble().getText().trim());
 
         		if (((AMultValPMultList)list.getPMultList()).getPValue() instanceof AIntPValue)
-        			prod *= Integer.parseInt(((AIntPValue)((AMultValPMultList)list.getPMultList()).getPValue()).getInteger().getText());
+        			prod *= Integer.parseInt(((AIntPValue)((AMultValPMultList)list.getPMultList()).getPValue()).getInteger().getText().trim());
             	else
-            		prod *= Double.parseDouble(((ADobPValue)((AMultValPMultList)list.getPMultList()).getPValue()).getDouble().getText());
+            		prod *= Double.parseDouble(((ADobPValue)((AMultValPMultList)list.getPMultList()).getPValue()).getDouble().getText().trim());
 
         	}
             else
         	{
         		if (((AMultValPMultList)node.getPMultList()).getPValue() instanceof AIntPValue)
-        			prod *= Integer.parseInt(((AIntPValue)((AMultValPMultList)node.getPMultList()).getPValue()).getInteger().getText());
+        			prod *= Integer.parseInt(((AIntPValue)((AMultValPMultList)node.getPMultList()).getPValue()).getInteger().getText().trim());
             	else
-            		prod *= Double.parseDouble(((ADobPValue)((AMultValPMultList)node.getPMultList()).getPValue()).getDouble().getText());
+            		prod *= Double.parseDouble(((ADobPValue)((AMultValPMultList)node.getPMultList()).getPValue()).getDouble().getText().trim());
 
         	}
         	Helper.setOutput(""+prod);
@@ -475,7 +530,7 @@ class Translation extends DepthFirstAdapter
         inAPModulo(node);
         if(node.getModulo() != null&&node.getDiv() != null&&node.getDivd() != null)
         {
-        	Helper.setOutput(""+(int)(Integer.parseInt(node.getDiv().getText())%Integer.parseInt(node.getDivd().getText())));
+        	Helper.setOutput(""+(int)(Integer.parseInt(node.getDiv().getText().trim())%Integer.parseInt(node.getDivd().getText().trim())));
         }
         outAPModulo(node);
     }    
@@ -485,9 +540,9 @@ class Translation extends DepthFirstAdapter
         if(node.getInt() != null&&node.getPValue() != null)
         {
         	if (node.getPValue()instanceof AIntPValue)
-        		Helper.setOutput(""+Math.floor(Integer.parseInt(((AIntPValue)node.getPValue()).getInteger().getText())));
+        		Helper.setOutput(""+Math.round(Math.floor(Integer.parseInt(((AIntPValue)node.getPValue()).getInteger().getText().trim()))));
         	else
-        		Helper.setOutput(""+Math.floor(Double.parseDouble(((ADobPValue)node.getPValue()).getDouble().getText())));
+        		Helper.setOutput(""+Math.round(Math.floor(Double.parseDouble(((ADobPValue)node.getPValue()).getDouble().getText().trim()))));
         }
         outAPInt(node);
     }
@@ -497,9 +552,9 @@ class Translation extends DepthFirstAdapter
         if(node.getRound() != null && node.getPValue() != null)
         {
             if (node.getPValue() instanceof AIntPValue )
-            	Helper.setOutput(((AIntPValue)node.getPValue()).getInteger().getText());
+            	Helper.setOutput(((AIntPValue)node.getPValue()).getInteger().getText().trim());
             else
-            	Helper.setOutput(""+Math.round(Double.parseDouble(((ADobPValue)node.getPValue()).getDouble().getText())));
+            	Helper.setOutput(""+Math.round(Double.parseDouble(((ADobPValue)node.getPValue()).getDouble().getText().trim())));
             
         }
         outAPRound(node);
@@ -510,9 +565,9 @@ class Translation extends DepthFirstAdapter
         if(node.getSqrt() != null&&node.getPValue() != null)
         {
         	if (node.getPValue() instanceof AIntPValue )
-            	Helper.setOutput(""+Math.sqrt(Integer.parseInt(((AIntPValue)node.getPValue()).getInteger().getText())));
+            	Helper.setOutput(""+Math.sqrt(Integer.parseInt(((AIntPValue)node.getPValue()).getInteger().getText().trim())));
             else
-            	Helper.setOutput(""+Math.sqrt(Double.parseDouble(((ADobPValue)node.getPValue()).getDouble().getText())));
+            	Helper.setOutput(""+Math.sqrt(Double.parseDouble(((ADobPValue)node.getPValue()).getDouble().getText().trim())));
         }
         outAPSqrt(node);
     }
@@ -523,14 +578,14 @@ class Translation extends DepthFirstAdapter
         {
         	if (node.getBase() instanceof AIntPValue )
             	if (node.getExp() instanceof AIntPValue )
-                	Helper.setOutput(""+Math.pow(Double.parseDouble(((AIntPValue)node.getBase()).getInteger().getText()), Double.parseDouble(((AIntPValue)node.getExp()).getInteger().getText())));
+                	Helper.setOutput(""+Math.pow(Double.parseDouble(((AIntPValue)node.getBase()).getInteger().getText().trim()), Double.parseDouble(((AIntPValue)node.getExp()).getInteger().getText().trim())));
                 else
-                	Helper.setOutput(""+Math.pow(Double.parseDouble(((AIntPValue)node.getBase()).getInteger().getText()), Double.parseDouble(((ADobPValue)node.getExp()).getDouble().getText())));
+                	Helper.setOutput(""+Math.pow(Double.parseDouble(((AIntPValue)node.getBase()).getInteger().getText().trim()), Double.parseDouble(((ADobPValue)node.getExp()).getDouble().getText().trim())));
             else
             	if (node.getExp() instanceof AIntPValue )
-                	Helper.setOutput(""+Math.pow(Double.parseDouble(((ADobPValue)node.getBase()).getDouble().getText()), Double.parseDouble(((AIntPValue)node.getExp()).getInteger().getText())));
+                	Helper.setOutput(""+Math.pow(Double.parseDouble(((ADobPValue)node.getBase()).getDouble().getText().trim()), Double.parseDouble(((AIntPValue)node.getExp()).getInteger().getText().trim())));
                 else
-                	Helper.setOutput(""+Math.pow(Double.parseDouble(((ADobPValue)node.getBase()).getDouble().getText()), Double.parseDouble(((ADobPValue)node.getExp()).getDouble().getText())));
+                	Helper.setOutput(""+Math.pow(Double.parseDouble(((ADobPValue)node.getBase()).getDouble().getText().trim()), Double.parseDouble(((ADobPValue)node.getExp()).getDouble().getText().trim())));
         	
         }
         outAPPower(node);
@@ -541,9 +596,9 @@ class Translation extends DepthFirstAdapter
         if(node.getExp() != null&&node.getPValue() != null)
         {
         	if (node.getPValue() instanceof AIntPValue )
-            	Helper.setOutput(""+Math.pow(Math.E, (Integer.parseInt(((AIntPValue)node.getPValue()).getInteger().getText()))));
+            	Helper.setOutput(""+Math.pow(Math.E, (Integer.parseInt(((AIntPValue)node.getPValue()).getInteger().getText().trim()))));
             else
-            	Helper.setOutput(""+Math.pow(Math.E, (Double.parseDouble(((ADobPValue)node.getPValue()).getDouble().getText()))));
+            	Helper.setOutput(""+Math.pow(Math.E, (Double.parseDouble(((ADobPValue)node.getPValue()).getDouble().getText().trim()))));
         }
         outAPExp(node);
     }
@@ -592,9 +647,9 @@ class Translation extends DepthFirstAdapter
         {
             Integer dist = 0;
             if (node.getPForward() instanceof AForwardPForward)
-            dist = Integer.parseInt(((AForwardPForward)node.getPForward()).getInteger().getText());
+            dist = Integer.parseInt(((AForwardPForward)node.getPForward()).getInteger().getText().trim());
             else
-            dist = Integer.parseInt(((AFdPForward)node.getPForward()).getInteger().getText());
+            dist = Integer.parseInt(((AFdPForward)node.getPForward()).getInteger().getText().trim());
             //dist<0 distancia negativa
             if (dist<0)Helper.setTurtleAngle(180);
             Helper.add(Math.abs(dist));
@@ -609,9 +664,9 @@ class Translation extends DepthFirstAdapter
         {
         	Integer dist = 0;
             if (node.getPBack() instanceof ABackPBack)
-            	dist = Integer.parseInt(((ABackPBack)node.getPBack()).getInteger().getText());
+            	dist = Integer.parseInt(((ABackPBack)node.getPBack()).getInteger().getText().trim());
             else
-                dist = Integer.parseInt(((ABkPBack)node.getPBack()).getInteger().getText());
+                dist = Integer.parseInt(((ABkPBack)node.getPBack()).getInteger().getText().trim());
         	Helper.setTurtleAngle(180);
             if (dist<0)Helper.setTurtleAngle(180);
             Helper.add(Math.abs(dist));
@@ -627,9 +682,9 @@ class Translation extends DepthFirstAdapter
         {
         	Integer degree = 0;
         	if (node.getPLeft() instanceof ALeftPLeft)
-        		degree = Integer.parseInt(((ALeftPLeft)node.getPLeft()).getInteger().getText());
+        		degree = Integer.parseInt(((ALeftPLeft)node.getPLeft()).getInteger().getText().trim());
         	else
-        		degree = Integer.parseInt(((ALtPLeft)node.getPLeft()).getInteger().getText());
+        		degree = Integer.parseInt(((ALtPLeft)node.getPLeft()).getInteger().getText().trim());
         	Helper.setTurtleAngle(-degree);
         }
         outALtsPGraphics(node);
@@ -641,19 +696,45 @@ class Translation extends DepthFirstAdapter
         {
         	Integer degree = 0;
         	if (node.getPRight() instanceof ARightPRight)
-        		degree = Integer.parseInt(((ARightPRight)node.getPRight()).getInteger().getText());
+        		degree = Integer.parseInt(((ARightPRight)node.getPRight()).getInteger().getText().trim());
         	else
-        		degree = Integer.parseInt(((ARtPRight)node.getPRight()).getInteger().getText());
+        		degree = Integer.parseInt(((ARtPRight)node.getPRight()).getInteger().getText().trim());
         	Helper.setTurtleAngle(degree);
         }
         outARtsPGraphics(node);
+    }
+    @SuppressWarnings("unchecked")
+	public void caseAPSetpos(APSetpos node)
+    {
+        inAPSetpos(node);
+        if(node.getSetpos() != null && node.getIdentifier() != null)
+        {
+        	if (Helper.getVariables().get(node.getIdentifier().getText().trim())!= null)
+        	{
+        		if (Helper.getVariables().get(node.getIdentifier().getText().trim())instanceof Vector)
+        		{
+        			Vector<String> lista = (Vector<String>)(Helper.getVariables().get(node.getIdentifier().getText().trim()));
+        			if (lista.size()>=2)
+        			{
+        				try{
+        					int x = Integer.parseInt(lista.get(0).trim());
+        					int y = Integer.parseInt(lista.get(1).trim());
+        		        	Helper.add(new myPoint(x,y, false));        				
+        				}catch(Exception e){Helper.setOutput("Error: La lista no contiene números");}
+        			}
+        			else
+        			Helper.setOutput("Error: La lista no contiene suficientes elementos");
+        		}
+        	}
+        }
+        outAPSetpos(node);
     }
     public void caseAPSetxy(APSetxy node)
     {
         inAPSetxy(node);
         if(node.getSetxy() != null && node.getX() != null && node.getY() != null)
         {
-        	Helper.add(new myPoint(Helper.centerX+Integer.parseInt(node.getX().getText()),Helper.centerY+Integer.parseInt(node.getY().getText()), false));
+        	Helper.add(new myPoint(Helper.centerX+Integer.parseInt(node.getX().getText().trim()),Helper.centerY+Integer.parseInt(node.getY().getText().trim()), false));
         }
         outAPSetxy(node);
     }  
@@ -662,7 +743,7 @@ class Translation extends DepthFirstAdapter
         inAPSetx(node);
         if(node.getSetx() != null && node.getInteger() != null)
         {
-        	Helper.add(new myPoint(Helper.centerX+Integer.parseInt(node.getInteger().getText()),Helper.getPuntos().get(Helper.getPuntos().size()-1).Y(),false));
+        	Helper.add(new myPoint(Helper.centerX+Integer.parseInt(node.getInteger().getText().trim()),Helper.getPuntos().get(Helper.getPuntos().size()-1).Y(),false));
         }
         outAPSetx(node);
     }
@@ -671,7 +752,7 @@ class Translation extends DepthFirstAdapter
         inAPSety(node);
         if(node.getSety() != null && node.getInteger() != null)
         {
-        	Helper.add(new myPoint(Helper.getPuntos().get(Helper.getPuntos().size()-1).X(),Helper.centerY+Integer.parseInt(node.getInteger().getText()),false));
+        	Helper.add(new myPoint(Helper.getPuntos().get(Helper.getPuntos().size()-1).X(),Helper.centerY+Integer.parseInt(node.getInteger().getText().trim()),false));
         }
         outAPSety(node);
     }
@@ -681,9 +762,9 @@ class Translation extends DepthFirstAdapter
         if(node.getPSetheading() != null)
         {
         	if (node.getPSetheading()instanceof ASetheadingPSetheading)
-        		Helper.setTurtleAngle(-Helper.getTurtleAngle()+Integer.parseInt(((ASetheadingPSetheading)node.getPSetheading()).getInteger().getText()));
+        		Helper.setTurtleAngle(-Helper.getTurtleAngle()+Integer.parseInt(((ASetheadingPSetheading)node.getPSetheading()).getInteger().getText().trim()));
         	else
-        		Helper.setTurtleAngle(-Helper.getTurtleAngle()+Integer.parseInt(((ASethPSetheading)node.getPSetheading()).getInteger().getText()));
+        		Helper.setTurtleAngle(-Helper.getTurtleAngle()+Integer.parseInt(((ASethPSetheading)node.getPSetheading()).getInteger().getText().trim()));
         }
         outASethsPGraphics(node);
     }
@@ -704,7 +785,7 @@ class Translation extends DepthFirstAdapter
         {
         	myPoint anterior = Helper.getPuntos().get(Helper.getCantPuntos()-1);
         	//radius = angle ; angle = radius; ???
-        	Helper.add(new myPoint(anterior.X(), anterior.Y(), Integer.parseInt(node.getAngle().getText()),Helper.getTurtleAngle(),Integer.parseInt(node.getRadius().getText())));
+        	Helper.add(new myPoint(anterior.X(), anterior.Y(), Integer.parseInt(node.getAngle().getText().trim()),Helper.getTurtleAngle(),Integer.parseInt(node.getRadius().getText().trim())));
         }
         outAPArc(node);
     }
@@ -748,15 +829,24 @@ class Translation extends DepthFirstAdapter
         	if (node.getPSetpencolor()instanceof ASetpencolorPSetpencolor)
         	{
         		if (((ASetpencolorPSetpencolor)node.getPSetpencolor()).getPColor()instanceof APredefPColor)
-        			color = Integer.parseInt(((APredefPColor)(((ASetpencolorPSetpencolor)node.getPSetpencolor()).getPColor())).getInteger().getText());
+        			color = Integer.parseInt(((APredefPColor)(((ASetpencolorPSetpencolor)node.getPSetpencolor()).getPColor())).getInteger().getText().trim());
         		else
-        			System.out.println("User defined color");
+        		{
+        			Helper.penColor = Helper.getColor(((ALstPColor)(((ASetpencolorPSetpencolor)node.getPSetpencolor()).getPColor())).getIdentifier().getText().trim());
+        			System.out.println(Helper.penColor);
+        			color = -1;
+        		}
+
         	}
         	if (node.getPSetpencolor()instanceof ASetpcPSetpencolor)
         		if (((ASetpcPSetpencolor)node.getPSetpencolor()).getPColor()instanceof APredefPColor)
-        			color = Integer.parseInt(((APredefPColor)(((ASetpcPSetpencolor)node.getPSetpencolor()).getPColor())).getInteger().getText());
+        			color = Integer.parseInt(((APredefPColor)(((ASetpcPSetpencolor)node.getPSetpencolor()).getPColor())).getInteger().getText().trim());
         		else
-        			System.out.println("User defined color");
+        		{
+        			Helper.penColor = Helper.getColor(((ALstPColor)(((ASetpcPSetpencolor)node.getPSetpencolor()).getPColor())).getIdentifier().getText().trim());
+        			System.out.println(Helper.penColor);
+        			color = -1;
+        		}
         			
         	
         	if (color >= 0)
@@ -824,7 +914,7 @@ class Translation extends DepthFirstAdapter
         if(node.getPSetpensize() != null)
         {
         	if (node.getPSetpensize()instanceof ASizePSetpensize)
-        		Helper.penSize = Integer.parseInt(((ASizePSetpensize) node.getPSetpensize()).getInteger().getText());
+        		Helper.penSize = Integer.parseInt(((ASizePSetpensize) node.getPSetpensize()).getInteger().getText().trim());
         }
         outASetpensizePPencontrol(node);
     }
@@ -834,8 +924,8 @@ class Translation extends DepthFirstAdapter
         inAPTo(node);
         if(node.getTo() != null&&node.getIdentifier() != null&&node.getPInstructionlist() != null&&node.getEnd() != null)
         {
-        	if (Helper.getVariables().get(node.getIdentifier().getText()) == null)
-        		Helper.getVariables().put(node.getIdentifier().getText(), node.getPInstructionlist());
+        	if (Helper.getFunciones().get(node.getIdentifier().getText().trim().trim()) == null)
+        		Helper.getFunciones().put(node.getIdentifier().getText().trim().trim(), node.getPInstructionlist());
         }
         outAPTo(node);
     }
@@ -844,11 +934,17 @@ class Translation extends DepthFirstAdapter
         inACalltofunctionPInstruction(node);
         if(node.getIdentifier() != null)
         {
-        	System.out.println(Helper.getVariables());
-        	if (Helper.getVariables().get(node.getIdentifier().getText()) != null && Helper.getVariables().get(node.getIdentifier().getText())instanceof AInstPInstructionlist)
-        		((AInstPInstructionlist)Helper.getVariables().get(node.getIdentifier().getText())).apply(this);
+        	System.out.println(Helper.getFunciones());
+    		Object obj= Helper.getFunciones().get(node.getIdentifier().getText().trim().trim());
+        	if (obj != null)
+        	{
+        		if (obj instanceof AInstPInstructionlist)
+        			((AInstPInstructionlist)obj).apply(this);
+        		if (obj instanceof AListaPInstructionlist)
+        			((AListaPInstructionlist)obj).apply(this);
+        	}
         	else
-        		Helper.setOutput(node.getIdentifier().getText()+" function not found");
+        		Helper.setOutput(node.getIdentifier().getText().trim()+" function not found");
         }
         outACalltofunctionPInstruction(node);
     }
@@ -860,17 +956,16 @@ class Translation extends DepthFirstAdapter
         	if (node.getPMake()instanceof AVarnumPMake)
         	{
         		if(((AVarnumPMake)node.getPMake()).getValor() instanceof AIntPValue)
-        			Helper.getVariables().put(((AVarnumPMake)node.getPMake()).getVar().getText(), Integer.parseInt(((AIntPValue)((AVarnumPMake)node.getPMake()).getValor()).getInteger().getText()));
+        			Helper.getVariables().put(((AVarnumPMake)node.getPMake()).getVar().getText().trim(), Integer.parseInt(((AIntPValue)((AVarnumPMake)node.getPMake()).getValor()).getInteger().getText().trim()));
         		else
-        			Helper.getVariables().put(((AVarnumPMake)node.getPMake()).getVar().getText(), Double.parseDouble(((ADobPValue)((AVarnumPMake)node.getPMake()).getValor()).getDouble().getText()));
+        			Helper.getVariables().put(((AVarnumPMake)node.getPMake()).getVar().getText().trim(), Double.parseDouble(((ADobPValue)((AVarnumPMake)node.getPMake()).getValor()).getDouble().getText().trim()));
         	}
         	else
-        		if (((AVarwordPMake)node.getPMake()).getValor().toString().trim().equalsIgnoreCase("true") ||
-        				((AVarwordPMake)node.getPMake()).getValor().toString().trim().equalsIgnoreCase("false"))
-//Apuntadores a variable...	Helper.getVariables().get(((AVarwordPMake)node.getPMake()).getValor().toString().trim())!= null)
-        			Helper.getVariables().put(((AVarwordPMake)node.getPMake()).getVar().getText(),((AVarwordPMake)node.getPMake()).getValor().toString());
-        		else
-        			Helper.setOutput("Cannot create variable "+((AVarwordPMake)node.getPMake()).getVar().getText());
+//        		if (((AVarwordPMake)node.getPMake()).getValor().toString().trim().equalsIgnoreCase("true") ||
+//        				((AVarwordPMake)node.getPMake()).getValor().toString().trim().equalsIgnoreCase("false"))
+        			Helper.getVariables().put(((AVarwordPMake)node.getPMake()).getVar().getText().trim(),((AVarwordPMake)node.getPMake()).getValor().toString());
+//        		else
+//        			Helper.setOutput("Cannot create variable "+((AVarwordPMake)node.getPMake()).getVar().getText().trim());
     		System.out.println(Helper.getVariables());
         		
         		
@@ -892,7 +987,7 @@ class Translation extends DepthFirstAdapter
         inAPRepeat(node);
         if(node.getPInstructionlist() != null)
         {
-        	for (int i = 0 ; i < Integer.parseInt(node.getInteger().getText()); i++)
+        	for (int i = 0 ; i < Integer.parseInt(node.getInteger().getText().trim()); i++)
         		node.getPInstructionlist().apply(this);
         }
         outAPRepeat(node);
@@ -940,7 +1035,12 @@ class Translation extends DepthFirstAdapter
         inAStopPControlStructures(node);
         if(node.getPStop() != null)
         {
-        	Helper.setOutput("STOOOOOOOOOOOOOOOOP!!!");
+        	Node darkvader = node.parent();
+        	while (darkvader.parent() != null)
+        		darkvader = darkvader.parent();
+        	Helper.setOutput(darkvader+": yo soy tu padre ");
+        	Helper.setOutput("Luke says : NOOOOOOOOOOOOOOOOP!!!");
+        	return;
         }
         outAStopPControlStructures(node);
     }
@@ -950,6 +1050,7 @@ class Translation extends DepthFirstAdapter
         if(node.getGoto() != null&&node.getIdentifier() != null)
         {
         	Helper.setOutput("GOOOOOOOOOOOOOOOO!!!");
+        	
         }
         outAPGoto(node);
     }

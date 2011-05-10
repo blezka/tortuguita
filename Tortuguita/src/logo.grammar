@@ -124,7 +124,7 @@ Productions
  p_mutator		= {set} p_setitem ;
  // 				{push} p_push |
  // 				{pop} p_pop ;
- p_communication = p_print;
+ p_communication = {prs}p_print;
  p_arithmetic = {sum} p_sum |
   				{difference} p_difference |
   				{minus} p_minus |
@@ -173,7 +173,7 @@ Productions
  p_setitem     = setitem integer identifier p_value;
  //p_push        = push [item]:identifier [list]:identifier;
  //p_pop         = pop p_list;
- p_print       = print l_par p_ident_list r_par;
+ p_print       = {print}print l_par p_ident_list r_par | {pr}pr l_par p_ident_list r_par;
  p_sum         = {sum}sum p_value p_value_list | {plus} p_value p_sum_list;
  p_difference  = {dif}difference p_value p_value_list | {min}p_value p_dif_list;
  p_minus       = {minus}minus p_value | {min}min p_value;
@@ -213,15 +213,13 @@ Productions
  p_goto        = goto identifier;
  
  
- 
 //Producciones auxiliares de la gramatica 
 
  p_ident_list  =	 {ident_list} identifier p_ident_list | {ident} identifier;
- p_value       = {int}integer | {dob}double;
+ p_value       = {int}integer | {dob}double; //{var}identifier | {result} l_par p_arithmetic r_par;
  p_value_list  = {value_list} p_value p_value_list | {value} p_value;
  p_sum_list    = {sum_val} plus p_value | {sum_list} plus p_value p_sum_list;
  p_dif_list    = {dif_val} min p_value | {dif_list} min p_value p_dif_list;
  p_mult_list   = {mult_val} mult p_value | {mult_list} mult p_value p_mult_list;
  p_boolean     = {true} true | {false} false | {var}identifier;
  p_color	   = {predef}integer | {lst}identifier ;
- 

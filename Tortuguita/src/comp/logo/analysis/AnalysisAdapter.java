@@ -169,7 +169,7 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseAPCommunication(APCommunication node)
+    public void caseAPrsPCommunication(APrsPCommunication node)
     {
         defaultCase(node);
     }
@@ -394,7 +394,12 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseAPPrint(APPrint node)
+    public void caseAPrintPPrint(APrintPPrint node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAPrPPrint(APrPPrint node)
     {
         defaultCase(node);
     }

@@ -32,7 +32,7 @@ public interface Analysis extends Switch
     void caseAButfirstsPSelectors(AButfirstsPSelectors node);
     void caseALastPSelectors(ALastPSelectors node);
     void caseASetPMutator(ASetPMutator node);
-    void caseAPCommunication(APCommunication node);
+    void caseAPrsPCommunication(APrsPCommunication node);
     void caseASumPArithmetic(ASumPArithmetic node);
     void caseADifferencePArithmetic(ADifferencePArithmetic node);
     void caseAMinusPArithmetic(AMinusPArithmetic node);
@@ -77,7 +77,8 @@ public interface Analysis extends Switch
     void caseABfPButfirst(ABfPButfirst node);
     void caseAPLast(APLast node);
     void caseAPSetitem(APSetitem node);
-    void caseAPPrint(APPrint node);
+    void caseAPrintPPrint(APrintPPrint node);
+    void caseAPrPPrint(APrPPrint node);
     void caseASumPSum(ASumPSum node);
     void caseAPlusPSum(APlusPSum node);
     void caseADifPDifference(ADifPDifference node);

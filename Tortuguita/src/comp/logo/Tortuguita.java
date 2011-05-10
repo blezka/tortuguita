@@ -20,7 +20,7 @@ public class Tortuguita extends JFrame
 		super("Tortuguita");
 		this.setSize(800,600);
 		this.setPreferredSize(new Dimension(800,600));
-//		this.setResizable(false);
+		this.setResizable(false);
 		this.setVisible(true);
 		this.setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -76,7 +76,8 @@ class panelTuga extends JPanel
 			   		g2d.setStroke(new BasicStroke(siguiente.getSize()));
 			   		if (siguiente.isPenDown())
 			   		{
-				   		g2d.drawArc(siguiente.X()-siguiente.getRadius()/2, siguiente.Y()-siguiente.getRadius()/2, siguiente.getRadius(),siguiente.getRadius(), siguiente.getAngleStart(), siguiente.getAngleEnd());
+//dibujar tortuga
+			   			g2d.drawArc(siguiente.X()-siguiente.getRadius()/2, siguiente.Y()-siguiente.getRadius()/2, siguiente.getRadius(),siguiente.getRadius(), siguiente.getAngleStart(), siguiente.getAngleEnd());
 				   		g2d.drawLine(posActual.X(), posActual.Y(), siguiente.X(), siguiente.Y());
 					}
 					posActual = siguiente;
@@ -84,16 +85,8 @@ class panelTuga extends JPanel
 //girar tortuga
 		     AffineTransform origXform = g2d.getTransform();
 		     AffineTransform newXform = (AffineTransform)(origXform.clone());
-		     //center of rotation is center of the panel
-//		     int xRot = this.getWidth()/2;
-//		     int yRot = this.getHeight()/2;
-		     //center turtle
 		     newXform.rotate(Math.toRadians(Helper.getTurtleAngle()), posActual.X(), posActual.Y());
 		     g2d.setTransform(newXform);
-		     //draw image centered in panel
-//		     int x = (getWidth() - tuga.getWidth(this))/2;
-//		     int y = (getHeight() - tuga.getHeight(this))/2;
-//		     g2d.drawImage(tuga, x, y, this);
 		     
 			g2d.drawImage(tuga, posActual.X()-tuga.getWidth(this)/2, posActual.Y()-tuga.getHeight(this)/2, this);		     
 		    g2d.setTransform(origXform);
