@@ -1,0 +1,1 @@
+Development of a Logo interpreter capable of identifying the possible faults existing in a program written in that language and deliver a result specified by the source program.
